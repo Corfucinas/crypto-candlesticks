@@ -1,0 +1,14 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.1.0
+    hooks:
+    -   id: check-yaml
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-ast
+    -   id: check-case-conflict
+    -   id: check-docstring-first
+    -   id: check-toml
+    -   id: double-quote-string-fixer
+    -   id: fix-encoding-pragma
+    -   id: debug-statements
