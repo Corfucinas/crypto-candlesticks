@@ -22,6 +22,7 @@ locations = (
     'docs/conf.py',
 )
 
+_PYTHON_VERSIONS = ['3.5', '3.6', '3.7', '3.8']
 
 def install_with_constraints(  # type: ignore
     session: Session, *args: str, **kwargs: Any,
@@ -55,7 +56,7 @@ def install_with_constraints(  # type: ignore
         )
 
 
-@nox.session(python='3.8')  # type: ignore
+@nox.session(python=_PYTHON_VERSIONS)  # type: ignore
 def black(session: Session) -> None:
     """Run black code formatter."""
     args = session.posargs or locations
@@ -67,7 +68,7 @@ def black(session: Session) -> None:
     )
 
 
-@nox.session(python='3.8')  # type: ignore
+@nox.session(python=_PYTHON_VERSIONS)  # type: ignore
 def lint(session: Session) -> None:
     """Lint using flake8."""
     args = session.posargs or locations
@@ -87,7 +88,7 @@ def lint(session: Session) -> None:
     )
 
 
-@nox.session(python='3.8')  # type: ignore
+@nox.session(python=_PYTHON_VERSIONS)  # type: ignore
 def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
     with tempfile.NamedTemporaryFile(delete=True) as requirements:
@@ -108,7 +109,7 @@ def safety(session: Session) -> None:
         )
 
 
-@nox.session(python='3.8')  # type: ignore
+@nox.session(python=_PYTHON_VERSIONS)  # type: ignore
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
     args = session.posargs or locations
@@ -120,7 +121,7 @@ def mypy(session: Session) -> None:
     )
 
 
-@nox.session(python='3.8')  # type: ignore
+@nox.session(python=_PYTHON_VERSIONS)  # type: ignore
 def tests(session: Session) -> None:
     """Run the test suite."""
     args = session.posargs or [
@@ -135,7 +136,7 @@ def tests(session: Session) -> None:
     )
 
 
-@nox.session(python='3.8')  # type: ignore
+@nox.session(python=_PYTHON_VERSIONS)  # type: ignore
 def xdoctest(session: Session) -> None:
     """Run examples with xdoctest."""
     args = session.posargs or ['all']
@@ -148,7 +149,7 @@ def xdoctest(session: Session) -> None:
     )
 
 
-@nox.session(python='3.8')  # type: ignore
+@nox.session(python=_PYTHON_VERSIONS)  # type: ignore
 def coverage(session: Session) -> None:
     """Upload the coverage data."""
     session.run('poetry', 'install', external=True)
@@ -156,7 +157,7 @@ def coverage(session: Session) -> None:
     session.run('codecov', *session.posargs)
 
 
-@nox.session(python='3.8')  # type: ignore
+@nox.session(python=_PYTHON_VERSIONS)  # type: ignore
 def docs(session: Session) -> None:
     """Build the Sphinx documentation."""
     session.run('poetry', 'install', '--no-dev', external=True)
