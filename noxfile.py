@@ -22,6 +22,7 @@ locations = (
     'docs/conf.py',
 )
 
+
 _PYTHON_VERSIONS = ['3.6.1', '3.7', '3.8']
 
 def install_with_constraints(  # type: ignore
