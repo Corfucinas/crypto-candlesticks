@@ -43,7 +43,7 @@ def install_with_constraints(  # type: ignore
         kwargs: Additional keyword arguments for Session.install.
 
     """
-    with tempfile.NamedTemporaryFile(delete=False) as requirements:
+    with tempfile.NamedTemporaryFile(delete=True) as requirements:
         session.run(
             'poetry',
             'export',
@@ -92,7 +92,7 @@ def lint(session: Session) -> None:
 @nox.session(python=_PYTHON_VERSIONS)  # type: ignore
 def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
-    with tempfile.NamedTemporaryFile(delete=False) as requirements:
+    with tempfile.NamedTemporaryFile(delete=True) as requirements:
         session.run(
             'poetry',
             'export',
