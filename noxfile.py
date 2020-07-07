@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """All Nox sessions."""
-# Special thanks to Claudio Jolowicz and his series Hypermodern Python
-# https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
 
 import tempfile
 from typing import Any
@@ -168,3 +166,6 @@ def docs(session: Session) -> None:
     session.run(
         'sphinx-build', 'docs', 'docs/_build/html',
     )
+
+# Special thanks to Claudio Jolowicz and his series Hypermodern Python
+# https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
