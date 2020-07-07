@@ -10,7 +10,7 @@ repository = "https://github.com/Corfucinas/cryptocurrency-candlestick"
 keywords = ["cryptocurrency", "candlesticks", "download", "data", "ohlc"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.6.1"
 pandas = "^1.0.5"
 numpy = "^1.19.0"
 requests = "^2.24.0"
