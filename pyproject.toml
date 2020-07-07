@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "crypto-candlesticks"
-version = "0.1.1"
+version = "0.1.2"
 description = "Download candlestick data fast & easy for analysis"
 authors = ["Pedro Torres <corfucinas@protonmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/Corfucinas/cryptocurrency-candlestick"
-repository = "https://github.com/Corfucinas/cryptocurrency-candlestick"
+homepage = "https://crypto-candlesticks.readthedocs.io/en/latest/"
+repository = "https://github.com/Corfucinas/crypto-candlesticks"
 keywords = ["cryptocurrency", "candlesticks", "download", "data", "ohlc"]
 
 [tool.poetry.dependencies]
