@@ -40,8 +40,6 @@ sphinx_autodoc_typehints = "^1.11.0"
 isort = "^5.0.3"
 pre-commit = "^2.6.0"
 codecov = "^2.1.7"
-colorama = "^0.4.3"
-pygments = "^2.6.1"
 wemake-python-styleguide = "^0.14.0"
 
 [tool.black]
