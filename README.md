@@ -4,7 +4,6 @@
 ![Tests](https://github.com/Corfucinas/crypto-candlesticks/workflows/Tests/badge.svg)
 ![Codecov](https://github.com/Corfucinas/crypto-candlesticks/workflows/Codecov/badge.svg)
 [![Documentation Status](https://readthedocs.org/projects/crypto-candlesticks/badge/?version=latest)](https://crypto-candlesticks.readthedocs.io/en/latest/?badge=latest)
-[![Dependabot](https://flat.badgen.net/dependabot/thepracticaldev/dev.to?icon=dependabot)](https://flat.badgen.net/dependabot/thepracticaldev/dev.to?icon=dependabot)
 [![PyPI](https://img.shields.io/pypi/v/crypto-candlesticks.svg)](https://pypi.org/project/crypto-candlesticks/)
 
 ---
