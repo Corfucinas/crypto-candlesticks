@@ -22,7 +22,7 @@ importlib_metadata = {version = "^1.7.0", python = "<3.8"}
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
 mypy = "^0.782"
-sphinx = "^3.2.0"
+sphinx = "^3.2.1"
 pytest = "^6.0.1"
 coverage = {extras = ["toml"], version = "^5.1"}
 pytest-cov = "^2.10.0"
