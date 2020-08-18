@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.1.0
+    rev: v3.2.0
     hooks:
     -   id: check-yaml
     -   id: check-ast
@@ -9,4 +9,7 @@ repos:
     -   id: check-toml
     -   id: double-quote-string-fixer
     -   id: fix-encoding-pragma
-    -   id: debug-statements
+-   repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.4.2
+    hooks:
+    - id: isort
