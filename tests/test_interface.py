@@ -4,7 +4,7 @@ from unittest.mock import MagicMock, Mock
 import pytest
 import requests
 from click.testing import CliRunner
-from pytest_mock import MockFixture, mocker
+from pytest_mock import MockerFixture, mocker
 
 from crypto_candlesticks import interface
 from crypto_candlesticks.bitfinex_connector.connector import Connector
