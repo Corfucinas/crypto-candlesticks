@@ -31,3 +31,8 @@ repos:
     rev: v2.7.2
     hooks:
     -   id: pyupgrade
+-   repo: https://github.com/myint/docformatter
+    rev: v1.3.1
+    hooks:
+    - id: docformatter
+      args: [-i, -r, --blank, --wrap-summaries=120, --wrap-descriptions=120, --pre-summary-newline]
