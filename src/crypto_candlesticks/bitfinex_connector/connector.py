@@ -35,7 +35,8 @@ class Connector(object):
         start_time: float,
         end_time: float,
     ) -> List[float]:
-        """Downloads the candlestick data for the given period.
+        """
+        Downloads the candlestick data for the given period.
 
         Args:
             ticker (str): Cryptocurrency pair
@@ -46,6 +47,7 @@ class Connector(object):
 
         Returns:
             List[float]: Returns a list of candle data which can be parsed
+
         """
         return requests.get(
             "{}/candles/trade:{}:t{}/hist?limit={}&start={}&end={}&sort=-1".format(
@@ -60,9 +62,11 @@ class Connector(object):
 
     @retry(ConnectionError, jitter=(0.1, 1))  # type: ignore
     def get_symbols(self: Api) -> List[str]:
-        """Calls the exchange and gets all current tickers.
+        """
+        Calls the exchange and gets all current tickers.
 
         Returns:
             List[str]: All available tickers.
+
         """
         return requests.get("{}/symbols".format(self._end_point_v1)).json()

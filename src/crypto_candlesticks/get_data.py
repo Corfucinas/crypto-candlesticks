@@ -26,7 +26,8 @@ def get_candles(
     limit: int = _BIN_LIMIT,
     step_size: int = _STEP_SIZE,
 ) -> List[float]:
-    """Calls the exchange for the data and extends it into a list.
+    """
+    Calls the exchange for the data and extends it into a list.
 
     Args:
         ticker (str): Ticker to download the data.
@@ -38,6 +39,7 @@ def get_candles(
 
     Returns:
         List[float]: A list of floats containing OHLC
+
     """
     candle_data = []
     if validate_symbol(ticker):
@@ -72,7 +74,8 @@ def convert_data(
     base_currency: str,
     candle_data: List[float],
 ) -> pd.DataFrame:
-    """Process results from API into data analysis format.
+    """
+    Process results from API into data analysis format.
 
     Args:
         symbol (str): Symbol that is downloaded
@@ -81,6 +84,7 @@ def convert_data(
 
     Returns:
         pd.DataFrame: Standard DataFrame object
+
     """
     if not candle_data:
         click.echo("Data could not be downloaded ❌, please try again")
@@ -103,13 +107,15 @@ def convert_data(
 
 
 def validate_symbol(symbol: str) -> bool:  # type: ignore
-    """Returns True if the symbol is active on Bitfinex.
+    """
+    Returns True if the symbol is active on Bitfinex.
 
     Args:
         symbol (str): The symbol to validate
 
     Returns:
         bool: Returns True if the symbol is active, else False
+
     """
     all_symbols = Connector().get_symbols()
     for symbols in all_symbols:

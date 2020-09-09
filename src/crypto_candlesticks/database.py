@@ -54,7 +54,8 @@ class SqlDatabase(object):
         ticker: str,
         interval: str,
     ) -> None:
-        """Writes the candlestick data into a SQL table.
+        """
+        Writes the candlestick data into a SQL table.
 
         Args:
             candlestick_info (List[float]): A list of floats containing OHLC.
