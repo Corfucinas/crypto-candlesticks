@@ -40,7 +40,7 @@ crypto-candlesticks can be used the following way:
 
 .. code-block:: python
 
-    crypto-candlesticks
+    crypto - candlesticks
     "Welcome, what data do you wish to download?"
 
 Which will prompt you for the arguments:
@@ -57,7 +57,7 @@ Or you can pass the arguments yourself and skip the prompt:
 
 .. code-block:: python
 
-   crypto-candlesticks [OPTIONS]
+   crypto - candlesticks[OPTIONS]
 
 .. option:: -s <symbol>, --symbol <symbol>
 
