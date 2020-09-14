@@ -931,16 +931,18 @@ description = "Code Metrics in Python"
 name = "radon"
 optional = false
 python-versions = "*"
-version = "4.2.0"
+version = "4.3.1"
 
 [package.dependencies]
-flake8-polyfill = "*"
 future = "*"
 mando = ">=0.6,<0.7"
 
 [package.dependencies.colorama]
 python = ">=3.5"
 version = ">=0.4.1"
+
+[package.extras]
+flake8 = ["flake8-polyfill"]
 
 [[package]]
 category = "dev"
@@ -1334,7 +1336,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "24933bbc6481ed0f2ddd8bf21f893559109235c0b6ea54b60b3563da92672ecb"
+content-hash = "f57efe2af60ce3ba884f128e594aea46d768f695e4f2625811296255594d746a"
 lock-version = "1.0"
 python-versions = "^3.7"
 
@@ -1779,8 +1781,8 @@ pyyaml = [
     {file = "PyYAML-5.3.1.tar.gz", hash = "sha256:b8eac752c5e14d3eca0e6dd9199cd627518cb5ec06add0de9d32baeee6fe645d"},
 ]
 radon = [
-    {file = "radon-4.2.0-py2.py3-none-any.whl", hash = "sha256:215e42c8748b5ca8ddf7c061831600b9e73e9c48770a81eeaaeeb066697aee15"},
-    {file = "radon-4.2.0.tar.gz", hash = "sha256:b73f6f469c15c9616e0f7ce12080a9ecdee9f2335bdbb5ccea1f2bae26e8d20d"},
+    {file = "radon-4.3.1-py2.py3-none-any.whl", hash = "sha256:29b4694ed2ceee0874661cba0ceb0174fe1ce31ee30915f672b26bc9be98cf9e"},
+    {file = "radon-4.3.1.tar.gz", hash = "sha256:63a7876101a64d5418fa9acebff11f9bb48367ac79f22bf3b73c7bf430a8abc0"},
 ]
 regex = [
     {file = "regex-2020.7.14-cp27-cp27m-win32.whl", hash = "sha256:e46d13f38cfcbb79bfdb2964b0fe12561fe633caf964a77a5f8d4e45fe5d2ef7"},
