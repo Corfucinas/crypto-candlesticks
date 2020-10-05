@@ -276,7 +276,7 @@ description = "Flake8 Type Annotation Checks"
 name = "flake8-annotations"
 optional = false
 python-versions = ">=3.6.1,<4.0.0"
-version = "2.4.0"
+version = "2.4.1"
 
 [package.dependencies]
 flake8 = ">=3.7,<3.9"
@@ -1328,7 +1328,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "6bb01fa93d42f11c9dcd6f6631dbb9d49aac8a7f73df52cdcf481030f91dae5b"
+content-hash = "05797a4785338cca61f95000a03ef91bb6c08504ddcf3567468d4a988c34e5c3"
 lock-version = "1.0"
 python-versions = "^3.7"
 
@@ -1465,8 +1465,8 @@ flake8 = [
     {file = "flake8-3.8.3.tar.gz", hash = "sha256:f04b9fcbac03b0a3e58c0ab3a0ecc462e023a9faf046d57794184028123aa208"},
 ]
 flake8-annotations = [
-    {file = "flake8-annotations-2.4.0.tar.gz", hash = "sha256:09fe1aa3f40cb8fef632a0ab3614050a7584bb884b6134e70cf1fc9eeee642fa"},
-    {file = "flake8_annotations-2.4.0-py3-none-any.whl", hash = "sha256:5bda552f074fd6e34276c7761756fa07d824ffac91ce9c0a8555eb2bc5b92d7a"},
+    {file = "flake8-annotations-2.4.1.tar.gz", hash = "sha256:0bcebb0792f1f96d617ded674dca7bf64181870bfe5dace353a1483551f8e5f1"},
+    {file = "flake8_annotations-2.4.1-py3-none-any.whl", hash = "sha256:bebd11a850f6987a943ce8cdff4159767e0f5f89b3c88aca64680c2175ee02df"},
 ]
 flake8-bandit = [
     {file = "flake8_bandit-2.1.2.tar.gz", hash = "sha256:687fc8da2e4a239b206af2e54a90093572a60d0954f3054e23690739b0b0de3b"},
