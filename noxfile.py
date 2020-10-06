@@ -21,7 +21,7 @@ locations = (
 )
 
 
-_PYTHON_VERSIONS = ["3.7", "3.8", "3.9"]
+_PYTHON_VERSIONS = ["3.7", "3.8"]
 
 
 def install_with_constraints(  # type: ignore
