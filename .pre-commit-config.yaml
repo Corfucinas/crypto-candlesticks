@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+    rev: v3.3.0
     hooks:
     -   id: check-yaml
     -   id: check-ast
@@ -15,7 +15,7 @@ repos:
     -   id: detect-private-key
     -   id: trailing-whitespace
 -   repo: https://github.com/pycqa/isort
-    rev: 5.5.4
+    rev: 5.6.4
     hooks:
       - id: isort
 -   repo: https://github.com/psf/black
