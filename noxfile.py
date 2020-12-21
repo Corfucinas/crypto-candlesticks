@@ -9,7 +9,6 @@ from nox.sessions import Session
 
 package = "crypto_candlesticks"
 nox.options.sessions = (
-    "pip_upgrade",
     "xdoctest",
     "safety",
     "tests",
@@ -60,19 +59,6 @@ def install_with_constraints(  # type: ignore
             *args,
             **kwargs,
         )
-
-
-@nox.session(python=PYTHON_VERSIONS)
-def pip_upgrade(session: Session) -> None:
-    """Run black code formatter."""
-    session.run(
-        "python",
-        "-m",
-        "pip",
-        "install",
-        "--upgrade",
-        "pip",
-    )
 
 
 @nox.session(python=PYTHON_VERSIONS)  # type: ignore
