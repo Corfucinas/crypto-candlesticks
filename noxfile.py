@@ -9,6 +9,7 @@ from nox.sessions import Session
 
 package = "crypto_candlesticks"
 nox.options.sessions = (
+    "pip_upgrade",
     "xdoctest",
     "safety",
     "tests",
@@ -29,8 +30,7 @@ def install_with_constraints(  # type: ignore
     *args: str,
     **kwargs: Any,
 ) -> None:
-    """
-    Install packages constrained by Poetry's lock file.
+    """Install packages constrained by Poetry's lock file.
 
     This function is a wrapper for nox.sessions.Session.install. It
     invokes pip to install packages inside of the session's virtualenv.
@@ -60,6 +60,19 @@ def install_with_constraints(  # type: ignore
             *args,
             **kwargs,
         )
+
+
+@nox.session(python=PYTHON_VERSIONS)
+def pip_upgrade(session: Session) -> None:
+    """Run black code formatter."""
+    session.run(
+        "python",
+        "-m",
+        "pip",
+        "install",
+        "--upgrade",
+        "pip",
+    )
 
 
 @nox.session(python=PYTHON_VERSIONS)  # type: ignore
