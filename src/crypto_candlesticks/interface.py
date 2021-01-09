@@ -31,7 +31,7 @@ click.secho("Welcome, what data do you wish to download?", fg="green")
 @click.option(
     "-i",
     "--interval",
-    type=click.Choice((intervals), case_sensitive=False),
+    type=click.Choice((intervals), case_sensitive=True),
     prompt="Interval to download the candlestick data",
     help="Interval that will be used to download the data.",
 )
