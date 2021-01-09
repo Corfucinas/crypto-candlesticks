@@ -18,6 +18,7 @@ click = "^7.1.2"
 retry = "^0.9.2"
 tqdm = "^4.47.0"
 importlib-metadata = "^3.3.0"
+rich = "^9.6.2"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
