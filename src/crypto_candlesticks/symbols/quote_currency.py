@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """List of current available base pairs in Bitfinex."""
 
-validate = [
+quote_currency = [
     "USD",
     "USDT",
     "EUR",

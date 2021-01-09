@@ -7,8 +7,8 @@ import time
 import click
 
 from crypto_candlesticks.get_data import get_data
-from crypto_candlesticks.intervals import intervals
-from crypto_candlesticks.validate_symbol import validate
+from crypto_candlesticks.symbols.intervals import intervals
+from crypto_candlesticks.symbols.quote_currency import quote_currency
 
 click.secho("Welcome, what data do you wish to download?", fg="green")
 
@@ -24,7 +24,7 @@ click.secho("Welcome, what data do you wish to download?", fg="green")
 @click.option(
     "-b",
     "--base_currency",
-    type=click.Choice((validate), case_sensitive=False),
+    type=click.Choice((quote_currency), case_sensitive=False),
     prompt="Base pair",
     help="Cryptocurrency base trading pair",
 )
