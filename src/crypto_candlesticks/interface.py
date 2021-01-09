@@ -7,6 +7,7 @@ import time
 import click
 
 from crypto_candlesticks.get_data import get_data
+from crypto_candlesticks.intervals import intervals
 from crypto_candlesticks.validate_symbol import validate
 
 click.secho("Welcome, what data do you wish to download?", fg="green")
@@ -30,22 +31,7 @@ click.secho("Welcome, what data do you wish to download?", fg="green")
 @click.option(
     "-i",
     "--interval",
-    type=click.Choice(
-        [
-            "1m",
-            "5m",
-            "15m",
-            "30m",
-            "1h",
-            "3h",
-            "6h",
-            "12h",
-            "1D",
-            "7D",
-            "14D",
-            "1M",
-        ],
-    ),
+    type=click.Choice((intervals), case_sensitive=False),
     prompt="Interval to download the candlestick data",
     help="Interval that will be used to download the data.",
 )
@@ -116,3 +102,7 @@ def main(
         time_stop,
         interval,
     )
+
+
+if __name__ == "__main__":
+    main()
