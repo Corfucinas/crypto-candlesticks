@@ -7,12 +7,13 @@ from typing import List
 
 import click
 import pandas as pd
-from tqdm import tqdm
+from rich.live import Live
 
 from crypto_candlesticks.bitfinex_connector.connector import Connector
 from crypto_candlesticks.database import SqlDatabase
+from crypto_candlesticks.text_console import setup_table, write_to_column
 
-_RATE_LIMIT = 1.1
+_RATE_LIMIT = 1
 _BIN_LIMIT = 1000
 _MAX_CALL_PER_MIN = 60
 _STEP_SIZE = _BIN_LIMIT * _MAX_CALL_PER_MIN * _BIN_LIMIT
@@ -43,9 +44,14 @@ def get_candles(
     candle_data = []
     if validate_symbol(ticker):
         click.echo(f"Collecting {ticker} data for {interval}")
-        with tqdm(total=int(100)) as pbar:
-            pbar.set_description("Downloading and converting the data")
+
+        # TODO: FIX THIS SHIT
+        with Live(
+            vertical_overflow="ellipsis",
+            auto_refresh=False,
+        ) as live:
             while start_time <= end_time:
+                table = setup_table()
                 period = start_time + step_size
                 candlestick = Connector().get_candles(
                     ticker=ticker,
@@ -55,8 +61,10 @@ def get_candles(
                     end_time=period,
                 )
                 candle_data.extend(candlestick)
+                if candlestick:
+                    # TODO:Fix the refresh rate
+                    write_to_column(table, ticker, interval, candlestick, live)
                 start_time = period
-                pbar.update(int(end_time / start_time))
                 time.sleep(_RATE_LIMIT)
     else:
         click.secho(
