@@ -26,8 +26,7 @@ def get_candles(
     limit: int = _BIN_LIMIT,
     step_size: int = _STEP_SIZE,
 ) -> List[float]:
-    """
-    Calls the exchange for the data and extends it into a list.
+    """Calls the exchange for the data and extends it into a list.
 
     Args:
         ticker (str): Ticker to download the data.
@@ -74,8 +73,7 @@ def convert_data(
     base_currency: str,
     candle_data: List[float],
 ) -> pd.DataFrame:
-    """
-    Process results from API into data analysis format.
+    """Process results from API into data analysis format.
 
     Args:
         symbol (str): Symbol that is downloaded
@@ -107,8 +105,7 @@ def convert_data(
 
 
 def validate_symbol(symbol: str) -> bool:  # type: ignore
-    """
-    Returns True if the symbol is active on Bitfinex.
+    """Returns True if the symbol is active on Bitfinex.
 
     Args:
         symbol (str): The symbol to validate
