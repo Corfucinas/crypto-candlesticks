@@ -10,8 +10,6 @@ from crypto_candlesticks.get_data import get_data
 from crypto_candlesticks.symbols.intervals import intervals
 from crypto_candlesticks.symbols.quote_currency import quote_currency
 
-click.secho('Welcome, what data do you wish to download?', fg='green')
-
 
 @click.command()
 @click.option(
@@ -105,4 +103,5 @@ def main(
 
 
 if __name__ == '__main__':
+    click.secho('Welcome, what data do you wish to download?', fg='green')
     main()
