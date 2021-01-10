@@ -39,22 +39,24 @@ pytest-mock = "^3.4.0"
 
 [tool.black]
 line-length = 79
+skip-string-normalization = true
 exclude = '''
 (
   /(
       \.eggs
     | \.git
-    | \.hg
     | \.mypy_cache
-    | \.tox
+    | \.nox
     | \.venv
     | _build
-    | buck-out
+    | .pytest_cache
+    | .vscode
     | build
     | dist
   )/
 )
 '''
+
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]

@@ -451,7 +451,7 @@ gitdb = ">=4.0.1,<5"
 
 [[package]]
 name = "identify"
-version = "1.5.11"
+version = "1.5.12"
 description = "File identification library for Python"
 category = "dev"
 optional = false
@@ -870,7 +870,7 @@ py = ">=1.4.26,<2.0.0"
 
 [[package]]
 name = "rich"
-version = "9.6.2"
+version = "9.7.0"
 description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
 category = "main"
 optional = false
@@ -1406,8 +1406,8 @@ gitpython = [
     {file = "GitPython-3.1.12.tar.gz", hash = "sha256:42dbefd8d9e2576c496ed0059f3103dcef7125b9ce16f9d5f9c834aed44a1dac"},
 ]
 identify = [
-    {file = "identify-1.5.11-py2.py3-none-any.whl", hash = "sha256:7aef7a5104d6254c162990e54a203cdc0fd202046b6c415bd5d636472f6565c4"},
-    {file = "identify-1.5.11.tar.gz", hash = "sha256:b2c71bf9f5c482c389cef816f3a15f1c9d7429ad70f497d4a2e522442d80c6de"},
+    {file = "identify-1.5.12-py2.py3-none-any.whl", hash = "sha256:18994e850ba50c37bcaed4832be8b354d6a06c8fb31f54e0e7ece76d32f69bc8"},
+    {file = "identify-1.5.12.tar.gz", hash = "sha256:892473bf12e655884132a3a32aca737a3cbefaa34a850ff52d501773a45837bc"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
@@ -1700,8 +1700,8 @@ retry = [
     {file = "retry-0.9.2.tar.gz", hash = "sha256:f8bfa8b99b69c4506d6f5bd3b0aabf77f98cdb17f3c9fc3f5ca820033336fba4"},
 ]
 rich = [
-    {file = "rich-9.6.2-py3-none-any.whl", hash = "sha256:e0efd2ba715dcfb78e57986e15c6d70a3beb98a7015471ca9dd511571a8a9882"},
-    {file = "rich-9.6.2.tar.gz", hash = "sha256:b6a7f9ef1a35c248498952d3454fb4f88de415dd989f97c3e5c5e2235d66e3a5"},
+    {file = "rich-9.7.0-py3-none-any.whl", hash = "sha256:f1967aa6c91dc700c322b54165b35a38785e0e666c1522f9f9a876073b68831b"},
+    {file = "rich-9.7.0.tar.gz", hash = "sha256:25583ce533afae71de086ca97cf0aa883a5e1a220dfcc6049a2809a74bc79ca0"},
 ]
 safety = [
     {file = "safety-1.10.1-py2.py3-none-any.whl", hash = "sha256:6e86b4bd47ea6e8f623045bd3687342fb5ac402fb37147fca82fd5a752ec3afc"},
