@@ -53,7 +53,7 @@ class Connector(object):
                 self._end_point_v2,
                 time_interval,
                 ticker,
-                limit,
+                10000,
                 start_time,
                 end_time,
             ),
