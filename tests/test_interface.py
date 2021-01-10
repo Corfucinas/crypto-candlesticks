@@ -22,16 +22,16 @@ def test_main_succeeds(runner: CliRunner, mock_requests_get: Mock) -> None:
     result = runner.invoke(
         interface.main,
         args=[
-            "-s",
-            "btc",
-            "-b",
-            "usd",
-            "-i",
-            "1m",
-            "-sd",
-            "2020-01-01",
-            "-ed",
-            "2020-01-01",
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '1m',
+            '-sd',
+            '2020-01-01',
+            '-ed',
+            '2020-01-01',
         ],
     )
     assert result.exit_code == 0
@@ -43,16 +43,16 @@ def test_main_succeeds_in_production_env(runner: CliRunner) -> None:
     result = runner.invoke(
         interface.main,
         args=[
-            "-s",
-            "btc",
-            "-b",
-            "usd",
-            "-i",
-            "1m",
-            "-sd",
-            "2020-01-01",
-            "-ed",
-            "2020-01-01",
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '1m',
+            '-sd',
+            '2020-01-01',
+            '-ed',
+            '2020-01-01',
         ],
     )
     assert result.exit_code == 0
@@ -63,16 +63,16 @@ def test_main_fails(runner: CliRunner) -> None:
     result = runner.invoke(
         interface.main,
         args=[
-            "-s",
-            "CTT",
-            "-b",
-            "TTC",
-            "-i",
-            "20m",
-            "-sd",
-            "1990-01-01",
-            "-ed",
-            "3000-01-01",
+            '-s',
+            'CTT',
+            '-b',
+            'TTC',
+            '-i',
+            '20m',
+            '-sd',
+            '1990-01-01',
+            '-ed',
+            '3000-01-01',
         ],
     )
     assert result.exit_code == 2
@@ -84,16 +84,16 @@ def test_main_fails_in_production_env(runner: CliRunner) -> None:
     result = runner.invoke(
         interface.main,
         args=[
-            "-s",
-            "CTT",
-            "-b",
-            "TTC",
-            "-i",
-            "20m",
-            "-sd",
-            "1990-01-01",
-            "-ed",
-            "3000-01-01",
+            '-s',
+            'CTT',
+            '-b',
+            'TTC',
+            '-i',
+            '20m',
+            '-sd',
+            '1990-01-01',
+            '-ed',
+            '3000-01-01',
         ],
     )
     assert result.exit_code == 2
@@ -103,25 +103,25 @@ def test_main_fails_on_request_error(
     runner: CliRunner, mock_requests_get: Mock
 ) -> None:
     """It exits with a non-zero status code if the request fails."""
-    mock_requests_get.side_effect = Exception("Boom")
+    mock_requests_get.side_effect = Exception('Boom')
     result = runner.invoke(
         interface.main,
         args=[
-            "-s",
-            "btc",
-            "-b",
-            "usd",
-            "-i",
-            "1m",
-            "-sd",
-            "2020-01-01",
-            "-ed",
-            "2020-01-01",
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '1m',
+            '-sd',
+            '2020-01-01',
+            '-ed',
+            '2020-01-01',
         ],
     )
     assert result.exit_code == 1
 
 
 def test__repr__():
-    db = SqlDatabase("test.db")
-    assert db.__repr__() == "Sql database class"
+    db = SqlDatabase('test.db')
+    assert db.__repr__() == 'Sql database class'

@@ -10,44 +10,44 @@ from crypto_candlesticks.get_data import get_data
 from crypto_candlesticks.symbols.intervals import intervals
 from crypto_candlesticks.symbols.quote_currency import quote_currency
 
-click.secho("Welcome, what data do you wish to download?", fg="green")
+click.secho('Welcome, what data do you wish to download?', fg='green')
 
 
 @click.command()
 @click.option(
-    "-s",
-    "--symbol",
+    '-s',
+    '--symbol',
     type=str,
-    prompt="Cryptocurrency symbol to download (ie. BTC, ETH, LTC)",
-    help="Cryptocurrency ticker symbol",
+    prompt='Cryptocurrency symbol to download (ie. BTC, ETH, LTC)',
+    help='Cryptocurrency ticker symbol',
 )
 @click.option(
-    "-b",
-    "--base_currency",
+    '-b',
+    '--base_currency',
     type=click.Choice((quote_currency), case_sensitive=False),
-    prompt="Base pair",
-    help="Cryptocurrency base trading pair",
+    prompt='Base pair',
+    help='Cryptocurrency base trading pair',
 )
 @click.option(
-    "-i",
-    "--interval",
+    '-i',
+    '--interval',
     type=click.Choice((intervals), case_sensitive=True),
-    prompt="Interval to download the candlestick data",
-    help="Interval that will be used to download the data.",
+    prompt='Interval to download the candlestick data',
+    help='Interval that will be used to download the data.',
 )
 @click.option(
-    "-sd",
-    "--start_date",
+    '-sd',
+    '--start_date',
     type=click.DateTime(),
-    prompt="Date to start downloading the data (ie. YYYY-MM-DD)",
-    help="YYYY, MM, DD from which the candlestick data will start.",
+    prompt='Date to start downloading the data (ie. YYYY-MM-DD)',
+    help='YYYY, MM, DD from which the candlestick data will start.',
 )
 @click.option(
-    "-ed",
-    "--end_date",
+    '-ed',
+    '--end_date',
     type=click.DateTime(),
-    prompt="Date up to the data will be downloaded (ie. YYYY-MM-DD)",
-    help="YYYY, MM, DD up to which the candlestick data will be downloaded.",
+    prompt='Date up to the data will be downloaded (ie. YYYY-MM-DD)',
+    help='YYYY, MM, DD up to which the candlestick data will be downloaded.',
 )
 def main(
     symbol: str,
@@ -104,5 +104,5 @@ def main(
     )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

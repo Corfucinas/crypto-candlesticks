@@ -43,11 +43,9 @@ def get_candles(
     """
     candle_data = []
     if validate_symbol(ticker):
-        click.echo(f"Collecting {ticker} data for {interval}")
-
-        # TODO: FIX THIS SHIT
+        click.echo(f'Downloading {ticker} data for {interval} interval')
         with Live(
-            vertical_overflow="ellipsis",
+            vertical_overflow='ellipsis',
             auto_refresh=False,
         ) as live:
             while start_time <= end_time:
@@ -62,7 +60,6 @@ def get_candles(
                 )
                 candle_data.extend(candlestick)
                 if candlestick:
-                    # TODO:Fix the refresh rate
                     write_to_column(table, ticker, interval, candlestick, live)
                 start_time = period
                 time.sleep(_RATE_LIMIT)
@@ -71,7 +68,7 @@ def get_candles(
             "Data could not be downloaded ❌, check '{}' is listed on Bitfinex".format(
                 ticker,
             ),
-            fg="red",
+            fg='red',
         )
     return candle_data
 
@@ -93,22 +90,22 @@ def convert_data(
 
     """
     if not candle_data:
-        click.echo("Data could not be downloaded ❌, please try again")
+        click.echo('Data could not be downloaded ❌, please try again')
 
     df = pd.DataFrame(
         candle_data,
-        columns=["timestamp", "open", "close", "high", "low", "volume"],
+        columns=['timestamp', 'open', 'close', 'high', 'low', 'volume'],
     )
     df.drop_duplicates(inplace=True)
-    df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms")
+    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
     df.set_index(
-        "timestamp",
+        'timestamp',
         inplace=True,
     )
     df.sort_index(inplace=True)
-    df["ticker"] = symbol + "{}".format("/") + base_currency
-    df["date"] = pd.to_datetime(df.index, format="%Y:%M:%D").date
-    df["time"] = pd.to_datetime(df.index, format="%Y:%M:%D").time
+    df['ticker'] = symbol + '{}'.format('/') + base_currency
+    df['date'] = pd.to_datetime(df.index, format='%Y:%M:%D').date
+    df['time'] = pd.to_datetime(df.index, format='%Y:%M:%D').time
     return df
 
 
@@ -144,32 +141,32 @@ def get_data(
         interval=interval,
     )
     if candle_stick_data:
-        output = ticker + "{}".format("-") + interval
-        with open(output + "{}".format(".p"), "wb") as create_file:
+        output = ticker + '{}'.format('-') + interval
+        with open(output + '{}'.format('.p'), 'wb') as create_file:
             pickle.dump(
                 candle_stick_data,
                 create_file,
             )
-        with open(output + "{}".format(".p"), "rb") as load_data:
+        with open(output + '{}'.format('.p'), 'rb') as load_data:
             candle_stick_data = pickle.load(load_data)
         df = convert_data(symbol, base_currency, candle_stick_data)
-        SqlDatabase(output + "{}".format(".sqlite3")).insert_candlesticks(
+        SqlDatabase(output + '{}'.format('.sqlite3')).insert_candlesticks(
             candle_stick_data,
             ticker,
             interval,
         )
         df.to_csv(
-            path_or_buf=output + str(time.time()) + "{}".format(".csv"),
-            sep=",",
+            path_or_buf=output + str(time.time()) + '{}'.format('.csv'),
+            sep=',',
             header=True,
             index=False,
         )
         click.secho(
-            "Data processing completed 🚀🚀🚀",
-            fg="green",
+            'Data processing completed 🚀🚀🚀',
+            fg='green',
         )
     else:
         click.secho(
-            "Confirm the inputs are correct and the exchange is online ✍️",
-            fg="yellow",
+            'Confirm the inputs are correct and the exchange is online ✍️',
+            fg='yellow',
         )

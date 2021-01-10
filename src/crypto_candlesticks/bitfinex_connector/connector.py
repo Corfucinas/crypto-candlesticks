@@ -6,25 +6,25 @@ import requests
 from requests.exceptions import ConnectionError
 from retry import retry
 
-Api = TypeVar("Api", bound="Connector")
+Api = TypeVar('Api', bound='Connector')
 
 
 class Connector(object):
     """Main class for the Bitfinex exchange."""
 
     __slots__ = (
-        "_end_point_v2",
-        "_end_point_v1",
+        '_end_point_v2',
+        '_end_point_v1',
     )
 
     def __init__(self: Api) -> None:
         """Connector init."""
-        self._end_point_v2 = "https://api.bitfinex.com/v2/"
-        self._end_point_v1 = "https://api.bitfinex.com/v1/"
+        self._end_point_v2 = 'https://api.bitfinex.com/v2/'
+        self._end_point_v1 = 'https://api.bitfinex.com/v1/'
 
     def __repr__(self: Api) -> str:
         """Connector repr."""
-        return "Bitfinex connector class"
+        return 'Bitfinex connector class'
 
     @retry(ConnectionError, jitter=(0.1, 1))  # type: ignore
     def get_candles(
@@ -49,7 +49,7 @@ class Connector(object):
 
         """
         return requests.get(
-            "{}/candles/trade:{}:t{}/hist?limit={}&start={}&end={}&sort=-1".format(
+            '{}/candles/trade:{}:t{}/hist?limit={}&start={}&end={}&sort=-1'.format(
                 self._end_point_v2,
                 time_interval,
                 ticker,
@@ -67,4 +67,4 @@ class Connector(object):
             List[str]: All available tickers.
 
         """
-        return requests.get("{}/symbols".format(self._end_point_v1)).json()
+        return requests.get('{}/symbols'.format(self._end_point_v1)).json()
