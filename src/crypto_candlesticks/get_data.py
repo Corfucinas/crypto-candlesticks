@@ -14,9 +14,11 @@ from crypto_candlesticks.database import SqlDatabase
 from crypto_candlesticks.text_console import setup_table, write_to_column
 
 _RATE_LIMIT = 1
-_BIN_LIMIT = 1000
+_BIN_LIMIT = 3000
 _MAX_CALL_PER_MIN = 60
 _STEP_SIZE = _BIN_LIMIT * _MAX_CALL_PER_MIN * _BIN_LIMIT
+
+# TODO: Optimize the download period
 
 
 def get_candles(
@@ -43,7 +45,10 @@ def get_candles(
     """
     candle_data = []
     if validate_symbol(ticker):
-        click.echo(f'Downloading {ticker} data for {interval} interval')
+        click.secho(
+            f'Downloading {ticker} data for {interval} interval...',
+            fg='yellow',
+        )
         with Live(
             vertical_overflow='ellipsis',
             auto_refresh=False,

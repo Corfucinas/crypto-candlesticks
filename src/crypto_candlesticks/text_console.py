@@ -2,34 +2,42 @@
 """Display data in the CLI using Rich."""
 from typing import List, Union
 
+import pandas as pd
 from rich import box
 from rich.live import Live
 from rich.table import Table
 
 Candles = List[List[List[Union[int, float]]]]
 
+# TODO: Fix 1D, 1h, 3h, rows are too small
+
 
 def setup_table() -> Table:
     """Create Rich table layout.
 
     Returns:
-        Table: Include desired description and columns
+        Table: Include desired description and columns.
     """
     table = Table(
         show_header=True,
+        caption=caption(),  # TODO: FIX
         box=box.MINIMAL_HEAVY_HEAD,
-        header_style="bold #f8e020",
-        title="[bold green]CRYPTO CANDLESTICKS[bold green]",
+        header_style='bold #ffff00',
+        title='CRYPTO CANDLESTICKS',
+        title_style='bold #54ff00 underline',
+        show_lines=True,
+        safe_box=True,
+        expand=True,
     )
 
-    table.add_column("Open", justify="center")
-    table.add_column("Close", justify="center")
-    table.add_column("High", justify="center")
-    table.add_column("Low", justify="center")
-    table.add_column("Volume", justify="center")
-    table.add_column("Ticker", justify="center")
-    table.add_column("Interval", justify="center")
-    table.add_column("Time", justify="center")
+    table.add_column('OPEN', justify='center', no_wrap=True)
+    table.add_column('CLOSE', justify='center', no_wrap=True)
+    table.add_column('HIGH', justify='center', no_wrap=True)
+    table.add_column('LOW', justify='center', no_wrap=True)
+    table.add_column('VOLUME', justify='center', no_wrap=True)
+    table.add_column('TICKER', justify='center', no_wrap=True)
+    table.add_column('INTERVAL', justify='center', no_wrap=True)
+    table.add_column('TIME', justify='center', no_wrap=True)
 
     return table
 
@@ -44,25 +52,25 @@ def write_to_column(
     """Write data to console.
 
     Args:
-        table (Table): [description]
-        ticker (str): [description]
-        interval (str): [description]
-        data_downloaded (Candles): [description]
-        live (Live): [description]
+        table (Table): Rich table instance.
+        ticker (str): Quote + base currency.
+        interval (str): Candlestick interval.
+        data_downloaded (Candles): Response from the exchange.
+        live (Live): Context manager.
 
     Returns:
-        Table: [description]
+        Table: Updated table to be rendered.
     """
-    for row_limit, single_candle in enumerate(data_downloaded):
+    for row_limit, single_candle in enumerate(data_downloaded[::-1]):
         table.add_row(
-            f"{single_candle[2]}",  # Open
-            f"{single_candle[1]}",  # Close
-            f"{single_candle[3]}",  # High
-            f"{single_candle[4]}",  # Low
-            f"{single_candle[5]}",  # Volume
-            ticker,
-            interval,
-            f"[bold]{single_candle[0]}[/bold]",
+            f'[bold white]{single_candle[2]}[/bold white]',  # Open
+            f'[bold white]{single_candle[1]}[/bold white]',  # Close
+            f'[bold white]{single_candle[3]}[/bold white]',  # High
+            f'[bold white]{single_candle[4]}[/bold white]',  # Low
+            f'[bold white]{single_candle[5]}[/bold white]',  # Volume
+            f'[bold white]{ticker}[/bold white]',
+            f'[bold white]{interval}[/bold white]',
+            f"[bold white]{pd.to_datetime(single_candle[0], unit='ms')}[/bold white]",
         )
         if row_limit == 20:
             live.update(setup_table())
@@ -70,4 +78,20 @@ def write_to_column(
             live.update(table)
             live.refresh()
             break
+    live.update(setup_table())
+    live.refresh()
+    live.update(table)
+    live.refresh()
     return table
+
+
+def caption() -> str:
+    """Caption to be displayed at the end.
+
+    Returns:
+        str: Message for the users.
+    """
+    return 'Thank you for using crypto-candlesticks\
+            Consider supporting your developers\
+            ETH: 0x06Acb31587a96808158BdEd07e53668d8ce94cFE\
+            '
