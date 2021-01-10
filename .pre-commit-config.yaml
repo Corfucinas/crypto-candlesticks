@@ -23,6 +23,7 @@ repos:
     rev: 20.8b1
     hooks:
       - id: black
+        args: [-S]
 -   repo: https://github.com/asottile/blacken-docs
     rev: v1.9.1
     hooks:
