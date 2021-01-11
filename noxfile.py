@@ -154,6 +154,7 @@ def tests(session: Session) -> None:
         '-s',
         '-vv',
         '--durations=0',
+        '--full-trace',
         *args,
     )
 

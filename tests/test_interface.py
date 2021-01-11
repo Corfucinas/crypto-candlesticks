@@ -36,12 +36,12 @@ def test_main_succeeds_1m(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the 1m test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'1 minutes data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the 1m test: {end - start}')
+        raise
 
 
 @pytest.mark.e2e
@@ -65,12 +65,12 @@ def test_main_succeeds_5m(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the 5m test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'5 minutes data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the 5m test: {end - start}')
+        raise
 
 
 @pytest.mark.e2e
@@ -94,12 +94,12 @@ def test_main_succeeds_15m(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the 15m test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'15 minutes data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the 15m test: {end - start}')
+        raise
 
 
 @pytest.mark.e2e
@@ -123,12 +123,12 @@ def test_main_succeeds_30m(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the 30m test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'30 minutes data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the 30m test: {end - start}')
+        raise
 
 
 @pytest.mark.e2e
@@ -152,12 +152,12 @@ def test_main_succeeds_1h(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the 1h test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'1 hour data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the 1h test: {end - start}')
+        raise
 
 
 @pytest.mark.e2e
@@ -181,12 +181,12 @@ def test_main_succeeds_3h(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'3 hours data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the test: {end - start}')
+        raise
 
 
 @pytest.mark.e2e
@@ -210,12 +210,12 @@ def test_main_succeeds_6h(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the 6 hours test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'6 hours data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the 6 hours test: {end - start}')
+        raise
 
 
 @pytest.mark.e2e
@@ -239,12 +239,12 @@ def test_main_succeeds_12h(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the 12 hours test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'12 hours data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the 12 hours test: {end - start}')
+        raise
 
 
 @pytest.mark.e2e
@@ -268,12 +268,12 @@ def test_main_succeeds_1D(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the 1 day test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'1 day data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the 1 day test: {end - start}')
+        raise
 
 
 @pytest.mark.e2e
@@ -297,12 +297,12 @@ def test_main_succeeds_7D(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the 7 day test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'7 day data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the 7 day test: {end - start}')
+        raise
 
 
 @pytest.mark.e2e
@@ -326,12 +326,12 @@ def test_main_succeeds_14D(runner: CliRunner) -> None:
         ],
     )
     end = perf_counter()
+    print(f'Time to complete the 7 day test: {end - start}')
     try:
         assert test_result.exit_code == 0
     except AssertionError as error:
         print(f'7 day data could not be downloaded {error}')
-    finally:
-        print(f'Time to complete the 7 day test: {end - start}')
+        raise
 
 
 def test_main_fails(runner: CliRunner) -> None:

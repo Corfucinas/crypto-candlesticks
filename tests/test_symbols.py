@@ -13,6 +13,7 @@ def test_quote_currency() -> None:
         assert symbols.status_code == 200
     except AssertionError:
         print('Endpoint is offline')
+        raise
     for symbol in quote_currency:
         try:
             assert symbol.lower() in symbols.text
@@ -20,3 +21,4 @@ def test_quote_currency() -> None:
             print(f'Symbol is: {symbol}')
             print(f'Quote currency is: {quote_currency}')
             print(f'test failed: {error}')
+            raise
