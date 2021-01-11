@@ -3,7 +3,7 @@
 
 import pickle
 import time
-from typing import List
+from typing import List, Union
 
 import click
 import pandas as pd
@@ -114,7 +114,7 @@ def convert_data(
     return df
 
 
-def validate_symbol(symbol: str) -> bool:  # type: ignore
+def validate_symbol(symbol: str) -> Union[bool, None]:
     """Returns True if the symbol is active on Bitfinex.
 
     Args:
@@ -128,6 +128,7 @@ def validate_symbol(symbol: str) -> bool:  # type: ignore
     for symbols in all_symbols:
         if symbol.lower() in symbols:
             return True
+    return None
 
 
 def get_data(
