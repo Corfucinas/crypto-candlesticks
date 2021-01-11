@@ -1,25 +1,26 @@
 # -*- coding: utf-8 -*-
-from unittest.mock import MagicMock, Mock
+"""Test interface for crypto candlesticks."""
+from time import perf_counter, sleep
+from unittest.mock import Mock
 
 import pytest
-import requests
 from click.testing import CliRunner
-from pytest_mock import MockerFixture, mocker
 
 from crypto_candlesticks import interface
-from crypto_candlesticks.bitfinex_connector.connector import Connector
-from crypto_candlesticks.database import SqlDatabase
 
 
-@pytest.fixture  # type: ignore
+@pytest.fixture
 def runner() -> CliRunner:
     """Fixture for invoking command-line interfaces."""
     return CliRunner()
 
 
-def test_main_succeeds(runner: CliRunner, mock_requests_get: Mock) -> None:
+@pytest.mark.e2e
+def test_main_succeeds_1m(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    result = runner.invoke(
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
         interface.main,
         args=[
             '-s',
@@ -29,18 +30,26 @@ def test_main_succeeds(runner: CliRunner, mock_requests_get: Mock) -> None:
             '-i',
             '1m',
             '-sd',
-            '2020-01-01',
+            '2018-01-01',
             '-ed',
-            '2020-01-01',
+            '2021-01-01',
         ],
     )
-    assert result.exit_code == 0
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'1 minutes data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the 1m test: {end - start}')
 
 
-@pytest.mark.e2e  # type: ignore
-def test_main_succeeds_in_production_env(runner: CliRunner) -> None:
+@pytest.mark.e2e
+def test_main_succeeds_5m(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    result = runner.invoke(
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
         interface.main,
         args=[
             '-s',
@@ -48,19 +57,285 @@ def test_main_succeeds_in_production_env(runner: CliRunner) -> None:
             '-b',
             'usd',
             '-i',
-            '1m',
+            '5m',
             '-sd',
-            '2020-01-01',
+            '2018-01-01',
             '-ed',
-            '2020-01-01',
+            '2021-01-01',
         ],
     )
-    assert result.exit_code == 0
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'5 minutes data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the 5m test: {end - start}')
+
+
+@pytest.mark.e2e
+def test_main_succeeds_15m(runner: CliRunner) -> None:
+    """Exits with a status code of zero."""
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
+        interface.main,
+        args=[
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '15m',
+            '-sd',
+            '2018-01-01',
+            '-ed',
+            '2021-01-01',
+        ],
+    )
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'15 minutes data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the 15m test: {end - start}')
+
+
+@pytest.mark.e2e
+def test_main_succeeds_30m(runner: CliRunner) -> None:
+    """Exits with a status code of zero."""
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
+        interface.main,
+        args=[
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '30m',
+            '-sd',
+            '2018-01-01',
+            '-ed',
+            '2021-01-01',
+        ],
+    )
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'30 minutes data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the 30m test: {end - start}')
+
+
+@pytest.mark.e2e
+def test_main_succeeds_1h(runner: CliRunner) -> None:
+    """Exits with a status code of zero."""
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
+        interface.main,
+        args=[
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '1h' '-sd',
+            '2018-01-01',
+            '-ed',
+            '2021-01-01',
+        ],
+    )
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'1 hour data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the 1h test: {end - start}')
+
+
+@pytest.mark.e2e
+def test_main_succeeds_3h(runner: CliRunner) -> None:
+    """Exits with a status code of zero."""
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
+        interface.main,
+        args=[
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '3h',
+            '-sd',
+            '2018-01-01',
+            '-ed',
+            '2021-01-01',
+        ],
+    )
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'3 hours data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the test: {end - start}')
+
+
+@pytest.mark.e2e
+def test_main_succeeds_6h(runner: CliRunner) -> None:
+    """Exits with a status code of zero."""
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
+        interface.main,
+        args=[
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '6h',
+            '-sd',
+            '2018-01-01',
+            '-ed',
+            '2021-01-01',
+        ],
+    )
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'6 hours data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the 6 hours test: {end - start}')
+
+
+@pytest.mark.e2e
+def test_main_succeeds_12h(runner: CliRunner) -> None:
+    """Exits with a status code of zero."""
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
+        interface.main,
+        args=[
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '6h',
+            '-sd',
+            '2018-01-01',
+            '-ed',
+            '2021-01-01',
+        ],
+    )
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'12 hours data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the 12 hours test: {end - start}')
+
+
+@pytest.mark.e2e
+def test_main_succeeds_1D(runner: CliRunner) -> None:
+    """Exits with a status code of zero."""
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
+        interface.main,
+        args=[
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '',
+            '-sd',
+            '2018-01-01',
+            '-ed',
+            '2021-01-01',
+        ],
+    )
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'1 day data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the 1 day test: {end - start}')
+
+
+@pytest.mark.e2e
+def test_main_succeeds_7D(runner: CliRunner) -> None:
+    """Exits with a status code of zero."""
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
+        interface.main,
+        args=[
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '7D',
+            '-sd',
+            '2018-01-01',
+            '-ed',
+            '2021-01-01',
+        ],
+    )
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'7 day data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the 7 day test: {end - start}')
+
+
+@pytest.mark.e2e
+def test_main_succeeds_14D(runner: CliRunner) -> None:
+    """Exits with a status code of zero."""
+    sleep(60)
+    start = perf_counter()
+    test_result = runner.invoke(
+        interface.main,
+        args=[
+            '-s',
+            'btc',
+            '-b',
+            'usd',
+            '-i',
+            '14D',
+            '-sd',
+            '2018-01-01',
+            '-ed',
+            '2021-01-01',
+        ],
+    )
+    end = perf_counter()
+    try:
+        assert test_result.exit_code == 0
+    except AssertionError as error:
+        print(f'7 day data could not be downloaded {error}')
+    finally:
+        print(f'Time to complete the 7 day test: {end - start}')
 
 
 def test_main_fails(runner: CliRunner) -> None:
     """Exits with a status code of two."""
-    result = runner.invoke(
+    test_result = runner.invoke(
         interface.main,
         args=[
             '-s',
@@ -75,13 +350,13 @@ def test_main_fails(runner: CliRunner) -> None:
             '3000-01-01',
         ],
     )
-    assert result.exit_code == 2
+    assert test_result.exit_code == 2
 
 
-@pytest.mark.e2e  # type: ignore
+@pytest.mark.e2e
 def test_main_fails_in_production_env(runner: CliRunner) -> None:
     """Exits with a status code of two (end-to-end)."""
-    result = runner.invoke(
+    test_result = runner.invoke(
         interface.main,
         args=[
             '-s',
@@ -96,15 +371,16 @@ def test_main_fails_in_production_env(runner: CliRunner) -> None:
             '3000-01-01',
         ],
     )
-    assert result.exit_code == 2
+    assert test_result.exit_code == 2
 
 
 def test_main_fails_on_request_error(
-    runner: CliRunner, mock_requests_get: Mock
+    runner: CliRunner,
+    mock_requests_get: Mock,
 ) -> None:
     """It exits with a non-zero status code if the request fails."""
     mock_requests_get.side_effect = Exception('Boom')
-    result = runner.invoke(
+    test_result = runner.invoke(
         interface.main,
         args=[
             '-s',
@@ -119,9 +395,4 @@ def test_main_fails_on_request_error(
             '2020-01-01',
         ],
     )
-    assert result.exit_code == 1
-
-
-def test__repr__():
-    db = SqlDatabase('test.db')
-    assert db.__repr__() == 'Sql database class'
+    assert test_result.exit_code == 1

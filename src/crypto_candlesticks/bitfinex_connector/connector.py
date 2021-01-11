@@ -31,7 +31,6 @@ class Connector(object):
         self: Api,
         ticker: str,
         time_interval: str,
-        limit: int,
         start_time: float,
         end_time: float,
     ) -> List[float]:
@@ -40,7 +39,6 @@ class Connector(object):
         Args:
             ticker (str): Cryptocurrency pair
             time_interval (str): Interval of the data
-            limit (int): Limits the candlestick size step
             start_time (float): Time in ms on which the data will start
             end_time (float): Time in ms on which the data will finish
 
@@ -53,7 +51,7 @@ class Connector(object):
                 self._end_point_v2,
                 time_interval,
                 ticker,
-                10000,
+                10000,  # max allowed by Bitfinex
                 start_time,
                 end_time,
             ),

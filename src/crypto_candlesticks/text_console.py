@@ -9,8 +9,6 @@ from rich.table import Table
 
 Candles = List[List[List[Union[int, float]]]]
 
-# TODO: Fix 1D, 1h, 3h, rows are too small
-
 
 def setup_table() -> Table:
     """Create Rich table layout.
@@ -20,7 +18,7 @@ def setup_table() -> Table:
     """
     table = Table(
         show_header=True,
-        caption=caption(),  # TODO: FIX
+        caption=caption(),
         box=box.MINIMAL_HEAVY_HEAD,
         header_style='bold #ffff00',
         title='CRYPTO CANDLESTICKS',
@@ -43,7 +41,6 @@ def setup_table() -> Table:
 
 
 def write_to_column(
-    table: Table,
     ticker: str,
     interval: str,
     data_downloaded: Candles,
@@ -52,7 +49,6 @@ def write_to_column(
     """Write data to console.
 
     Args:
-        table (Table): Rich table instance.
         ticker (str): Quote + base currency.
         interval (str): Candlestick interval.
         data_downloaded (Candles): Response from the exchange.
@@ -61,6 +57,7 @@ def write_to_column(
     Returns:
         Table: Updated table to be rendered.
     """
+    table = setup_table()
     for row_limit, single_candle in enumerate(data_downloaded[::-1]):
         table.add_row(
             f'[bold white]{single_candle[2]}[/bold white]',  # Open
@@ -72,16 +69,10 @@ def write_to_column(
             f'[bold white]{interval}[/bold white]',
             f"[bold white]{pd.to_datetime(single_candle[0], unit='ms')}[/bold white]",
         )
-        if row_limit == 20:
-            live.update(setup_table())
-            live.refresh()
+        if row_limit == 15:
             live.update(table)
-            live.refresh()
             break
-    live.update(setup_table())
-    live.refresh()
     live.update(table)
-    live.refresh()
     return table
 
 

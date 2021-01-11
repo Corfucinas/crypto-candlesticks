@@ -11,14 +11,14 @@ from rich.live import Live
 
 from crypto_candlesticks.bitfinex_connector.connector import Connector
 from crypto_candlesticks.database import SqlDatabase
-from crypto_candlesticks.text_console import setup_table, write_to_column
+from crypto_candlesticks.text_console import write_to_column
 
-_RATE_LIMIT = 1
-_BIN_LIMIT = 3000
+_RATE_LIMIT = 0.1
+_BIN_LIMIT = 1000
 _MAX_CALL_PER_MIN = 60
 _STEP_SIZE = _BIN_LIMIT * _MAX_CALL_PER_MIN * _BIN_LIMIT
 
-# TODO: Optimize the download period
+Candles = List[List[List[Union[int, float]]]]
 
 
 def get_candles(
@@ -26,9 +26,8 @@ def get_candles(
     start_time: float,
     end_time: float,
     interval: str,
-    limit: int = _BIN_LIMIT,
     step_size: int = _STEP_SIZE,
-) -> List[float]:
+) -> Candles:
     """Calls the exchange for the data and extends it into a list.
 
     Args:
@@ -36,11 +35,10 @@ def get_candles(
         start_time (float): Time in ms on which the data will start.
         end_time (float): Time in ms on which the data will finish.
         interval (str): Period downloaded.
-        limit (int): Limits the size step. Defaults to _BIN_LIMIT.
         step_size (int): The size step for each call. Defaults to _STEP_SIZE.
 
     Returns:
-        List[float]: A list of floats containing OHLC
+        Candles: A list of floats containing OHLC
 
     """
     candle_data = []
@@ -54,18 +52,17 @@ def get_candles(
             auto_refresh=False,
         ) as live:
             while start_time <= end_time:
-                table = setup_table()
                 period = start_time + step_size
                 candlestick = Connector().get_candles(
                     ticker=ticker,
                     time_interval=interval,
-                    limit=limit,
                     start_time=start_time,
                     end_time=period,
                 )
                 candle_data.extend(candlestick)
                 if candlestick:
-                    write_to_column(table, ticker, interval, candlestick, live)
+                    write_to_column(ticker, interval, candlestick, live)
+                    live.refresh()
                 start_time = period
                 time.sleep(_RATE_LIMIT)
     else:
@@ -81,18 +78,17 @@ def get_candles(
 def convert_data(
     symbol: str,
     base_currency: str,
-    candle_data: List[float],
+    candle_data: Candles,
 ) -> pd.DataFrame:
     """Process results from API into data analysis format.
 
     Args:
         symbol (str): Symbol that is downloaded
         base_currency (str): Base pair that is traded
-        candle_data (List[float]): Candlestick OHLC data
+        candle_data (Candles): Candlestick OHLC data
 
     Returns:
         pd.DataFrame: Standard DataFrame object
-
     """
     if not candle_data:
         click.echo('Data could not be downloaded ❌, please try again')
@@ -147,6 +143,14 @@ def get_data(
         interval=interval,
     )
     if candle_stick_data:
+        click.secho(
+            'Data download completed! 🚀',
+            fg='green',
+        )
+        click.secho(
+            'Processing data...',
+            fg='yellow',
+        )
         output = ticker + '{}'.format('-') + interval
         with open(output + '{}'.format('.p'), 'wb') as create_file:
             pickle.dump(
@@ -161,6 +165,14 @@ def get_data(
             ticker,
             interval,
         )
+        click.secho(
+            'Writting to database completed! 🚀🚀',
+            fg='green',
+        )
+        click.secho(
+            'Writting to Excel...',
+            fg='yellow',
+        )
         df.to_csv(
             path_or_buf=output + str(time.time()) + '{}'.format('.csv'),
             sep=',',
@@ -168,11 +180,19 @@ def get_data(
             index=False,
         )
         click.secho(
-            'Data processing completed 🚀🚀🚀',
+            'Writting to Excel completed! 🚀🚀🚀',
             fg='green',
         )
     else:
         click.secho(
-            'Confirm the inputs are correct and the exchange is online ✍️',
-            fg='yellow',
+            'Data could not be downloaded',
+            fg='red',
+        )
+        click.secho(
+            f"The period to download data is {pd.to_datetime(time_start, unit='ms')} until {pd.to_datetime(time_stop, unit='ms')}",
+            fg='red',
+        )
+        click.secho(
+            'Confirm that the time period is correct and the exchange is online',
+            fg='red',
         )

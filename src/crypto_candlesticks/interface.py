@@ -77,24 +77,26 @@ def main(
                 start_date.year,
                 start_date.month,
                 start_date.day,
-                0,
+                8,
                 0,
             ).timetuple(),
         )
         * 1000
     )
+    time_start = min(time_start, int(round(time.time() * 1000)))
     time_stop = (
         time.mktime(
             datetime.datetime(
                 end_date.year,
                 end_date.month,
                 end_date.day,
-                0,
+                8,
                 0,
             ).timetuple(),
         )
         * 1000
     )
+    time_stop = min(time_stop, int(round(time.time() * 1000)))
     get_data(
         symbol,
         base_currency,
