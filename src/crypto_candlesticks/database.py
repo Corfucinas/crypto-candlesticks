@@ -67,7 +67,7 @@ class SqlDatabase(object):
             sqlite3.Error: Exception that prevented to write the data.
         """
         try:
-            for candle in candlestick_info:
+            for candle in candlestick_info[::-1]:
                 with self._conn:
                     self._cursor.execute(
                         'INSERT INTO Candlestick VALUES \
