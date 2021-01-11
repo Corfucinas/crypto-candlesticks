@@ -12,6 +12,6 @@ quote_currency = [
     'BTC',
     'EOS',
     'ETH',
-    'XCHF',
+    'XCH',
     'USTF0',
 ]
