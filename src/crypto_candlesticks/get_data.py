@@ -13,7 +13,7 @@ from crypto_candlesticks.bitfinex_connector.connector import Connector
 from crypto_candlesticks.database import SqlDatabase
 from crypto_candlesticks.text_console import write_to_column
 
-_RATE_LIMIT = 0.1
+_RATE_LIMIT = 0.5
 _BIN_LIMIT = 1000
 _MAX_CALL_PER_MIN = 60
 _STEP_SIZE = _BIN_LIMIT * _MAX_CALL_PER_MIN * _BIN_LIMIT
