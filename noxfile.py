@@ -151,6 +151,9 @@ def tests(session: Session) -> None:
     )
     session.run(
         'pytest',
+        '-s',
+        '-vv',
+        '--durations=0',
         *args,
     )
 
