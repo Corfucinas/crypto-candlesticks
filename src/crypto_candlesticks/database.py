@@ -2,11 +2,13 @@
 """Sqlite database class."""
 
 import sqlite3
-from typing import List, TypeVar
+from typing import List, TypeVar, Union
 
 import click
 
 Sql = TypeVar('Sql', bound='SqlDatabase')
+
+Candles = List[List[List[Union[int, float]]]]
 
 
 class SqlDatabase(object):
@@ -50,20 +52,19 @@ class SqlDatabase(object):
 
     def insert_candlesticks(
         self: Sql,
-        candlestick_info: List[float],
+        candlestick_info: Candles,
         ticker: str,
         interval: str,
     ) -> None:
         """Writes the candlestick data into a SQL table.
 
         Args:
-            candlestick_info (List[float]): A list of floats containing OHLC.
+            candlestick_info (Candles): A list of containing OHLC.
             ticker (str): Ticker of the candle.
             interval (str): Period downloaded.
 
         Raises:
             sqlite3.Error: Exception that prevented to write the data.
-
         """
         try:
             for candle in candlestick_info:
@@ -75,12 +76,12 @@ class SqlDatabase(object):
                         :Volume, :Ticker, :Interval)',
                         {
                             'ID': None,
-                            'Timestamp': candle[0],  # type: ignore
-                            'Open': candle[2],  # type: ignore
-                            'Close': candle[1],  # type: ignore
-                            'High': candle[3],  # type: ignore
-                            'Low': candle[4],  # type: ignore
-                            'Volume': candle[5],  # type: ignore
+                            'Timestamp': candle[0],
+                            'Open': candle[2],
+                            'Close': candle[1],
+                            'High': candle[3],
+                            'Low': candle[4],
+                            'Volume': candle[5],
                             'Ticker': ticker,
                             'Interval': interval,
                         },
