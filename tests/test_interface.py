@@ -260,7 +260,6 @@ def test_main_succeeds_1D(runner: CliRunner) -> None:
             '-b',
             'usd',
             '-i',
-            '',
             '-sd',
             '2020-11-01',
             '-ed',
