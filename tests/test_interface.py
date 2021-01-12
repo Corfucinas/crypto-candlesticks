@@ -18,7 +18,7 @@ def runner() -> CliRunner:
 @pytest.mark.e2e
 def test_main_succeeds_1m(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -30,7 +30,7 @@ def test_main_succeeds_1m(runner: CliRunner) -> None:
             '-i',
             '1m',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
@@ -47,7 +47,7 @@ def test_main_succeeds_1m(runner: CliRunner) -> None:
 @pytest.mark.e2e
 def test_main_succeeds_5m(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -59,7 +59,7 @@ def test_main_succeeds_5m(runner: CliRunner) -> None:
             '-i',
             '5m',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
@@ -76,7 +76,7 @@ def test_main_succeeds_5m(runner: CliRunner) -> None:
 @pytest.mark.e2e
 def test_main_succeeds_15m(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -88,7 +88,7 @@ def test_main_succeeds_15m(runner: CliRunner) -> None:
             '-i',
             '15m',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
@@ -105,7 +105,7 @@ def test_main_succeeds_15m(runner: CliRunner) -> None:
 @pytest.mark.e2e
 def test_main_succeeds_30m(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -117,7 +117,7 @@ def test_main_succeeds_30m(runner: CliRunner) -> None:
             '-i',
             '30m',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
@@ -134,7 +134,7 @@ def test_main_succeeds_30m(runner: CliRunner) -> None:
 @pytest.mark.e2e
 def test_main_succeeds_1h(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -146,7 +146,7 @@ def test_main_succeeds_1h(runner: CliRunner) -> None:
             '-i',
             '1h',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
@@ -163,7 +163,7 @@ def test_main_succeeds_1h(runner: CliRunner) -> None:
 @pytest.mark.e2e
 def test_main_succeeds_3h(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -175,7 +175,7 @@ def test_main_succeeds_3h(runner: CliRunner) -> None:
             '-i',
             '3h',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
@@ -192,7 +192,7 @@ def test_main_succeeds_3h(runner: CliRunner) -> None:
 @pytest.mark.e2e
 def test_main_succeeds_6h(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -204,7 +204,7 @@ def test_main_succeeds_6h(runner: CliRunner) -> None:
             '-i',
             '6h',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
@@ -221,7 +221,7 @@ def test_main_succeeds_6h(runner: CliRunner) -> None:
 @pytest.mark.e2e
 def test_main_succeeds_12h(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -233,7 +233,7 @@ def test_main_succeeds_12h(runner: CliRunner) -> None:
             '-i',
             '6h',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
@@ -250,7 +250,7 @@ def test_main_succeeds_12h(runner: CliRunner) -> None:
 @pytest.mark.e2e
 def test_main_succeeds_1D(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -262,7 +262,7 @@ def test_main_succeeds_1D(runner: CliRunner) -> None:
             '-i',
             '',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
@@ -279,7 +279,7 @@ def test_main_succeeds_1D(runner: CliRunner) -> None:
 @pytest.mark.e2e
 def test_main_succeeds_7D(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -291,7 +291,7 @@ def test_main_succeeds_7D(runner: CliRunner) -> None:
             '-i',
             '7D',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
@@ -308,7 +308,7 @@ def test_main_succeeds_7D(runner: CliRunner) -> None:
 @pytest.mark.e2e
 def test_main_succeeds_14D(runner: CliRunner) -> None:
     """Exits with a status code of zero."""
-    sleep(30)
+    sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
         interface.main,
@@ -320,7 +320,7 @@ def test_main_succeeds_14D(runner: CliRunner) -> None:
             '-i',
             '14D',
             '-sd',
-            '2019-01-01',
+            '2020-01-01',
             '-ed',
             '2021-01-01',
         ],
