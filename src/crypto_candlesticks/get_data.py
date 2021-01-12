@@ -13,7 +13,7 @@ from crypto_candlesticks.bitfinex_connector.connector import Connector
 from crypto_candlesticks.database import SqlDatabase
 from crypto_candlesticks.text_console import write_to_column
 
-_RATE_LIMIT = 0.5
+_RATE_LIMIT = 0.6
 _STEP_SIZE = 86400000
 
 
