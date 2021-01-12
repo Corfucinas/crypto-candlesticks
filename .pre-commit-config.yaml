@@ -14,6 +14,7 @@ repos:
     -   id: debug-statements
     -   id: detect-private-key
     -   id: trailing-whitespace
+    -   id: double-quote-string-fixer
 -   repo: https://github.com/pycqa/isort
     rev: 5.7.0
     hooks:
@@ -22,9 +23,9 @@ repos:
     rev: 20.8b1
     hooks:
       - id: black
+        args: [-S]
 -   repo: https://github.com/asottile/blacken-docs
     rev: v1.9.1
     hooks:
     -   id: blacken-docs
         additional_dependencies: [black]
-
