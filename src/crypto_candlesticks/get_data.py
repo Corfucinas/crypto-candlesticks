@@ -165,11 +165,11 @@ def get_data(
             interval,
         )
         click.secho(
-            'Writting to database completed! 🚀🚀',
+            'Writing to database completed! 🚀🚀',
             fg='green',
         )
         click.secho(
-            'Writting to Excel...',
+            'Writing to Excel...',
             fg='yellow',
         )
         df.to_csv(
@@ -179,7 +179,7 @@ def get_data(
             index=False,
         )
         click.secho(
-            'Writting to Excel completed! 🚀🚀🚀',
+            'Writing to Excel completed! 🚀🚀🚀',
             fg='green',
         )
     else:
