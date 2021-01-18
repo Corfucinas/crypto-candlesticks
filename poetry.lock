@@ -870,7 +870,7 @@ py = ">=1.4.26,<2.0.0"
 
 [[package]]
 name = "rich"
-version = "9.8.0"
+version = "9.8.2"
 description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
 category = "main"
 optional = false
@@ -1700,8 +1700,8 @@ retry = [
     {file = "retry-0.9.2.tar.gz", hash = "sha256:f8bfa8b99b69c4506d6f5bd3b0aabf77f98cdb17f3c9fc3f5ca820033336fba4"},
 ]
 rich = [
-    {file = "rich-9.8.0-py3-none-any.whl", hash = "sha256:812a911cd85d32f484325f501fb8f84270b8e0a7af739d4bf1d3df42643e93a6"},
-    {file = "rich-9.8.0.tar.gz", hash = "sha256:c91c2587dba9aa8dd30c5f090e700f54433ccd73e209f4737e10385c4c1cbf19"},
+    {file = "rich-9.8.2-py3-none-any.whl", hash = "sha256:d7732d12dfa91a2c06f89fa2b630a068ba12d39ad22a2078b477ef1948b38f3f"},
+    {file = "rich-9.8.2.tar.gz", hash = "sha256:c0d5903b463f015b254d6f52da82af3821d266fe516ae05fdc266e6abba5c3a8"},
 ]
 safety = [
     {file = "safety-1.10.3-py2.py3-none-any.whl", hash = "sha256:5f802ad5df5614f9622d8d71fedec2757099705c2356f862847c58c6dfe13e84"},
