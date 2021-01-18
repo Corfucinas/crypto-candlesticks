@@ -33,7 +33,7 @@ darglint = "^1.5.8"
 safety = "^1.10.3"
 sphinx-autodoc-typehints = "^1.11.1"
 pytest = "^6.2.1"
-pytest-cov = "^2.10.1"
+pytest-cov = "^2.11.0"
 pytest-mock = "^3.4.0"
 
 [tool.black]
