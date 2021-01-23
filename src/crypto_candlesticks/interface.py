@@ -56,7 +56,7 @@ def main(
     start_date: datetime,
     end_date: datetime,
 ) -> None:
-    """Download cryptoccurency candlestick data from Bitfinex.
+    """Download cryptocurrency candlestick data from Bitfinex.
 
     If the data is obtained successfully, it will be converted to a .csv,
     sqlite3 database, and a pickle file.
