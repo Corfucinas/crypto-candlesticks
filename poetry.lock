@@ -1153,7 +1153,7 @@ typing_extensions = ">=3.6,<4.0"
 
 [[package]]
 name = "xdoctest"
-version = "0.15.0"
+version = "0.15.2"
 description = "A rewrite of the builtin doctest module"
 category = "dev"
 optional = false
@@ -1196,7 +1196,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "3a190759b2cf4fcecc920dbc5cb5e27ea26ebc18883ba4fc82f5fb0310d0dce3"
+content-hash = "15724ecacd906bf26b7c9573b4ab8005240e75b179922557bf451e5e03c960c9"
 
 [metadata.files]
 alabaster = [
@@ -1813,8 +1813,9 @@ wemake-python-styleguide = [
     {file = "wemake_python_styleguide-0.14.1-py3-none-any.whl", hash = "sha256:73a501e0547275287a2b926515c000cc25026a8bceb9dcc1bf73ef85a223a3c6"},
 ]
 xdoctest = [
-    {file = "xdoctest-0.15.0-py2.py3-none-any.whl", hash = "sha256:695ea04303a48cbb319709270d43f7bae7f3de3701aec73f09d90a216499992e"},
-    {file = "xdoctest-0.15.0.tar.gz", hash = "sha256:7f0a184d403b69b166ebec1aadb13c98c96c59101e974ae2e4db4c3a803ec371"},
+    {file = "xdoctest-0.15.2-py2.py3-none-any.whl", hash = "sha256:88f149f8fac0d4705396b639a8a3b7b12115e76a1c5a4e6e748ac73953a2d0cb"},
+    {file = "xdoctest-0.15.2-py3-none-any.whl", hash = "sha256:299cb9637fdd93ab05d13b3505a5f6f6b2b73f6590d02a0a576f42265041a280"},
+    {file = "xdoctest-0.15.2.tar.gz", hash = "sha256:042b9529d8b54a8d413ad1d65daa5a9200dbc6c4b96ac42a63b31446e54d2c6b"},
 ]
 yamllint = [
     {file = "yamllint-1.25.0-py2.py3-none-any.whl", hash = "sha256:c7be4d0d2584a1b561498fa9acb77ad22eb434a109725c7781373ae496d823b3"},
