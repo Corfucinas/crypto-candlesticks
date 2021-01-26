@@ -9,7 +9,7 @@ import click
 import pandas as pd
 from rich.live import Live
 
-from crypto_candlesticks.bitfinex_connector.connector import Connector
+from crypto_candlesticks.bitfinex.connector import Connector
 from crypto_candlesticks.database import SqlDatabase
 from crypto_candlesticks.text_console import write_to_column
 

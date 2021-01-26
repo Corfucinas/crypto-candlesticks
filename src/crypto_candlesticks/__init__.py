@@ -14,4 +14,4 @@ try:
 except PackageNotFoundError:  # pragma: no cover
     __version__ = 'unknown'
 
-from crypto_candlesticks import bitfinex_connector, symbols
+from crypto_candlesticks import bitfinex, symbols
