@@ -22,7 +22,7 @@ rich = "^9.6.2"
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
 mypy = "^0.812"
-wemake-python-styleguide = "^0.15.1"
+wemake-python-styleguide = "^0.15.2"
 pre-commit = "^2.10.1"
 nox = "^2020.12.31"
 Sphinx = "^3.5.1"
