@@ -6,6 +6,8 @@
 [![Documentation Status](https://readthedocs.org/projects/crypto-candlesticks/badge/?version=latest)](https://crypto-candlesticks.readthedocs.io/en/latest/?badge=latest)
 [![PyPI](https://img.shields.io/pypi/v/crypto-candlesticks.svg)](https://pypi.org/project/crypto-candlesticks/)
 
+![gif-animation](media/animation.gif)
+
 ---
 
 The goal behind this project is to facilitate downloading cryptocurrency candlestick data fast & simple.
@@ -92,7 +94,7 @@ Or you can pass the arguments yourself and skip the prompt:
 #### Example output for CSV ✅
 
 | Open     | Close     | High   | Low       | Volume    | Ticker  | Date       | Time     |
-|----------|-----------|--------|-----------|-----------|---------|------------|----------|
+| -------- | --------- | ------ | --------- | --------- | ------- | ---------- | -------- |
 | 7203     | 7201      | 7203.7 | 7200.1    | 9.404174  | BTC/USD | 12/31/2019 | 16:00:00 |
 | 7201     | 7223.6    | 7223.6 | 7201      | 7.9037398 | BTC/USD | 12/31/2019 | 16:01:00 |
 | 7224.4   | 7225      | 7225.5 | 7224.4    | 0.4799298 | BTC/USD | 12/31/2019 | 16:02:00 |
@@ -102,14 +104,14 @@ Or you can pass the arguments yourself and skip the prompt:
 
 #### Example output for SQL (the timestamp is shown in milliseconds) ✅
 
-| ID | Timestamp       | Open          | Close         | High          | Low           | Volume     | Ticker | Interval |
-|----|-----------------|---------------|---------------|---------------|---------------|------------|--------|----------|
-| 1  | 1577868000000.0 | 7205.7        | 7205.8        | 7205.8        | 7205.7        | 0.07137942 | BTCUSD | 1m       |
-| 2  | 1577867940000.0 | 7205.70155305 | 7205.8        | 7205.8        | 7205.70155305 | 0.035      | BTCUSD | 1m       |
-| 3  | 1577867880000.0 | 7205.7        | 7205.70155305 | 7205.70155305 | 7205.7        | 0.025      | BTCUSD | 1m       |
-| 4  | 1577867820000.0 | 7205.75299748 | 7205.75299748 | 7205.75299748 | 7205.7        | 0.075      | BTCUSD | 1m       |
-| 5  | 1577867760000.0 | 7205.75299748 | 7205.2        | 7206.3        | 7205.2        | 0.005      | BTCUSD | 1m       |
-| 6  | 1577867700000.0 | 7205.2        | 7205.2        | 7205.2        | 7205.2        | 4.5802     | BTCUSD | 1m       |
+| ID  | Timestamp       | Open          | Close         | High          | Low           | Volume     | Ticker | Interval |
+| --- | --------------- | ------------- | ------------- | ------------- | ------------- | ---------- | ------ | -------- |
+| 1   | 1577868000000.0 | 7205.7        | 7205.8        | 7205.8        | 7205.7        | 0.07137942 | BTCUSD | 1m       |
+| 2   | 1577867940000.0 | 7205.70155305 | 7205.8        | 7205.8        | 7205.70155305 | 0.035      | BTCUSD | 1m       |
+| 3   | 1577867880000.0 | 7205.7        | 7205.70155305 | 7205.70155305 | 7205.7        | 0.025      | BTCUSD | 1m       |
+| 4   | 1577867820000.0 | 7205.75299748 | 7205.75299748 | 7205.75299748 | 7205.7        | 0.075      | BTCUSD | 1m       |
+| 5   | 1577867760000.0 | 7205.75299748 | 7205.2        | 7206.3        | 7205.2        | 0.005      | BTCUSD | 1m       |
+| 6   | 1577867700000.0 | 7205.2        | 7205.2        | 7205.2        | 7205.2        | 4.5802     | BTCUSD | 1m       |
 
 ##### Contributing 👋
 
