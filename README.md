@@ -116,3 +116,7 @@ Or you can pass the arguments yourself and skip the prompt:
 ##### Contributing 👋
 
 Feel free to open an [issue](https://github.com/Corfucinas/crypto-candlesticks/issues/new) or [pull request](https://github.com/Corfucinas/crypto-candlesticks/pulls).
+
+##### Buy me a coffee
+
+ETH: 0x06Acb31587a96808158BdEd07e53668d8ce94cFE
