@@ -3,7 +3,7 @@
 
 quote_currency = [
     'USD',
-    'USDT',
+    'UST',
     'EUR',
     'CNHT',
     'GBP',

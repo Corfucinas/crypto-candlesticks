@@ -55,7 +55,7 @@ def test_main_succeeds_5m(runner: CliRunner) -> None:
             '-s',
             'btc',
             '-b',
-            'usd',
+            'ust',
             '-i',
             '5m',
             '-sd',
