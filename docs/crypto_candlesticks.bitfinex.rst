@@ -1,13 +1,13 @@
-crypto\_candlesticks.bitfinex\_connector package
+crypto\_candlesticks.bitfinex  package
 ================================================
 
 Submodules
 ----------
 
-crypto\_candlesticks.bitfinex\_connector.connector module
+crypto\_candlesticks.bitfinex.connector module
 ---------------------------------------------------------
 
-.. automodule:: crypto_candlesticks.bitfinex_connector.connector
+.. automodule:: crypto_candlesticks.bitfinex.connector
    :members:
    :undoc-members:
    :show-inheritance:
@@ -16,7 +16,7 @@ crypto\_candlesticks.bitfinex\_connector.connector module
 Module contents
 ---------------
 
-.. automodule:: crypto_candlesticks.bitfinex_connector
+.. automodule:: crypto_candlesticks.bitfinex
    :members:
    :undoc-members:
    :show-inheritance:

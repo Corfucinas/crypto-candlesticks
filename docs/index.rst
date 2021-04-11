@@ -1,4 +1,4 @@
-The Crypto-candlesticks project 📈
+The crypto-candlesticks project
 ====================================
 
 .. toctree::
@@ -17,7 +17,7 @@ The command-line interface is built using `Click <https://click.palletsprojects.
 Once the data is downloaded, it will be converted and stored in a `.csv, .sqlite3 and .pickle` file convenient for analysis.
 The data will include the `Open, High, Low, Close` of the candles and the `volume` during the `interval`.
 
-Installation 💻
+Installation
 -----------------
 
 To install the Crypto-candlesticks project,

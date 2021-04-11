@@ -8,11 +8,7 @@ import nox
 from nox.sessions import Session
 
 package = 'crypto_candlesticks'
-nox.options.sessions = (
-    'xdoctest',
-    'safety',
-    'tests',
-)
+nox.options.sessions = ('xdoctest', 'safety', 'tests')
 locations = (
     'src',
     'tests',
@@ -188,9 +184,10 @@ def coverage(session: Session) -> None:
 def docs(session: Session) -> None:
     """Build the Sphinx documentation."""
     session.run('poetry', 'install', '--no-dev', external=True)
+    session.run('pip', 'install', 'furo', external=True)
     install_with_constraints(
         session,
-        'sphinx',
+        'sphinx -J auto',
         'sphinx-autodoc-typehints',
     )
     session.run(

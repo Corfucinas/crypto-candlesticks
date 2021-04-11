@@ -18,7 +18,7 @@ The command-line interface is built using [Click](https://click.palletsprojects.
 Once the data is downloaded, it will be converted and stored in a `.csv, .sqlite3 and .pickle` file for convenient analysis.
 The data will include the `Open, High, Low, Close` of the candles and the `volume` during the `interval`.
 
-## Installation 💻
+## Installation
 
 To install the Crypto-candlesticks project,
 run this command in your terminal:
@@ -113,7 +113,7 @@ Or you can pass the arguments yourself and skip the prompt:
 | 5   | 1577867760000.0 | 7205.75299748 | 7205.2        | 7206.3        | 7205.2        | 0.005      | BTCUSD | 1m       |
 | 6   | 1577867700000.0 | 7205.2        | 7205.2        | 7205.2        | 7205.2        | 4.5802     | BTCUSD | 1m       |
 
-##### Contributing 👋
+##### Contributing
 
 Feel free to open an [issue](https://github.com/Corfucinas/crypto-candlesticks/issues/new) or [pull request](https://github.com/Corfucinas/crypto-candlesticks/pulls).
 

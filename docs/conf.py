@@ -10,4 +10,5 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx_autodoc_typehints',
 ]
+html_theme = 'furo'
 html_static_path = ['_static']

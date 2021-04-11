@@ -7,7 +7,7 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   crypto_candlesticks.bitfinex_connector
+   crypto_candlesticks.bitfinex
    crypto_candlesticks.symbols
 
 Submodules
