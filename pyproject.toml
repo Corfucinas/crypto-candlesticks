@@ -34,7 +34,7 @@ sphinx-autodoc-typehints = "^1.11.1"
 pytest = "^6.2.3"
 pytest-cov = "^2.11.1"
 pytest-mock = "^3.4.0"
-furo = "^2021.3.20-beta.31"
+furo = "^2021.4.11b34"
 
 [tool.black]
 line-length = 79

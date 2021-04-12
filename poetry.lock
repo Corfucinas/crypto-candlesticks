@@ -448,7 +448,7 @@ flake8 = "*"
 
 [[package]]
 name = "furo"
-version = "2021.3.20b31"
+version = "2021.4.11b34"
 description = "A clean customisable Sphinx documentation theme."
 category = "dev"
 optional = false
@@ -459,7 +459,7 @@ beautifulsoup4 = "*"
 sphinx = ">=3.0,<4.0"
 
 [package.extras]
-doc = ["myst-parser", "sphinx-copybutton", "sphinx-inline-tabs"]
+doc = ["myst-parser", "sphinx-copybutton", "sphinx-inline-tabs", "docutils (!=0.17)"]
 test = ["pytest", "pytest-cov", "pytest-xdist"]
 
 [[package]]
@@ -1223,7 +1223,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "ce7edf4d794be66413d76072d65734d512b1b1217b3520102626fa8b7b9c4ea5"
+content-hash = "ce481e39d85ff1b10e1fe0e9cb92dcc7d7b9e79c4b9c2cb6c21559bd45776bbb"
 
 [metadata.files]
 alabaster = [
@@ -1434,8 +1434,8 @@ flake8-string-format = [
     {file = "flake8_string_format-0.3.0-py2.py3-none-any.whl", hash = "sha256:812ff431f10576a74c89be4e85b8e075a705be39bc40c4b4278b5b13e2afa9af"},
 ]
 furo = [
-    {file = "furo-2021.3.20b31-py3-none-any.whl", hash = "sha256:34bd70a839794872d4ba6656d18b4d94cca16684e16e224a0073cf1977f29e43"},
-    {file = "furo-2021.3.20b31.tar.gz", hash = "sha256:6fd32e204195d0bc39ca9eb15dd7cbeb068410a496bc4f76b9cd198cb4e12eaf"},
+    {file = "furo-2021.4.11b34-py3-none-any.whl", hash = "sha256:576a1dc1bcbe337d7c53cbc75b886802778a5964fd2e3324433d706066e9aea8"},
+    {file = "furo-2021.4.11b34.tar.gz", hash = "sha256:3d88e2855949cecf5f562e8a28cab1a6d3355d82f3cf5796eddf9ec234e97519"},
 ]
 gitdb = [
     {file = "gitdb-4.0.7-py3-none-any.whl", hash = "sha256:6c4cc71933456991da20917998acbe6cf4fb41eeaab7d6d67fbc05ecd4c865b0"},
