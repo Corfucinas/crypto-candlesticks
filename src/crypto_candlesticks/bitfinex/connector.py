@@ -26,7 +26,7 @@ class Connector(object):
         """Connector repr."""
         return 'Bitfinex connector class'
 
-    @retry(ConnectionError, jitter=(0.1, 1))  # type: ignore
+    @retry(ConnectionError, jitter=(0.1, 1))
     def get_candles(
         self: Api,
         ticker: str,
@@ -57,7 +57,7 @@ class Connector(object):
             ),
         ).json()
 
-    @retry(ConnectionError, jitter=(0.1, 1))  # type: ignore
+    @retry(ConnectionError, jitter=(0.1, 1))
     def get_symbols(self: Api) -> List[str]:
         """Calls the exchange and gets all current tickers.
 
