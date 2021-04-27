@@ -4,10 +4,10 @@ crypto\_candlesticks.bitfinex  package
 Submodules
 ----------
 
-crypto\_candlesticks.bitfinex.connector module
+crypto\_candlesticks.exchanges.bitfinex module
 ---------------------------------------------------------
 
-.. automodule:: crypto_candlesticks.bitfinex.connector
+.. automodule:: crypto_candlesticks.exchanges.bitfinex
    :members:
    :undoc-members:
    :show-inheritance:

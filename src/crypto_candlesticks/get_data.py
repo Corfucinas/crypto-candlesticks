@@ -9,8 +9,8 @@ import click
 import pandas as pd
 from rich.live import Live
 
-from crypto_candlesticks.bitfinex.connector import Connector
 from crypto_candlesticks.database import SqlDatabase
+from crypto_candlesticks.exchanges.bitfinex import Bitfinex
 from crypto_candlesticks.text_console import write_to_column
 
 _RATE_LIMIT = 0.5
@@ -52,7 +52,7 @@ def get_candles(
         ) as live:
             while start_time <= end_time:
                 period = start_time + step_size
-                candlestick = Connector().get_candles(
+                candlestick = Bitfinex().get_candles(
                     ticker=ticker,
                     time_interval=interval,
                     start_time=start_time,
@@ -119,7 +119,7 @@ def validate_symbol(symbol: str) -> Union[bool, None]:
         bool: Returns True if the symbol is active, else False
 
     """
-    all_symbols = Connector().get_symbols()
+    all_symbols = Bitfinex().get_symbols()
     for symbols in all_symbols:
         if symbol.lower() in symbols:
             return True
