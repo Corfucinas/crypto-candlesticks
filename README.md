@@ -16,7 +16,7 @@ Currently only the [Bitfinex](https://www.bitfinex.com/) exchange is supported w
 The command-line interface is built using [Click](https://click.palletsprojects.com/en/7.x/), which is intuitive and will prompt you for the commands.
 
 Once the data is downloaded, it will be converted and stored in a `.csv, .sqlite3 and .pickle` file for convenient analysis.
-The data will include the `Open, High, Low, Close` of the candles and the `volume` during the `interval`.
+The data will include the `Open, High, Low, Close` of the candles and the `volume` during the `interval` and its `timestamp`.
 
 ## Installation
 
