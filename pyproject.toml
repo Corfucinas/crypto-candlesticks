@@ -20,7 +20,7 @@ importlib-metadata = ">=3.3,<5.0"
 rich = ">=9.6.2,<11.0.0"
 
 [tool.poetry.dev-dependencies]
-black = "^21.4b0"
+black = "^21.4b2"
 mypy = "^0.812"
 wemake-python-styleguide = "^0.15.2"
 pre-commit = "^2.12.1"
