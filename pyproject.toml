@@ -21,7 +21,7 @@ rich = ">=9.6.2,<11.0.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.6b0"
-mypy = "^0.812"
+mypy = "^0.902"
 wemake-python-styleguide = "^0.15.2"
 pre-commit = "^2.13.0"
 nox = "^2021.6.12"
