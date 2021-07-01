@@ -19,6 +19,8 @@ The command-line interface is built using [Click](https://click.palletsprojects.
 Once the data is downloaded, it will be converted and stored in a `.csv, .sqlite3 and .pickle` file for convenient analysis.
 The data will include the `Open, High, Low, Close` of the candles and the `volume` during the `interval` and its `timestamp`.
 
+See [documentation](https://crypto-candlesticks.readthedocs.io/) and [Github repository](https://github.com/Corfucinas/crypto-candlesticks/).
+
 ## Installation
 
 To install the Crypto-candlesticks project,
