@@ -19,8 +19,8 @@ class Bitfinex(object):
 
     def __init__(self: Api) -> None:
         """Bitfinex init."""
-        self._end_point_v2 = 'https://api.bitfinex.com/v2/'
-        self._end_point_v1 = 'https://api.bitfinex.com/v1/'
+        self._end_point_v2: str = 'https://api.bitfinex.com/v2/'
+        self._end_point_v1: str = 'https://api.bitfinex.com/v1/'
 
     def __repr__(self: Api) -> str:
         """Bitfinex repr."""

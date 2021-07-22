@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """List of current available base pairs in Bitfinex."""
+from typing import List
 
-quote_currency = [
+quote_currency: List[str] = [
     'USD',
     'UST',
     'EUR',

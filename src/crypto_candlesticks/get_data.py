@@ -120,10 +120,7 @@ def validate_symbol(symbol: str) -> Union[bool, None]:
 
     """
     all_symbols = Bitfinex().get_symbols()
-    for symbols in all_symbols:
-        if symbol.lower() in symbols:
-            return True
-    return None
+    return any(map(lambda symbol: symbol.lower() in symbol, all_symbols))
 
 
 def get_data(

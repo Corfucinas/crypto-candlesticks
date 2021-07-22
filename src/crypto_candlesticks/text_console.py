@@ -16,7 +16,7 @@ def setup_table() -> Table:
     Returns:
         Table: Include desired description and columns.
     """
-    table = Table(
+    table: Table = Table(
         show_header=True,
         caption=caption(),
         box=box.MINIMAL_HEAVY_HEAD,
@@ -27,7 +27,6 @@ def setup_table() -> Table:
         safe_box=True,
         expand=True,
     )
-
     table.add_column('OPEN', justify='center', no_wrap=True)
     table.add_column('CLOSE', justify='center', no_wrap=True)
     table.add_column('HIGH', justify='center', no_wrap=True)
