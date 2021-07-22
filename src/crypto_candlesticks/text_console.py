@@ -27,14 +27,26 @@ def setup_table() -> Table:
         safe_box=True,
         expand=True,
     )
-    table.add_column('OPEN', justify='center', no_wrap=True)
-    table.add_column('CLOSE', justify='center', no_wrap=True)
-    table.add_column('HIGH', justify='center', no_wrap=True)
-    table.add_column('LOW', justify='center', no_wrap=True)
-    table.add_column('VOLUME', justify='center', no_wrap=True)
-    table.add_column('TICKER', justify='center', no_wrap=True)
-    table.add_column('INTERVAL', justify='center', no_wrap=True)
-    table.add_column('TIME', justify='center', no_wrap=True)
+    table_columns = [
+        'OPEN',
+        'CLOSE',
+        'HIGH',
+        'LOW',
+        'VOLUME',
+        'TICKER',
+        'INTERVAL',
+        'TIME',
+    ]
+    list(
+        map(
+            lambda table_columns: table.add_column(
+                table_columns,
+                justify='center',
+                no_wrap=True,
+            ),
+            table_columns,
+        ),
+    )
 
     return table
 
@@ -56,7 +68,7 @@ def write_to_column(
     Returns:
         Table: Updated table to be rendered.
     """
-    table = setup_table()
+    table: Table = setup_table()
     for row_limit, single_candle in enumerate(data_downloaded[::-1]):
         table.add_row(
             f'[bold white]{single_candle[2]}[/bold white]',  # Open

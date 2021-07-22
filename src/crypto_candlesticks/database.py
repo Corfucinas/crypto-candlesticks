@@ -15,7 +15,6 @@ class SqlDatabase(object):
     """SqlDatabase main class for storing the candlestick data in SQL."""
 
     __slots__ = (
-        '_databasefile',
         '_conn',
         '_cursor',
         '_encoding',
@@ -26,8 +25,7 @@ class SqlDatabase(object):
 
     def __init__(self: Sql, databasefile: str) -> None:
         """Database init."""
-        self._databasefile = databasefile
-        self._conn = sqlite3.connect(self._databasefile)
+        self._conn = sqlite3.connect(databasefile)
         self._cursor = self._conn.cursor()
         self._encoding = self._cursor.execute("PRAGMA encoding='UTF-8';")
         self._synchronous = self._cursor.execute('PRAGMA synchronous=0;')

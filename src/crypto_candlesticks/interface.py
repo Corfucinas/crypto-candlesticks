@@ -13,6 +13,47 @@ from crypto_candlesticks.symbols.quote_currency import quote_currency
 click.secho('Welcome, what data do you wish to download?', fg='green')
 
 
+def time_clamp() -> int:
+    """Get current time in milliseconds.
+
+    Returns:
+        int: Current time in milliseconds
+    """
+    return int(round(time.time() * 1000))
+
+
+def fix_time() -> float:
+    """Fix time to a specific period."""
+    return (
+        time.mktime(
+            datetime(
+                datetime.today().year,
+                datetime.today().month,
+                datetime.today().day,
+                8,
+                0,
+            ).timetuple(),
+        )
+        * 1000
+    )
+
+
+def make_time(date: datetime) -> float:
+    """Make time in milliseconds."""
+    return (
+        time.mktime(
+            datetime(
+                date.year,
+                date.month,
+                date.day,
+                8,
+                0,
+            ).timetuple(),
+        )
+        * 1000
+    )
+
+
 @click.command()
 @click.option(
     '-s',
@@ -70,56 +111,15 @@ def main(
     """
     symbol = symbol.upper()
     base_currency = base_currency.upper()
-    time_start = (
-        time.mktime(
-            datetime(
-                start_date.year,
-                start_date.month,
-                start_date.day,
-                8,
-                0,
-            ).timetuple(),
-        )
-        * 1000
-    )
-    if time_start > min(time_start, int(round(time.time() * 1000))):
-        time_start = (
-            time.mktime(
-                datetime(
-                    datetime.today().year,
-                    datetime.today().month,
-                    datetime.today().day,
-                    8,
-                    0,
-                ).timetuple(),
-            )
-            * 1000
-        )
-    time_stop = (
-        time.mktime(
-            datetime(
-                end_date.year,
-                end_date.month,
-                end_date.day,
-                8,
-                0,
-            ).timetuple(),
-        )
-        * 1000
-    )
-    if time_stop > min(time_stop, int(round(time.time() * 1000))):
-        time_stop = (
-            time.mktime(
-                datetime(
-                    datetime.today().year,
-                    datetime.today().month,
-                    datetime.today().day,
-                    8,
-                    0,
-                ).timetuple(),
-            )
-            * 1000
-        ) - 86400000
+    one_day: int = 86400000
+
+    time_start = make_time(start_date)
+    if time_start > min(time_start, time_clamp()):
+        time_start = fix_time()
+
+    time_stop = make_time(end_date)
+    if time_stop > min(time_stop, time_clamp()):
+        time_stop = fix_time() - one_day
 
     get_data(
         symbol,
