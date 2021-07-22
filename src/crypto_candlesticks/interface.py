@@ -109,8 +109,6 @@ def main(
         start_date (datetime): Ending date.
         end_date (datetime): Ticker Interval.
     """
-    symbol = symbol.upper()
-    base_currency = base_currency.upper()
     one_day: int = 86400000
 
     time_start = make_time(start_date)
@@ -122,8 +120,8 @@ def main(
         time_stop = fix_time() - one_day
 
     get_data(
-        symbol,
-        base_currency,
+        symbol.upper(),
+        base_currency.upper(),
         time_start,
         time_stop,
         interval,
