@@ -111,13 +111,17 @@ def main(
     """
     one_day: int = 86400000
 
-    time_start = make_time(start_date)
-    if time_start > min(time_start, time_clamp()):
-        time_start = fix_time()
+    time_start = (
+        make_time(start_date)
+        if make_time(start_date) < fix_time()
+        else fix_time()
+    )
 
-    time_stop = make_time(end_date)
-    if time_stop > min(time_stop, time_clamp()):
-        time_stop = fix_time() - one_day
+    time_stop = (
+        make_time(end_date)
+        if make_time(end_date) < fix_time()
+        else fix_time() - one_day
+    )
 
     get_data(
         symbol.upper(),
