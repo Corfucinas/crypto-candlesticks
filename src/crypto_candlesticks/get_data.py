@@ -14,7 +14,7 @@ from crypto_candlesticks.database import SqlDatabase
 from crypto_candlesticks.exchanges.bitfinex import Bitfinex
 from crypto_candlesticks.text_console import write_to_column
 
-_RATE_LIMIT = 0.5
+_RATE_LIMIT = 0.5001
 _STEP_SIZE = 86400000
 
 
@@ -100,7 +100,7 @@ def convert_data(
         columns=['timestamp', 'open', 'close', 'high', 'low', 'volume'],
     )
     df.drop_duplicates(inplace=True)
-    df['timestamp'] = pd.to_datetime(df['timestamp'], hugeunit='ms')
+    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
     df.set_index(
         'timestamp',
         inplace=True,
