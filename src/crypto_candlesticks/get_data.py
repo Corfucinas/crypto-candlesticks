@@ -2,6 +2,7 @@
 """The Crypto candlesticks engine."""
 
 import pickle
+import sys
 import time
 from typing import List, Union
 
@@ -71,6 +72,7 @@ def get_candles(
             ),
             fg='red',
         )
+        sys.exit(1)
     return candle_data
 
 
@@ -91,13 +93,14 @@ def convert_data(
     """
     if not candle_data:
         click.echo('Data could not be downloaded ❌, please try again')
+        sys.exit(1)
 
     df = pd.DataFrame(
         candle_data,
         columns=['timestamp', 'open', 'close', 'high', 'low', 'volume'],
     )
     df.drop_duplicates(inplace=True)
-    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
+    df['timestamp'] = pd.to_datetime(df['timestamp'], hugeunit='ms')
     df.set_index(
         'timestamp',
         inplace=True,
