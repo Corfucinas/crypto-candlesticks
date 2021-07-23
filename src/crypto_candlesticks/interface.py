@@ -111,15 +111,15 @@ def main(
     """
     one_day: int = 86400000
 
-    time_start = (
+    time_start: float = (
         make_time(start_date)
-        if make_time(start_date) < fix_time()
+        if make_time(start_date) < time_clamp()
         else fix_time()
     )
 
-    time_stop = (
+    time_stop: float = (
         make_time(end_date)
-        if make_time(end_date) < fix_time()
+        if make_time(end_date) < time_clamp()
         else fix_time() - one_day
     )
 
