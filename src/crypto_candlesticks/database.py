@@ -31,7 +31,7 @@ class SqlDatabase(object):
         self._cursor = self._conn.cursor()
         self._pragmas = list(
             map(
-                lambda pragma: self._conn.execute(pragma),
+                lambda pragma: self._cursor.execute(pragma),
                 [
                     "PRAGMA encoding='UTF-8';",
                     'PRAGMA synchronous=0;',
@@ -39,7 +39,7 @@ class SqlDatabase(object):
                 ],
             ),
         )
-        self._schema = """CREATE TABLE IF NOT EXISTS "Candlestick"(
+        schema = """CREATE TABLE IF NOT EXISTS "Candlestick"(
                 ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 Timestamp REAL NOT NULL,
                 Open REAL NOT NULL,
@@ -50,7 +50,7 @@ class SqlDatabase(object):
                 Ticker TEXT NOT NULL,
                 Interval TEXT NOT NULL
                 )"""
-        self._table = self._cursor.execute(self._schema)
+        self._table = self._cursor.execute(schema)
 
     def __repr__(self: Sql) -> str:
         """Database repr."""
