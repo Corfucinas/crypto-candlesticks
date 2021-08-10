@@ -197,8 +197,6 @@ def write_data_to_sqlite(
             candle_stick_data,
             create_file,
         )
-    with open(output + '{}'.format('.p'), 'rb') as load_data:
-        candle_stick_data = pickle.load(load_data)
     df = convert_data(symbol, base_currency, candle_stick_data)
     SqlDatabase(output + '{}'.format('.sqlite3')).insert_candlesticks(
         candle_stick_data,
