@@ -51,7 +51,7 @@ def setup_table() -> Table:
     return table
 
 
-def write_to_column(
+def write_to_console(
     ticker: str,
     interval: str,
     data_downloaded: Candles,

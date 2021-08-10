@@ -17,12 +17,9 @@ class SqlDatabase(object):
     __slots__ = (
         '_conn',
         '_cursor',
-        '_encoding',
-        '_synchronous',
-        '_journal',
-        '_table',
         '_pragmas',
-        'table',
+        '_schema',
+        '_table',
     )
 
     def __init__(self: Sql, databasefile: str) -> None:
@@ -39,7 +36,7 @@ class SqlDatabase(object):
                 ],
             ),
         )
-        schema = """CREATE TABLE IF NOT EXISTS "Candlestick"(
+        self._schema = """CREATE TABLE IF NOT EXISTS "Candlestick"(
                 ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 Timestamp REAL NOT NULL,
                 Open REAL NOT NULL,
@@ -50,7 +47,7 @@ class SqlDatabase(object):
                 Ticker TEXT NOT NULL,
                 Interval TEXT NOT NULL
                 )"""
-        self._table = self._cursor.execute(schema)
+        self._table = self._cursor.execute(self._schema)
 
     def __repr__(self: Sql) -> str:
         """Database repr."""
@@ -93,5 +90,8 @@ class SqlDatabase(object):
                         },
                     )
         except (sqlite3.Error) as sqlite_error:
-            click.echo(('Failed to write data to Database', sqlite_error))
+            click.secho(
+                f'Failed to write data to Database {sqlite_error}',
+                fg='red',
+            )
             raise
