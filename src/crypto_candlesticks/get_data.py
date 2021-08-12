@@ -12,7 +12,7 @@ from rich.live import Live
 
 from crypto_candlesticks.database import SqlDatabase
 from crypto_candlesticks.exchanges.bitfinex import Bitfinex
-from crypto_candlesticks.text_console import write_to_console
+from crypto_candlesticks.text_console import setup_table, write_to_console
 
 _RATE_LIMIT = 0.5001
 _STEP_SIZE = 86400000
@@ -44,9 +44,7 @@ def get_candles(
     candle_data: Candles = []
     if not validate_symbol(ticker):
         click.secho(
-            "Data could not be downloaded ❌, check '{}' is listed on Bitfinex".format(
-                ticker,
-            ),
+            f"Data could not be downloaded ❌, check '{ticker}' is listed on Bitfinex",
             fg='red',
         )
         sys.exit(1)
@@ -69,7 +67,13 @@ def get_candles(
                 end_time=period,
             )
             candle_data.extend(candlestick)
-            write_to_console(ticker, interval, candlestick, live)
+            write_to_console(
+                ticker,
+                interval,
+                candlestick,
+                live,
+                setup_table(),
+            )
             live.refresh()
             start_time = period
             time.sleep(_RATE_LIMIT)
@@ -107,7 +111,7 @@ def convert_data(
         inplace=True,
     )
     df.sort_index(inplace=True)
-    df['ticker'] = symbol + '{}'.format('/') + base_currency
+    df['ticker'] = f'{symbol}/{base_currency}'
     df['date'] = pd.to_datetime(df.index, format='%Y:%M:%D').date
     df['time'] = pd.to_datetime(df.index, format='%Y:%M:%D').time
     return df
@@ -153,7 +157,7 @@ def get_data(
         'Processing data...',
         fg='yellow',
     )
-    output = ticker + '{}'.format('-') + interval
+    output = f'{ticker}-{interval}'
     df = write_data_to_sqlite(
         symbol,
         base_currency,
@@ -172,7 +176,7 @@ def write_data_to_excel(output: str, df: pd.DataFrame) -> None:
         fg='yellow',
     )
     df.to_csv(
-        path_or_buf=output + str(time.time()) + '{}'.format('.csv'),
+        path_or_buf=output + str(f'{time.time()}.csv'),
         sep=',',
         header=True,
         index=False,
@@ -192,13 +196,13 @@ def write_data_to_sqlite(
     output: str,
 ) -> pd.DataFrame:
     """Write data to sqlite database."""
-    with open(output + '{}'.format('.p'), 'wb') as create_file:
+    with open(f'{output}.p', 'wb') as create_file:
         pickle.dump(
             candle_stick_data,
             create_file,
         )
     df = convert_data(symbol, base_currency, candle_stick_data)
-    SqlDatabase(output + '{}'.format('.sqlite3')).insert_candlesticks(
+    SqlDatabase(f'{output}.sqlite3').insert_candlesticks(
         candle_stick_data,
         ticker,
         interval,

@@ -56,6 +56,7 @@ def write_to_console(
     interval: str,
     data_downloaded: Candles,
     live: Live,
+    table: Table,
 ) -> Table:
     """Write data to console.
 
@@ -64,11 +65,11 @@ def write_to_console(
         interval (str): Candlestick interval.
         data_downloaded (Candles): Response from the exchange.
         live (Live): Context manager.
+        table (Table): Rich table.
 
     Returns:
         Table: Updated table to be rendered.
     """
-    table: Table = setup_table()
     for row_limit, single_candle in enumerate(data_downloaded[::-1]):
         table.add_row(
             f'[bold white]{single_candle[2]}[/bold white]',  # Open

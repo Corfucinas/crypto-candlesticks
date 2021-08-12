@@ -47,14 +47,7 @@ class Bitfinex(object):
 
         """
         return requests.get(
-            '{}/candles/trade:{}:t{}/hist?limit={}&start={}&end={}&sort=-1'.format(
-                self._end_point_v2,
-                time_interval,
-                ticker,
-                10000,  # max allowed by Bitfinex
-                start_time,
-                end_time,
-            ),
+            f'{self._end_point_v2}/candles/trade:{time_interval}:t{ticker}/hist?limit={10000}&start={start_time}&end={end_time}&sort=-1',
         ).json()
 
     @retry(ConnectionError, jitter=(0.1, 1))
@@ -65,4 +58,4 @@ class Bitfinex(object):
             List[str]: All available tickers.
 
         """
-        return requests.get('{}/symbols'.format(self._end_point_v1)).json()
+        return requests.get(f'{self._end_point_v1}/symbols').json()
