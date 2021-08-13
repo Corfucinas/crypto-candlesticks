@@ -146,7 +146,7 @@ def get_data(
         end_time=time_stop,
         interval=interval,
     )
-    if candle_stick_data:
+    if not candle_stick_data:
         print_exit_error_message(time_start, time_stop)
 
     click.secho(
