@@ -146,7 +146,7 @@ def get_data(
         end_time=time_stop,
         interval=interval,
     )
-    if not candle_stick_data:
+    if candle_stick_data:
         print_exit_error_message(time_start, time_stop)
 
     click.secho(
@@ -196,10 +196,10 @@ def write_data_to_sqlite(
     output: str,
 ) -> pd.DataFrame:
     """Write data to sqlite database."""
-    with open(f'{output}.p', 'wb') as create_file:
+    with open(f'{output}.p', 'wb') as create_pickle_file:
         pickle.dump(
             candle_stick_data,
-            create_file,
+            create_pickle_file,
         )
     df = convert_data(symbol, base_currency, candle_stick_data)
     SqlDatabase(f'{output}.sqlite3').insert_candlesticks(
@@ -217,16 +217,19 @@ def write_data_to_sqlite(
 
 def print_exit_error_message(time_start: float, time_stop: float) -> None:
     """Prints error message if data could not be downloaded."""
-    click.secho(
+    time_start = pd.to_datetime(time_start, unit='ms')
+    time_stop = pd.to_datetime(time_stop, unit='ms')
+    error_messages: List[str] = [
         'Data could not be downloaded',
-        fg='red',
-    )
-    click.secho(
-        f"The period to download data is {pd.to_datetime(time_start, unit='ms')} until {pd.to_datetime(time_stop, unit='ms')}",
-        fg='red',
-    )
-    click.secho(
+        f'The data period is {time_start} until {time_stop}',
         'Confirm that the time period is correct and the exchange is online',
-        fg='red',
+    ]
+
+    list(
+        map(
+            lambda error_messages: click.secho(error_messages, fg='red'),
+            error_messages,
+        ),
     )
+
     sys.exit(1)
