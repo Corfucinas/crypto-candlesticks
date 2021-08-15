@@ -42,7 +42,7 @@ def get_candles(
 
     """
     candle_data: Candles = []
-    if not validate_symbol(ticker):
+    if not validate_symbol(ticker.lower()):
         click.secho(
             f"Data could not be downloaded ❌, check '{ticker}' is listed on Bitfinex",
             fg='red',
@@ -117,18 +117,20 @@ def convert_data(
     return df
 
 
-def validate_symbol(symbol: str) -> Union[bool, None]:
+def validate_symbol(crypto_ticker: str) -> Union[bool, None]:
     """Returns True if the symbol is active on Bitfinex.
 
     Args:
-        symbol (str): The symbol to validate
+        crypto_ticker (str): The symbol to validate
 
     Returns:
         bool: Returns True if the symbol is active, else False
 
     """
-    all_symbols = Bitfinex().get_symbols()
-    return any(map(lambda symbol: symbol.lower() in symbol, all_symbols))
+    all_crypto_symbols = Bitfinex().get_symbols()
+    return any(
+        crypto_ticker in all_tickers for all_tickers in all_crypto_symbols
+    )
 
 
 def get_data(

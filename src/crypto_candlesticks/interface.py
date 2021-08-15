@@ -65,14 +65,14 @@ def make_time(date: datetime) -> float:
 @click.option(
     '-b',
     '--base_currency',
-    type=click.Choice((quote_currency), case_sensitive=False),
+    type=click.Choice(quote_currency, case_sensitive=False),
     prompt='Base pair',
     help='Cryptocurrency base trading pair',
 )
 @click.option(
     '-i',
     '--interval',
-    type=click.Choice((intervals), case_sensitive=True),
+    type=click.Choice(intervals, case_sensitive=True),
     prompt='Interval to download the candlestick data',
     help='Interval that will be used to download the data.',
 )
