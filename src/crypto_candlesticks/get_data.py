@@ -221,17 +221,10 @@ def print_exit_error_message(time_start: float, time_stop: float) -> None:
     """Prints error message if data could not be downloaded."""
     time_start = pd.to_datetime(time_start, unit='ms')
     time_stop = pd.to_datetime(time_stop, unit='ms')
-    error_messages: List[str] = [
-        'Data could not be downloaded',
-        f'The data period is {time_start} until {time_stop}',
-        'Confirm that the time period is correct and the exchange is online',
-    ]
+    error_message: str = f"""\nData could not be downloaded\n
+        The data period is {time_start} until {time_stop}
+        Confirm that the time period is correct and the exchange is online"""
 
-    list(
-        map(
-            lambda error_messages: click.secho(error_messages, fg='red'),
-            error_messages,
-        ),
-    )
+    click.secho(error_message, fg='red')
 
     sys.exit(1)
