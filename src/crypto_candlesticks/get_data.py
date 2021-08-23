@@ -117,7 +117,7 @@ def convert_data(
     return df
 
 
-def validate_symbol(crypto_ticker: str) -> Union[bool, None]:
+def validate_symbol(crypto_ticker: str) -> bool:
     """Returns True if the symbol is active on Bitfinex.
 
     Args:
@@ -127,10 +127,7 @@ def validate_symbol(crypto_ticker: str) -> Union[bool, None]:
         bool: Returns True if the symbol is active, else False
 
     """
-    all_crypto_symbols = Bitfinex().get_symbols()
-    return any(
-        crypto_ticker in all_tickers for all_tickers in all_crypto_symbols
-    )
+    return crypto_ticker in Bitfinex().get_symbols()
 
 
 def get_data(
@@ -221,7 +218,8 @@ def print_exit_error_message(time_start: float, time_stop: float) -> None:
     """Prints error message if data could not be downloaded."""
     time_start = pd.to_datetime(time_start, unit='ms')
     time_stop = pd.to_datetime(time_stop, unit='ms')
-    error_message: str = f"""\nData could not be downloaded\n
+    error_message: str = f"""\n
+        Data could not be downloaded
         The data period is {time_start} until {time_stop}
         Confirm that the time period is correct and the exchange is online"""
 
