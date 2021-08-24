@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "crypto-candlesticks"
-version = "0.1.6"
+version = "0.1.7"
 description = "Download candlestick data fast & easy for analysis"
 authors = ["Pedro Torres <corfucinas@protonmail.com>"]
-license = "MIT"
+license = "GNU GPLv3"
 readme = "README.md"
 homepage = "https://crypto-candlesticks.readthedocs.io/en/latest/"
 repository = "https://github.com/Corfucinas/crypto-candlesticks"
