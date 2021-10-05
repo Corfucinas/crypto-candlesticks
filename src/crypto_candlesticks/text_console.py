@@ -37,16 +37,8 @@ def setup_table() -> Table:
         'INTERVAL',
         'TIME',
     ]
-    list(
-        map(
-            lambda table_columns: table.add_column(
-                table_columns,
-                justify='center',
-                no_wrap=True,
-            ),
-            table_columns,
-        ),
-    )
+    for column in table_columns:
+        table.add_column(column, justify='center', no_wrap=True)
 
     return table
 

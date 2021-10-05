@@ -19,22 +19,16 @@ class SqlDatabase(object):
         '_cursor',
         '_pragmas',
         '_schema',
-        '_table',
     )
 
     def __init__(self: Sql, databasefile: str) -> None:
         """Database init."""
         self._conn = sqlite3.connect(databasefile)
         self._cursor = self._conn.cursor()
-        self._pragmas = list(
-            map(
-                lambda pragma: self._cursor.execute(pragma),
-                [
-                    "PRAGMA encoding='UTF-8';",
-                    'PRAGMA synchronous=0;',
-                    'PRAGMA journal_mode=WAL;',
-                ],
-            ),
+        self._pragmas = (
+            "PRAGMA encoding='UTF-8';",
+            'PRAGMA synchronous=0;',
+            'PRAGMA journal_mode=WAL;',
         )
         self._schema = """CREATE TABLE IF NOT EXISTS "Candlestick"(
                 ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -47,7 +41,9 @@ class SqlDatabase(object):
                 Ticker TEXT NOT NULL,
                 Interval TEXT NOT NULL
                 )"""
-        self._table = self._cursor.execute(self._schema)
+        for pragma in self._pragmas:
+            self._cursor.execute(pragma)
+        self._cursor.execute(self._schema)
 
     def __repr__(self: Sql) -> str:
         """Database repr."""
