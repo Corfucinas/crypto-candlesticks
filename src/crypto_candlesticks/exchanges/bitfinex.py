@@ -30,6 +30,7 @@ class Bitfinex(object):
     def get_candles(
         self: Api,
         ticker: str,
+        history_limit: int,
         time_interval: str,
         start_time: float,
         end_time: float,
@@ -38,6 +39,7 @@ class Bitfinex(object):
 
         Args:
             ticker (str): Cryptocurrency pair
+            history_limit (int): Number of candlesticks to download
             time_interval (str): Interval of the data
             start_time (float): Time in ms on which the data will start
             end_time (float): Time in ms on which the data will finish
@@ -47,7 +49,7 @@ class Bitfinex(object):
 
         """
         return requests.get(
-            f'{self._end_point_v2}/candles/trade:{time_interval}:t{ticker}/hist?limit={10000}&start={start_time}&end={end_time}&sort=-1',
+            f'{self._end_point_v2}/candles/trade:{time_interval}:t{ticker}/hist?limit={history_limit}&start={start_time}&end={end_time}&sort=-1',
         ).json()
 
     @retry(ConnectionError, jitter=(0.1, 1))

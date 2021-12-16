@@ -63,6 +63,7 @@ def get_candles(
             candlestick = exchange.get_candles(
                 ticker=ticker,
                 time_interval=interval,
+                history_limit=10000,
                 start_time=start_time,
                 end_time=period,
             )
