@@ -14,7 +14,7 @@ from crypto_candlesticks.database import SqlDatabase
 from crypto_candlesticks.exchanges.bitfinex import Bitfinex
 from crypto_candlesticks.text_console import setup_table, write_to_console
 
-_RATE_LIMIT = 1.0201
+_RATE_LIMIT = 5.0201
 _STEP_SIZE = 86400000
 
 
