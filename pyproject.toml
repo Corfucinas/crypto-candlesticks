@@ -1,43 +1,41 @@
 [tool.poetry]
-name = "crypto-candlesticks"
-version = "0.1.8"
-description = "Download candlestick data fast & easy for analysis"
 authors = ["Pedro Torres <corfucinas@protonmail.com>"]
-license = "GNU GPLv3"
-readme = "README.md"
+description = "Download candlestick data fast & easy for analysis"
 homepage = "https://crypto-candlesticks.readthedocs.io/en/latest/"
-repository = "https://github.com/Corfucinas/crypto-candlesticks"
 keywords = ["cryptocurrency", "candlesticks", "download", "data", "ohlc"]
+license = "GNU GPLv3"
+name = "crypto-candlesticks"
+readme = "README.md"
+repository = "https://github.com/Corfucinas/crypto-candlesticks"
+version = "0.1.9"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-pandas = "^1.0.5"
-requests = "^2.24.0"
 click = ">=7.1.2,<9.0.0"
-retry = "^0.9.2"
 importlib-metadata = ">=3.3,<5.0"
+pandas = "^1.0.5"
+python = "^3.7"
+requests = "^2.24.0"
+retry = "^0.9.2"
 rich = ">=9.6.2,<11.0.0"
 
 [tool.poetry.dev-dependencies]
-black = "^21.12b0"
-mypy = "^0.910"
-wemake-python-styleguide = "^0.15.3"
-pre-commit = "^2.16.0"
-nox = "^2021.10.1"
 Sphinx = "^4.3.1"
+black = "^21.12b0"
 codecov = "^2.1.11"
-xdoctest = "^0.15.10"
 darglint = "^1.8.1"
-safety = "^1.10.3"
-sphinx-autodoc-typehints = "^1.12.0"
+furo = "^2021.11.23"
+mypy = "^0.910"
+nox = "^2021.10.1"
+pre-commit = "^2.16.0"
 pytest = "^6.2.5"
 pytest-cov = "^3.0.0"
 pytest-mock = "^3.6.1"
-furo = "^2021.11.23"
+safety = "^1.10.3"
+sphinx-autodoc-typehints = "^1.12.0"
+wemake-python-styleguide = "^0.15.3"
+xdoctest = "^0.15.10"
 
 [tool.black]
-line-length = 79
-skip-string-normalization = true
 exclude = '''
 (
   /(
@@ -54,7 +52,8 @@ exclude = '''
   )/
 )
 '''
-
+line-length = 79
+skip-string-normalization = true
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -70,5 +69,5 @@ show_missing = true
 crypto-candlesticks = "crypto_candlesticks.interface:main"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]

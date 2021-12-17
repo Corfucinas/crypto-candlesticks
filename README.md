@@ -7,7 +7,7 @@
 [![PyPI](https://img.shields.io/pypi/v/crypto-candlesticks.svg)](https://pypi.org/project/crypto-candlesticks/)
 [![Downloads](https://pepy.tech/badge/crypto-candlesticks)](https://pepy.tech/project/crypto-candlesticks)
 
-![gif-animation](media/animation.gif)
+![gif-animation](https://raw.githubusercontent.com/Corfucinas/crypto-candlesticks/master/media/animation.gif)
 
 ---
 
