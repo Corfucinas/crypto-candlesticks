@@ -7,7 +7,7 @@ license = "GNU GPLv3"
 name = "crypto-candlesticks"
 readme = "README.md"
 repository = "https://github.com/Corfucinas/crypto-candlesticks"
-version = "0.1.9"
+version = "0.2.0"
 
 [tool.poetry.dependencies]
 click = ">=7.1.2,<9.0.0"
