@@ -19,7 +19,7 @@ retry = "^0.9.2"
 rich = ">=9.6.2,<11.0.0"
 
 [tool.poetry.dev-dependencies]
-Sphinx = "^4.3.1"
+Sphinx = "^4.3.2"
 black = "^21.12b0"
 codecov = "^2.1.11"
 darglint = "^1.8.1"
