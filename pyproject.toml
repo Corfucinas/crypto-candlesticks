@@ -22,6 +22,7 @@ rich = ">=9.6.2,<12.0.0"
 Sphinx = "^4.4.0"
 black = "^21.12b0"
 codecov = "^2.1.11"
+commitizen = "^2.20.4"
 darglint = "^1.8.1"
 furo = "^2022.1.2"
 mypy = "^0.931"
@@ -34,7 +35,6 @@ safety = "^1.10.3"
 sphinx-autodoc-typehints = "^1.15.3"
 wemake-python-styleguide = "^0.16.0"
 xdoctest = "^0.15.10"
-commitizen = "^2.20.4"
 
 [tool.black]
 exclude = '''
@@ -68,6 +68,11 @@ show_missing = true
 
 [tool.poetry.scripts]
 crypto-candlesticks = "crypto_candlesticks.interface:main"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version = "0.2.0"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
