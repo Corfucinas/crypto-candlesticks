@@ -6,7 +6,7 @@ from datetime import datetime
 
 import click
 
-from crypto_candlesticks.get_data import get_data
+from crypto_candlesticks.get_data import download_data
 from crypto_candlesticks.symbols.intervals import intervals
 from crypto_candlesticks.symbols.quote_currency import quote_currency
 
@@ -123,7 +123,7 @@ def main(
         else fix_time() - one_day
     )
 
-    get_data(
+    download_data(
         symbol.upper(),
         base_currency.upper(),
         time_start,

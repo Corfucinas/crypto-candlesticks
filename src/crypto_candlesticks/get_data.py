@@ -131,7 +131,7 @@ def validate_symbol(crypto_ticker: str) -> bool:
     return crypto_ticker in Bitfinex().get_symbols()
 
 
-def get_data(
+def download_data(
     symbol: str,
     base_currency: str,
     time_start: float,
