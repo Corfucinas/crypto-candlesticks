@@ -1,27 +1,48 @@
-categories:
-  - title: ':boom: Breaking Changes'
-    label: 'breaking'
-  - title: ':package: Build System'
-    label: 'build'
-  - title: ':construction_worker: Continuous Integration'
-    label: 'ci'
-  - title: ':books: Documentation'
-    label: 'documentation'
-  - title: ':rocket: Features'
-    label: 'enhancement'
-  - title: ':beetle: Fixes'
-    label: 'bug'
-  - title: ':racehorse: Performance'
-    label: 'performance'
-  - title: ':hammer: Refactoring'
-    label: 'refactoring'
-  - title: ':fire: Removals and Deprecations'
-    label: 'removal'
-  - title: ':lipstick: Style'
-    label: 'style'
-  - title: ':rotating_light: Testing'
-    label: 'testing'
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
 template: |
-  ## What's new
-
+  # What's Changed
   $CHANGES
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+
+categories:
+  - title: ":boom: Breaking Changes"
+    label: "breaking"
+  - title: ":package: Build System"
+    label: "build"
+  - title: ":construction_worker: Continuous Integration"
+    label: "ci"
+  - title: ":books: Documentation"
+    label: "documentation"
+  - title: ":rocket: Features"
+    label: "enhancement"
+  - title: ":beetle: Fixes"
+    label: "bug"
+  - title: ":racehorse: Performance"
+    label: "performance"
+  - title: ":hammer: Refactoring"
+    label: "refactoring"
+  - title: ":fire: Removals and Deprecations"
+    label: "removal"
+  - title: ":lipstick: Style"
+    label: "style"
+  - title: ":rotating_light: Testing"
+    label: "testing"
+  - title: "Dependency Updates"
+    label: "dependencies"
+
+version-resolver:
+  major:
+    labels:
+      - "breaking"
+  minor:
+    labels:
+      - "feature"
+  patch:
+    labels:
+      - "bug"
+      - "maintenance"
+      - "docs"
+      - "dependencies"
+      - "security"
+  default: patch
