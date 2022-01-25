@@ -28,7 +28,6 @@ repos:
       - id: check-case-conflict
       - id: check-docstring-first
       - id: check-toml
-      - id: fix-encoding-pragma
       - id: check-builtin-literals
       - id: check-byte-order-marker
       - id: check-executables-have-shebangs
