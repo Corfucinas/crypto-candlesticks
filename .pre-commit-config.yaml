@@ -1,31 +1,36 @@
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v2.20.4
     hooks:
-    -   id: check-yaml
-    -   id: check-ast
-    -   id: check-case-conflict
-    -   id: check-docstring-first
-    -   id: check-toml
-    -   id: fix-encoding-pragma
-    -   id: check-builtin-literals
-    -   id: check-byte-order-marker
-    -   id: check-executables-have-shebangs
-    -   id: debug-statements
-    -   id: detect-private-key
-    -   id: trailing-whitespace
-    -   id: double-quote-string-fixer
--   repo: https://github.com/pycqa/isort
+      - id: commitizen
+        stages: [commit-msg]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: check-yaml
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-toml
+      - id: fix-encoding-pragma
+      - id: check-builtin-literals
+      - id: check-byte-order-marker
+      - id: check-executables-have-shebangs
+      - id: debug-statements
+      - id: detect-private-key
+      - id: trailing-whitespace
+      - id: double-quote-string-fixer
+  - repo: https://github.com/pycqa/isort
     rev: 5.10.1
     hooks:
       - id: isort
--   repo: https://github.com/psf/black
+  - repo: https://github.com/psf/black
     rev: 21.12b0
     hooks:
       - id: black
         args: [-S]
--   repo: https://github.com/asottile/blacken-docs
+  - repo: https://github.com/asottile/blacken-docs
     rev: v1.12.0
     hooks:
-    -   id: blacken-docs
+      - id: blacken-docs
         additional_dependencies: [black]

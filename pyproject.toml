@@ -34,6 +34,7 @@ safety = "^1.10.3"
 sphinx-autodoc-typehints = "^1.15.3"
 wemake-python-styleguide = "^0.16.0"
 xdoctest = "^0.15.10"
+commitizen = "^2.20.4"
 
 [tool.black]
 exclude = '''
