@@ -47,7 +47,7 @@ def install_with_constraints(
         kwargs: Additional keyword arguments for Session.install.
 
     """
-    with tempfile.NamedTemporaryFile() as requirements:
+    with tempfile.NamedTemporaryFile(delete=False) as requirements:
         session.run(
             'poetry',
             'export',
@@ -190,7 +190,6 @@ def coverage(session: Session) -> None:
 def docs(session: Session) -> None:
     """Build the Sphinx documentation."""
     session.run('poetry', 'install', '--no-dev', external=True)
-    session.run('poetry', 'add', '--dev', 'furo', external=True)
     install_with_constraints(
         session,
         'sphinx -J auto',
