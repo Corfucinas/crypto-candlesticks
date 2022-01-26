@@ -29,5 +29,4 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install --upgrade pip
       - run: python -m pip install nox
-      - run: python -m pip install poetry
       - run: nox
