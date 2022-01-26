@@ -102,7 +102,7 @@ def lint(session: Session) -> None:
 @nox.session
 def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
-    with tempfile.NamedTemporaryFile() as requirements:
+    with tempfile.NamedTemporaryFile(delete=False) as requirements:
         session.run(
             'poetry',
             'export',
