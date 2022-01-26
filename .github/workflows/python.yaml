@@ -46,6 +46,4 @@ jobs:
         run: poetry install --no-interaction --no-root -vvv
 
       - name: Run nox
-        run: |
-          source $VENV
-          nox
+        run: nox
