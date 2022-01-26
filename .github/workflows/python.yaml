@@ -17,6 +17,9 @@ jobs:
           - "3.9"
           - "3.10"
     name: ${{ matrix.python-version }} ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
     runs-on: ${{ matrix.os }}
     env:
       PYTHONUNBUFFERED: 1
