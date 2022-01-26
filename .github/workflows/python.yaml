@@ -47,5 +47,5 @@ jobs:
 
       - name: Run nox
         run: |
-          poetry shell
+          source $VENV
           nox
