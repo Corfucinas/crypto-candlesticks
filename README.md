@@ -7,6 +7,7 @@
 [![Security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 ![PyPI - License](https://img.shields.io/pypi/l/crypto_candlesticks)
 [![PyPI](https://img.shields.io/pypi/v/crypto-candlesticks.svg)](https://pypi.org/project/crypto-candlesticks/)
+[![Python Version](https://img.shields.io/pypi/pyversions/crypto-candlesticks.svg)](https://pypi.org/project/crypto-candlesticks/)
 [![Downloads](https://pepy.tech/badge/crypto-candlesticks)](https://pepy.tech/project/crypto-candlesticks)
 
 ![gif-animation](https://raw.githubusercontent.com/Corfucinas/crypto-candlesticks/master/media/animation.gif)
