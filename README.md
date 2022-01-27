@@ -4,6 +4,8 @@
 ![Tests](https://github.com/Corfucinas/crypto-candlesticks/workflows/Tests/badge.svg)
 ![Codecov](https://github.com/Corfucinas/crypto-candlesticks/workflows/Codecov/badge.svg)
 [![Documentation Status](https://readthedocs.org/projects/crypto-candlesticks/badge/?version=latest)](https://crypto-candlesticks.readthedocs.io/en/latest/?badge=latest)
+[![Security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+![PyPI - License](https://img.shields.io/pypi/l/crypto_candlesticks)
 [![PyPI](https://img.shields.io/pypi/v/crypto-candlesticks.svg)](https://pypi.org/project/crypto-candlesticks/)
 [![Downloads](https://pepy.tech/badge/crypto-candlesticks)](https://pepy.tech/project/crypto-candlesticks)
 
