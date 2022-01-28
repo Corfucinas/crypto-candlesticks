@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 """Sqlite database class."""
 
+# built-in
 import sqlite3
-from typing import List, TypeVar, Union
+from typing import Annotated, Union
 
+# external
 import click
 
-Sql = TypeVar('Sql', bound='SqlDatabase')
 
-Candles = List[List[List[Union[int, float]]]]
+Interval = Annotated[str, 'Time intervals allowed by the exchange']
+Candles = list[list[list[Union[int, float]]]]
 
 
 class SqlDatabase(object):
@@ -21,8 +23,12 @@ class SqlDatabase(object):
         '_schema',
     )
 
-    def __init__(self: Sql, databasefile: str) -> None:
-        """Database init."""
+    def __init__(self, databasefile: str) -> None:
+        """Create the database object to which the data will be saved.
+
+        Args:
+            databasefile (str): [description]
+        """
         self._conn = sqlite3.connect(databasefile)
         self._cursor = self._conn.cursor()
         self._pragmas = (
@@ -45,22 +51,26 @@ class SqlDatabase(object):
             self._cursor.execute(pragma)
         self._cursor.execute(self._schema)
 
-    def __repr__(self: Sql) -> str:
-        """Database repr."""
-        return 'Sql database class'
+    def __repr__(self) -> str:
+        """Database repr dunder.
+
+        Returns:
+            str: Name of the database.
+        """
+        return 'Sql database'
 
     def insert_candlesticks(
-        self: Sql,
+        self,
         candlestick_info: Candles,
         ticker: str,
-        interval: str,
+        interval: Interval,
     ) -> None:
-        """Writes the candlestick data into a SQL table.
+        """Write the candlestick data into a SQL table.
 
         Args:
             candlestick_info (Candles): A list of containing OHLC.
             ticker (str): Ticker of the candle.
-            interval (str): Period downloaded.
+            interval (Interval): Period downloaded.
 
         Raises:
             sqlite3.Error: Exception that prevented to write the data.

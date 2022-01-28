@@ -3,14 +3,12 @@
 
 # built-in
 import tempfile
-from typing import List
 
 # external
 import nox
 from nox.sessions import Session
 
 
-package = 'crypto_candlesticks'
 nox.options.sessions = (
     'black',
     'lint',
@@ -32,7 +30,7 @@ locations = (
 def install_with_constraints(
     session: Session,
     *args: str,
-    **kwargs: List[str],
+    **kwargs: list[str],
 ) -> None:
     """Install packages constrained by Poetry's lock file.
 
@@ -199,7 +197,7 @@ def xdoctest(session: Session) -> None:
         'python',
         '-m',
         'xdoctest',
-        package,
+        'crypto_candlesticks',
         *args,
     )
 

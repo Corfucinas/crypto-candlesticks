@@ -1,40 +1,47 @@
 # -*- coding: utf-8 -*-
 """The Crypto candlesticks engine."""
 
-import pickle
+# built-in
+import pickle  # noqa: S40  # nosec
 import sys
 import time
-from typing import List, Union
+from typing import Annotated, Union
 
+# external
 import click
 import pandas as pd
 from rich.live import Live
 
+# project
 from crypto_candlesticks.database import SqlDatabase
 from crypto_candlesticks.exchanges.bitfinex import Bitfinex
 from crypto_candlesticks.text_console import setup_table, write_to_console
+
+
+Time = Annotated[float, 'Datetime in Unix time']
+Interval = Annotated[str, 'Time intervals allowed by the exchange']
 
 _RATE_LIMIT = 1.85
 _STEP_SIZE = 86400000
 
 
-Candles = List[List[List[Union[int, float]]]]
+Candles = list[list[list[Union[int, float]]]]
 
 
-def get_candles(
+def get_candles(  # noqa: WPS210
     ticker: str,
-    start_time: float,
-    end_time: float,
-    interval: str,
+    start_time: Time,
+    end_time: Time,
+    interval: Interval,
     step_size: int = _STEP_SIZE,
 ) -> Candles:
-    """Calls the exchange for the data and extends it into a list.
+    """Call the exchange for the data and extends it into a list.
 
     Args:
         ticker (str): Ticker to download the data.
-        start_time (float): Time in ms on which the data will start.
-        end_time (float): Time in ms on which the data will finish.
-        interval (str): Period downloaded.
+        start_time (Time): Time in ms on which the data will start.
+        end_time (Time): Time in ms on which the data will finish.
+        interval (Interval): Period downloaded.
         step_size (int): The size step for each call. Defaults to _STEP_SIZE.
 
     Returns:
@@ -44,7 +51,7 @@ def get_candles(
     candle_data: Candles = []
     if not validate_symbol(ticker.lower()):
         click.secho(
-            f"Data could not be downloaded ❌, check '{ticker}' is listed on Bitfinex",
+            f"Cannot download ❌, check '{ticker}' is listed on Bitfinex",
             fg='red',
         )
         sys.exit(1)
@@ -60,10 +67,11 @@ def get_candles(
     ) as live:
         while start_time <= end_time:
             period = start_time + step_size
+            max_candles_allowed = 10000
             candlestick = exchange.get_candles(
                 ticker=ticker,
                 time_interval=interval,
-                history_limit=10000,
+                history_limit=max_candles_allowed,
                 start_time=start_time,
                 end_time=period,
             )
@@ -119,7 +127,7 @@ def convert_data(
 
 
 def validate_symbol(crypto_ticker: str) -> bool:
-    """Returns True if the symbol is active on Bitfinex.
+    """Return True if the symbol is active on Bitfinex.
 
     Args:
         crypto_ticker (str): The symbol to validate
@@ -134,11 +142,19 @@ def validate_symbol(crypto_ticker: str) -> bool:
 def download_data(
     symbol: str,
     base_currency: str,
-    time_start: float,
-    time_stop: float,
-    interval: str,
+    time_start: Time,
+    time_stop: Time,
+    interval: Interval,
 ) -> None:
-    """Function for handling the OHLC response and conversion."""
+    """Handle the OHLC response and conversion.
+
+    Args:
+        symbol (str): [description]
+        base_currency (str): [description]
+        time_start (Time): [description]
+        time_stop (Time): [description]
+        interval (Interval): [description]
+    """
     ticker = symbol + base_currency
     candle_stick_data = get_candles(
         ticker=ticker,
@@ -170,7 +186,12 @@ def download_data(
 
 
 def write_data_to_excel(output: str, df: pd.DataFrame) -> None:
-    """Write data to excel file."""
+    """Write data to excel file.
+
+    Args:
+        output (str): [description]
+        df (pd.DataFrame): [description]
+    """
     click.secho(
         'Writing to Excel...',
         fg='yellow',
@@ -187,15 +208,27 @@ def write_data_to_excel(output: str, df: pd.DataFrame) -> None:
     )
 
 
-def write_data_to_sqlite(
+def write_data_to_sqlite(  # noqa: WPS211
     symbol: str,
     base_currency: str,
-    interval: str,
-    ticker: str,
+    interval: Interval,
+    ticker: Interval,
     candle_stick_data: Candles,
     output: str,
 ) -> pd.DataFrame:
-    """Write data to sqlite database."""
+    """Write data to sqlite database.
+
+    Args:
+        symbol (str): [description]
+        base_currency (str): [description]
+        interval (Interval): [description]
+        ticker (Interval): [description]
+        candle_stick_data (Candles): [description]
+        output (str): [description]
+
+    Returns:
+        pd.DataFrame: [description]
+    """
     with open(f'{output}.p', 'wb') as create_pickle_file:
         pickle.dump(
             candle_stick_data,
@@ -215,8 +248,13 @@ def write_data_to_sqlite(
     return df
 
 
-def print_exit_error_message(time_start: float, time_stop: float) -> None:
-    """Prints error message if data could not be downloaded."""
+def print_exit_error_message(time_start: Time, time_stop: Time) -> None:
+    """Print error message if data could not be downloaded.
+
+    Args:
+        time_start (Time): [description]
+        time_stop (Time): [description]
+    """
     time_start = pd.to_datetime(time_start, unit='ms')
     time_stop = pd.to_datetime(time_stop, unit='ms')
     error_message: str = f"""\n

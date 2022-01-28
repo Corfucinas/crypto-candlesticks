@@ -1,14 +1,21 @@
 # -*- coding: utf-8 -*-
 """Command-line interface for Crypto Candlesticks."""
 
+# built-in
 import time
 from datetime import datetime
+from typing import Annotated
 
+# external
 import click
 
+# project
 from crypto_candlesticks.get_data import download_data
-from crypto_candlesticks.symbols.intervals import intervals
-from crypto_candlesticks.symbols.quote_currency import quote_currency
+from crypto_candlesticks.symbols.quote_currencies import quote_currency_list
+from crypto_candlesticks.symbols.time_intervals import time_intervals_list
+
+
+Interval = Annotated[str, time_intervals_list]
 
 click.secho('Welcome, what data do you wish to download?', fg='green')
 
@@ -23,7 +30,11 @@ def time_clamp() -> int:
 
 
 def fix_time() -> float:
-    """Fix time to a specific period."""
+    """Ensure the end_data is not after than today's date.
+
+    Returns:
+        float: Todays date in milliseconds
+    """
     return (
         time.mktime(
             datetime(
@@ -34,12 +45,19 @@ def fix_time() -> float:
                 0,
             ).timetuple(),
         )
-        * 1000
+        * 1000  # noqa: W503
     )
 
 
 def make_time(date: datetime) -> float:
-    """Make time in milliseconds."""
+    """Make time in milliseconds.
+
+    Args:
+        date (datetime): [description]
+
+    Returns:
+        float: [description]
+    """
     return (
         time.mktime(
             datetime(
@@ -50,7 +68,7 @@ def make_time(date: datetime) -> float:
                 0,
             ).timetuple(),
         )
-        * 1000
+        * 1000  # noqa: W503
     )
 
 
@@ -65,14 +83,14 @@ def make_time(date: datetime) -> float:
 @click.option(
     '-b',
     '--base_currency',
-    type=click.Choice(quote_currency, case_sensitive=False),
+    type=click.Choice(quote_currency_list, case_sensitive=False),
     prompt='Base pair',
     help='Cryptocurrency base trading pair',
 )
 @click.option(
     '-i',
     '--interval',
-    type=click.Choice(intervals, case_sensitive=True),
+    type=click.Choice(time_intervals_list, case_sensitive=True),
     prompt='Interval to download the candlestick data',
     help='Interval that will be used to download the data.',
 )
@@ -90,10 +108,10 @@ def make_time(date: datetime) -> float:
     prompt='Date up to the data will be downloaded (ie. YYYY-MM-DD)',
     help='YYYY, MM, DD up to which the candlestick data will be downloaded.',
 )
-def main(
+def main(  # noqa: WPS216
     symbol: str,
     base_currency: str,
-    interval: str,
+    interval: Interval,
     start_date: datetime,
     end_date: datetime,
 ) -> None:
@@ -105,9 +123,9 @@ def main(
     Args:
         symbol (str): Cryptocurrency ticker.
         base_currency (str): Base pair.
-        interval (str): Beginning date.
-        start_date (datetime): Ending date.
-        end_date (datetime): Ticker Interval.
+        interval (Interval): Ticker Interval.
+        start_date (datetime): Beginning date.
+        end_date (datetime): Ending date.
     """
     one_day: int = 86400000
 

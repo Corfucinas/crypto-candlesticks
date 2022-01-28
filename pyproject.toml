@@ -1,29 +1,46 @@
 [tool.poetry]
-authors = ["Pedro Torres <corfucinas@protonmail.com>"]
+authors = ["Corfucinas <53630064+Corfucinas@users.noreply.github.com>"]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Financial and Insurance Industry",
+  "Intended Audience :: End Users/Desktop",
+  "Intended Audience :: Education",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Topic :: Utilities",
+  "Topic :: Terminals",
+  "Topic :: System :: Software Distribution",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
 description = "Download candlestick data fast & easy for analysis"
 homepage = "https://crypto-candlesticks.readthedocs.io/en/latest/"
 keywords = ["cryptocurrency", "candlesticks", "download", "data", "ohlc"]
-license = "GNU GPLv3"
+license = "GPL-3.0-or-later"
 name = "crypto-candlesticks"
 readme = "README.md"
 repository = "https://github.com/Corfucinas/crypto-candlesticks"
 version = "0.2.0"
 
+[tool.poetry.urls]
+"issues" = "https://github.com/Corfucinas/crypto-candlesticks/issues/new/choose"
+
+[tool.poetry.scripts]
+crypto-candlesticks = "crypto_candlesticks.interface:main"
+
 [tool.poetry.dependencies]
-click = ">=7.1.2,<9.0.0"
-importlib-metadata = ">=3.3,<5.0"
+Sphinx = "^4.4.0"
+click = "^8.0.3"
 pandas = "^1.0.5"
-python = "^3.7"
+python = "^3.9"
 requests = "^2.24.0"
 retry = "^0.9.2"
-rich = ">=9.6.2,<12.0.0"
+rich = "^11.0.0"
 
 [tool.poetry.dev-dependencies]
-Sphinx = "^4.4.0"
 black = "^21.12b0"
 codecov = "^2.1.11"
 commitizen = "^2.20.4"
-darglint = "^1.8.1"
+flakeheaven = "^0.11.1"
 furo = "^2022.1.2"
 mypy = "^0.931"
 nox = "^2022.1.7"
@@ -34,7 +51,14 @@ pytest-mock = "^3.6.1"
 safety = "^1.10.3"
 sphinx-autodoc-typehints = "^1.15.3"
 wemake-python-styleguide = "^0.16.0"
-xdoctest = "^0.15.10"
+
+[tool.flakeheaven]
+format = "grouped"
+max_line_length = 79
+show_source = true
+
+[tool.flakeheaven.plugins]
+"*" = ["+*", "-WPS226", "-WPS202", "-WPS305", "-WPS412", "-WPS421"]
 
 [tool.black]
 exclude = '''
@@ -56,18 +80,56 @@ exclude = '''
 line-length = 79
 skip-string-normalization = true
 
+[tool.mypy]
+allow_redefinition = false
+check_untyped_defs = true
+disallow_any_explicit = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+ignore_errors = false
+implicit_reexport = false
+local_partial_types = true
+no_implicit_optional = true
+no_implicit_reexport = true
+strict_equality = true
+strict_optional = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = ["requests.*", "retry.*", "pandas.*"]
+
+[tool.isort]
+combine_star = true
+force_grid_wrap = 0
+import_heading_firstparty = "project"
+import_heading_localfolder = "app"
+import_heading_stdlib = "built-in"
+import_heading_thirdparty = "external"
+include_trailing_comma = true
+line_length = 79
+lines_after_imports = 2
+profile = "black"
+
 [tool.coverage.paths]
-source = ["src", "*/site-packages"]
+source = ["./src", "*/site-packages"]
 
 [tool.coverage.run]
 branch = true
 source = ["crypto_candlesticks"]
 
 [tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+]
 show_missing = true
-
-[tool.poetry.scripts]
-crypto-candlesticks = "crypto_candlesticks.interface:main"
 
 [tool.commitizen]
 name = "cz_conventional_commits"

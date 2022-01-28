@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Time intervals in Bitfinex."""
-from typing import List
 
-intervals: List[str] = [
+
+time_intervals_list: list[str] = [
     '1m',
     '5m',
     '15m',
