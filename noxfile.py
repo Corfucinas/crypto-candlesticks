@@ -1,10 +1,14 @@
+# -*- coding: utf-8 -*-
 """All Nox sessions."""
 
+# built-in
 import tempfile
 from typing import List
 
+# external
 import nox
 from nox.sessions import Session
+
 
 package = 'crypto_candlesticks'
 nox.options.sessions = (
@@ -13,8 +17,6 @@ nox.options.sessions = (
     'safety',
     'mypy',
     'tests',
-    'xdoctest',
-    'coverage',
     'docs',
 )
 
@@ -66,7 +68,11 @@ def install_with_constraints(
 
 @nox.session
 def black(session: Session) -> None:
-    """Run black code formatter."""
+    """Run black code formatter.
+
+    Args:
+        session (Session): Session passed by Nox
+    """
     args = session.posargs or locations
     install_with_constraints(
         session,
@@ -80,7 +86,11 @@ def black(session: Session) -> None:
 
 @nox.session
 def lint(session: Session) -> None:
-    """Lint using flake8."""
+    """Lint using flake8.
+
+    Args:
+        session (Session): Session passed by Nox
+    """
     args = session.posargs or locations
     install_with_constraints(
         session,
@@ -101,7 +111,11 @@ def lint(session: Session) -> None:
 
 @nox.session
 def safety(session: Session) -> None:
-    """Scan dependencies for insecure packages."""
+    """Scan dependencies for insecure packages.
+
+    Args:
+        session (Session): Session passed by Nox
+    """
     with tempfile.NamedTemporaryFile(delete=False) as requirements:
         session.run(
             'poetry',
@@ -126,7 +140,11 @@ def safety(session: Session) -> None:
 
 @nox.session
 def mypy(session: Session) -> None:
-    """Type-check using mypy."""
+    """Type-check using mypy.
+
+    Args:
+        session (Session): Session passed by Nox
+    """
     args = session.posargs or locations
     install_with_constraints(
         session,
@@ -140,7 +158,11 @@ def mypy(session: Session) -> None:
 
 @nox.session
 def tests(session: Session) -> None:
-    """Run the test suite."""
+    """Run the test suite.
+
+    Args:
+        session (Session): Session passed by Nox
+    """
     args = session.posargs or [
         '--cov',
     ]
@@ -162,7 +184,11 @@ def tests(session: Session) -> None:
 
 @nox.session
 def xdoctest(session: Session) -> None:
-    """Run examples with xdoctest."""
+    """Run examples with xdoctest.
+
+    Args:
+        session (Session): Session passed by Nox
+    """
     args = session.posargs or ['all']
     session.run('poetry', 'install', '--no-dev', external=True)
     install_with_constraints(
@@ -180,7 +206,11 @@ def xdoctest(session: Session) -> None:
 
 @nox.session
 def coverage(session: Session) -> None:
-    """Upload the coverage data."""
+    """Upload the coverage data.
+
+    Args:
+        session (Session):  Session passed by Nox
+    """
     session.run('poetry', 'install', external=True)
     session.run('coverage', 'xml', '--fail-under=0')
     session.run('codecov', *session.posargs)
@@ -188,7 +218,11 @@ def coverage(session: Session) -> None:
 
 @nox.session
 def docs(session: Session) -> None:
-    """Build the Sphinx documentation."""
+    """Build the Sphinx documentation.
+
+    Args:
+        session (Session): Session passed by Nox
+    """
     session.run('poetry', 'install', '--no-dev', external=True)
     install_with_constraints(
         session,
