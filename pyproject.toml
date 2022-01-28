@@ -58,7 +58,7 @@ max_line_length = 79
 show_source = true
 
 [tool.flakeheaven.plugins]
-"*" = ["+*", "-WPS226", "-WPS202", "-WPS305", "-WPS412", "-WPS421"]
+"*" = ["+*", "-WPS226", "-WPS202", "-WPS305", "-WPS412", "-WPS421", "-ANN101"]
 
 [tool.black]
 exclude = '''
