@@ -94,17 +94,12 @@ def lint(session: Session) -> None:
     args = session.posargs or locations
     install_with_constraints(
         session,
-        'flake8',
-        'flake8-annotations',
-        'flake8-bandit',
-        'flake8-black',
-        'flake8-bugbear',
-        'flake8-docstrings',
-        'flake8-import-order',
-        'darglint',
+        'flakeheaven',
+        'wemake-python-styleguide',
     )
     session.run(
-        'flake8',
+        'flakeheaven',
+        'lint',
         *args,
     )
 
