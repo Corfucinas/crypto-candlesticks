@@ -53,10 +53,10 @@ def make_time(date: datetime) -> float:
     """Make time in milliseconds.
 
     Args:
-        date (datetime): [description]
+        date (datetime): Datetime object to convert to milliseconds
 
     Returns:
-        float: [description]
+        float: Datetime be converted to milliseconds
     """
     return (
         time.mktime(

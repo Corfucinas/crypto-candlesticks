@@ -27,7 +27,7 @@ class SqlDatabase(object):
         """Create the database object to which the data will be saved.
 
         Args:
-            databasefile (str): [description]
+            databasefile (str): Filename for the database.
         """
         self._conn = sqlite3.connect(databasefile)
         self._cursor = self._conn.cursor()

@@ -149,11 +149,11 @@ def download_data(
     """Handle the OHLC response and conversion.
 
     Args:
-        symbol (str): [description]
-        base_currency (str): [description]
-        time_start (Time): [description]
-        time_stop (Time): [description]
-        interval (Interval): [description]
+        symbol (str): Quote currency to download.
+        base_currency (str): Base currency to download.
+        time_start (Time): Datetime in Unix time.
+        time_stop (Time): Datetime in Unix time.
+        interval (Interval): Time intervals allowed by the exchange.
     """
     ticker = symbol + base_currency
     candle_stick_data = get_candles(
@@ -173,31 +173,31 @@ def download_data(
         'Processing data...',
         fg='yellow',
     )
-    output = f'{ticker}-{interval}'
+    crypto_currency_pair = f'{ticker}-{interval}'
     df = write_data_to_sqlite(
         symbol,
         base_currency,
         interval,
         ticker,
         candle_stick_data,
-        output,
+        crypto_currency_pair,
     )
-    write_data_to_excel(output, df)
+    write_data_to_excel(crypto_currency_pair, df)
 
 
-def write_data_to_excel(output: str, df: pd.DataFrame) -> None:
+def write_data_to_excel(crypto_currency_pair: str, df: pd.DataFrame) -> None:
     """Write data to excel file.
 
     Args:
-        output (str): [description]
-        df (pd.DataFrame): [description]
+        crypto_currency_pair (str): Ticker pair downloaded.
+        df (pd.DataFrame): Dataframe containing the OHLC data.
     """
     click.secho(
         'Writing to Excel...',
         fg='yellow',
     )
     df.to_csv(
-        path_or_buf=output + str(f'{time.time()}.csv'),
+        path_or_buf=crypto_currency_pair + str(f'{time.time()}.csv'),
         sep=',',
         header=True,
         index=False,
@@ -219,15 +219,15 @@ def write_data_to_sqlite(  # noqa: WPS211
     """Write data to sqlite database.
 
     Args:
-        symbol (str): [description]
-        base_currency (str): [description]
-        interval (Interval): [description]
-        ticker (Interval): [description]
-        candle_stick_data (Candles): [description]
-        output (str): [description]
+        symbol (str): Symbol that is downloaded
+        base_currency (str): Base pair that is traded
+        interval (Interval): Time interval of the candles
+        ticker (Interval): Cryptocurrency pair
+        candle_stick_data (Candles): Candlestick OHLC data
+        output (str): Cryptocurrency pair string
 
     Returns:
-        pd.DataFrame: [description]
+        pd.DataFrame: Pandas dataframe
     """
     with open(f'{output}.p', 'wb') as create_pickle_file:
         pickle.dump(
@@ -252,8 +252,8 @@ def print_exit_error_message(time_start: Time, time_stop: Time) -> None:
     """Print error message if data could not be downloaded.
 
     Args:
-        time_start (Time): [description]
-        time_stop (Time): [description]
+        time_start (Time): Datetime in Unix time.
+        time_stop (Time): Datetime in Unix time.
     """
     time_start = pd.to_datetime(time_start, unit='ms')
     time_stop = pd.to_datetime(time_stop, unit='ms')
