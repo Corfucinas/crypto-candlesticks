@@ -147,6 +147,7 @@ def mypy(session: Session) -> None:
     )
     session.run(
         'mypy',
+        '--ignore-missing-imports',
         *args,
     )
 
