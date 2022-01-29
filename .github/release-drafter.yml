@@ -28,7 +28,7 @@ categories:
     label: "breaking"
   - title: ":fire: Removals and Deprecations"
     label: "removal"
-  - title: ":robot_face: Dependency Updates"
+  - title: ":robot: Dependency Updates"
     label: "dependencies"
 
 version-resolver:
