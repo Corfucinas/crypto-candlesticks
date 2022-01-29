@@ -21,8 +21,12 @@ class SqlDatabase(object):
         '_schema',
     )
 
-    def __init__(self: Sql, databasefile: str) -> None:
-        """Database init."""
+    def __init__(self, databasefile: str) -> None:
+        """Create the database object to which the data will be saved.
+
+        Args:
+            databasefile (str): Filename for the database.
+        """
         self._conn = sqlite3.connect(databasefile)
         self._cursor = self._conn.cursor()
         self._pragmas = (

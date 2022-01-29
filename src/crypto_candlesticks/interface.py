@@ -39,7 +39,14 @@ def fix_time() -> float:
 
 
 def make_time(date: datetime) -> float:
-    """Make time in milliseconds."""
+    """Make time in milliseconds.
+
+    Args:
+        date (datetime): Datetime object to convert to milliseconds
+
+    Returns:
+        float: Datetime be converted to milliseconds
+    """
     return (
         time.mktime(
             datetime(
