@@ -7,7 +7,7 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   crypto_candlesticks.bitfinex
+   crypto_candlesticks.exchanges
    crypto_candlesticks.symbols
 
 Submodules
@@ -29,10 +29,10 @@ crypto\_candlesticks.get\_data module
    :undoc-members:
    :show-inheritance:
 
-crypto\_candlesticks.interface module
--------------------------------------
+crypto\_candlesticks.main module
+--------------------------------
 
-.. automodule:: crypto_candlesticks.interface
+.. automodule:: crypto_candlesticks.main
    :members:
    :undoc-members:
    :show-inheritance:

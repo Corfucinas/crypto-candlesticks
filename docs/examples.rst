@@ -1,7 +1,10 @@
 Data output
 ===========
 
-.. csv-table:: **BTC/USD - 1 minute** ✅
+Excel
+~~~~~
+
+.. csv-table:: **BTC/USD - 1 minute**
    :header: "Open", "Close", "High", "Low", "Volume", "Ticker", "YMD", "Time"
    :widths: 20, 20, 20, 20, 20, 20, 20, 10
 
@@ -16,9 +19,10 @@ Data output
    7225.521797,	7221.112632,	7225.521797,	7221.112632,	0.73935526,	BTC/USD,	12/31/2019,	16:08:00
    7221.112632,	7223,	7223,	7221.112632,	0.12223545,	BTC/USD,	12/31/2019,	16:09:00
 
-|
+SQL
+~~~
 
-.. csv-table:: **BTC/USD - 1 minute in SQL (the timestamp is shown in milliseconds)** ✅
+.. csv-table:: **BTC/USD - 1 minute in SQL (the timestamp is shown in milliseconds)**
    :header: "ID", "Timestamp", "Open", "Close", "High", "Low", "Volume", "Ticker", "Interval"
    :widths: 20, 20, 20, 20, 20, 20, 20, 10, 10
 

@@ -9,22 +9,10 @@ import nox
 from nox.sessions import Session
 
 
-nox.options.sessions = (
-    'black',
-    'lint',
-    'safety',
-    'mypy',
-    'tests',
-    'docs',
-)
+nox.options.sessions = ('black', 'lint', 'safety', 'mypy', 'tests', 'docs')
 
 
-locations = (
-    './src',
-    './tests',
-    './noxfile.py',
-    './docs/conf.py',
-)
+locations = ('./src', './tests', './noxfile.py', './docs/conf.py')
 
 
 def install_with_constraints(
@@ -57,14 +45,10 @@ def install_with_constraints(
             f'--output={requirements.name}',
             external=True,
         )
-        session.install(
-            f'--constraint={requirements.name}',
-            *args,
-            **kwargs,
-        )
+        session.install(f'--constraint={requirements.name}', *args, **kwargs)
 
 
-@nox.session
+@nox.session(reuse_venv=True)
 def black(session: Session) -> None:
     """Run black code formatter.
 
@@ -72,17 +56,11 @@ def black(session: Session) -> None:
         session (Session): Session passed by Nox
     """
     args = session.posargs or locations
-    install_with_constraints(
-        session,
-        'black',
-    )
-    session.run(
-        'black',
-        *args,
-    )
+    install_with_constraints(session, 'black')
+    session.run('black', *args)
 
 
-@nox.session
+@nox.session(reuse_venv=True)
 def lint(session: Session) -> None:
     """Lint using flake8.
 
@@ -93,16 +71,14 @@ def lint(session: Session) -> None:
     install_with_constraints(
         session,
         'flakeheaven',
+        'pre-commit',
         'wemake-python-styleguide',
     )
-    session.run(
-        'flakeheaven',
-        'lint',
-        *args,
-    )
+    session.run('pre-commit', 'run', '--all-files', '--show-diff-on-failure')
+    session.run('flakeheaven', 'lint', *args)
 
 
-@nox.session
+@nox.session(reuse_venv=True)
 def safety(session: Session) -> None:
     """Scan dependencies for insecure packages.
 
@@ -119,10 +95,7 @@ def safety(session: Session) -> None:
             f'--output={requirements.name}',
             external=True,
         )
-        install_with_constraints(
-            session,
-            'safety',
-        )
+        install_with_constraints(session, 'safety')
         session.run(
             'safety',
             'check',
@@ -131,7 +104,7 @@ def safety(session: Session) -> None:
         )
 
 
-@nox.session
+@nox.session(reuse_venv=True)
 def mypy(session: Session) -> None:
     """Type-check using mypy.
 
@@ -139,27 +112,18 @@ def mypy(session: Session) -> None:
         session (Session): Session passed by Nox
     """
     args = session.posargs or locations
-    install_with_constraints(
-        session,
-        'mypy',
-    )
-    session.run(
-        'mypy',
-        '--ignore-missing-imports',
-        *args,
-    )
+    install_with_constraints(session, 'mypy')
+    session.run('mypy', '--ignore-missing-imports', *args)
 
 
-@nox.session
+@nox.session(reuse_venv=True)
 def tests(session: Session) -> None:
     """Run the test suite.
 
     Args:
         session (Session): Session passed by Nox
     """
-    args = session.posargs or [
-        '--cov',
-    ]
+    args = session.posargs or ['--cov']
     session.run('poetry', 'install', '--no-dev', external=True)
     install_with_constraints(
         session,
@@ -168,15 +132,10 @@ def tests(session: Session) -> None:
         'pytest-cov',
         'pytest-mock',
     )
-    session.run(
-        'pytest',
-        '-s',
-        '--durations=0',
-        *args,
-    )
+    session.run('pytest', '-s', '--durations=0', *args)
 
 
-@nox.session
+@nox.session(reuse_venv=True)
 def xdoctest(session: Session) -> None:
     """Run examples with xdoctest.
 
@@ -185,20 +144,11 @@ def xdoctest(session: Session) -> None:
     """
     args = session.posargs or ['all']
     session.run('poetry', 'install', '--no-dev', external=True)
-    install_with_constraints(
-        session,
-        'xdoctest',
-    )
-    session.run(
-        'python',
-        '-m',
-        'xdoctest',
-        'crypto_candlesticks',
-        *args,
-    )
+    install_with_constraints(session, 'xdoctest')
+    session.run('xdoctest', 'crypto_candlesticks', *args)
 
 
-@nox.session
+@nox.session(reuse_venv=True)
 def coverage(session: Session) -> None:
     """Upload the coverage data.
 
@@ -210,7 +160,7 @@ def coverage(session: Session) -> None:
     session.run('codecov', *session.posargs)
 
 
-@nox.session
+@nox.session(reuse_venv=True)
 def docs(session: Session) -> None:
     """Build the Sphinx documentation.
 
@@ -220,11 +170,18 @@ def docs(session: Session) -> None:
     session.run('poetry', 'install', '--no-dev', external=True)
     install_with_constraints(
         session,
-        'sphinx -J auto',
-        'sphinx-autodoc-typehints',
+        'toml',
+        'sphinx',
+        'furo',
+        'sphinx-copybutton',
+        'sphinxext-opengraph',
     )
     session.run(
-        'sphinx-build',
-        'docs',
-        'docs/_build/html',
+        'sphinx-apidoc',
+        '-f',
+        '-o',
+        './docs/',
+        './src/crypto_candlesticks/',
     )
+    session.run('sphinx-autogen', '-a', '-o', './docs/', './docs/index.rst')
+    session.run('sphinx-build', '-v', './docs', './docs/_build/html')
