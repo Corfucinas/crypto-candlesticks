@@ -36,7 +36,7 @@ def install_with_constraints(
         kwargs: Additional keyword arguments for Session.install.
 
     """
-    with tempfile.NamedTemporaryFile() as requirements:
+    with tempfile.NamedTemporaryFile(delete=False) as requirements:
         session.run(
             'poetry',
             'export',

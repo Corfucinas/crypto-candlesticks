@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """Package-wide test fixtures."""
+# built-in
 from unittest.mock import Mock
 
+# external
 import pytest
 from _pytest.config import Config
 from pytest_mock import MockerFixture

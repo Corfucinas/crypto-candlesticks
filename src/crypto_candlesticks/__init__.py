@@ -1,17 +1,24 @@
 # -*- coding: utf-8 -*-
-"""The Crypto candlesticks project."""
-try:
-    from importlib.metadata import PackageNotFoundError, version
-except ImportError:  # pragma: no cover
-    from importlib_metadata import (  # type: ignore
-        PackageNotFoundError,
-        version,
-    )
+"""Command-line program to download cryptocurrencies OHLCV.
+
+Released under the GPL-3.0-or-later license
+"""
+
+
+# built-in
+from importlib.metadata import PackageNotFoundError, version
 
 
 try:
-    __version__ = version(__name__)
-except PackageNotFoundError:  # pragma: no cover
+    __version__ = version(__name__)  # noqa: F401
+except PackageNotFoundError:
     __version__ = 'unknown'
 
-from crypto_candlesticks import exchanges, symbols
+__author__ = 'Pedro Torres <corfucinas@protonmail.com>'  # noqa: WPS410
+
+
+# project
+from crypto_candlesticks import exchanges, symbols  # noqa: F401
+
+
+__all__ = ['symbols', 'exchanges']  # noqa: WPS410

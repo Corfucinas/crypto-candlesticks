@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """Test interface for crypto candlesticks."""
+# built-in
 from time import perf_counter, sleep
 from unittest.mock import Mock
 
+# external
 import pytest
 from click.testing import CliRunner
 
-from crypto_candlesticks import interface
+# project
+from crypto_candlesticks import main
 
 
 @pytest.fixture
@@ -21,7 +24,7 @@ def test_main_succeeds_1m(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -50,7 +53,7 @@ def test_main_succeeds_5m(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -79,7 +82,7 @@ def test_main_succeeds_15m(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -108,7 +111,7 @@ def test_main_succeeds_30m(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -137,7 +140,7 @@ def test_main_succeeds_1h(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -166,7 +169,7 @@ def test_main_succeeds_3h(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -195,7 +198,7 @@ def test_main_succeeds_6h(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -224,7 +227,7 @@ def test_main_succeeds_12h(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -253,7 +256,7 @@ def test_main_succeeds_1D(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -282,7 +285,7 @@ def test_main_succeeds_7D(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -311,7 +314,7 @@ def test_main_succeeds_14D(runner: CliRunner) -> None:
     sleep(10)
     start = perf_counter()
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',
@@ -337,7 +340,7 @@ def test_main_succeeds_14D(runner: CliRunner) -> None:
 def test_main_fails(runner: CliRunner) -> None:
     """Exits with a status code of two."""
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'CTT',
@@ -358,7 +361,7 @@ def test_main_fails(runner: CliRunner) -> None:
 def test_main_fails_in_production_env(runner: CliRunner) -> None:
     """Exits with a status code of two (end-to-end)."""
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'CTT',
@@ -382,7 +385,7 @@ def test_main_fails_on_request_error(
     """It exits with a non-zero status code if the request fails."""
     mock_requests_get.side_effect = Exception('Boom')
     test_result = runner.invoke(
-        interface.main,
+        main.main,
         args=[
             '-s',
             'btc',

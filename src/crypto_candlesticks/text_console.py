@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """Display data in the CLI using Rich."""
+# built-in
 from typing import List, Union
 
+# external
 import pandas as pd
 from rich import box
 from rich.live import Live
 from rich.table import Table
+
 
 Candles = List[List[List[Union[int, float]]]]
 

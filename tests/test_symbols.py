@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """Test quote currency is listed."""
+# external
 import requests
 
-from crypto_candlesticks.symbols.quote_currency import quote_currency
+# project
+from crypto_candlesticks.symbols.quote_currencies import quote_currencies_list
 
 
 def test_quote_currency() -> None:
@@ -14,11 +16,11 @@ def test_quote_currency() -> None:
     except AssertionError:
         print('Endpoint is offline')
         raise
-    for symbol in quote_currency:
+    for symbol in quote_currencies_list:
         try:
             assert symbol.lower() in symbols.text
         except AssertionError as error:
             print(f'Symbol is: {symbol}')
-            print(f'Quote currency is: {quote_currency}')
+            print(f'Quote currency is: {quote_currencies_list}')
             print(f'test failed: {error}')
             raise
