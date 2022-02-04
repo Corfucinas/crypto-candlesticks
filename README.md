@@ -23,7 +23,7 @@ The command-line interface is built using [Click](https://click.palletsprojects.
 Once the data is downloaded, it will be converted and stored in a `.csv, .sqlite3 and .pickle` file for convenient analysis.
 The data will include the `Open, High, Low, Close` of the candles and the `volume` during the `interval` and its `timestamp`.
 
-See [documentation](https://crypto-candlesticks.readthedocs.io/) and [Github repository](https://github.com/Corfucinas/crypto-candlesticks/).
+See [documentation](https://crypto-candlesticks.readthedocs.io/, "project-documentation") and [Github repository](https://github.com/Corfucinas/crypto-candlesticks/, "project-repository") for more information.
 
 ## Installation
 
@@ -40,7 +40,7 @@ Or if you are using [Poetry](https://python-poetry.org/)
     poetry add crypto-candlesticks
 ```
 
-### Usage
+## Usage
 
 crypto-candlesticks can be used the following way:
 
@@ -63,6 +63,8 @@ Or you can pass the arguments yourself and skip the prompt:
 
 ```text
    crypto-candlesticks [OPTIONS]
+
+   Available options:
 
    -s <symbol>, --symbol <symbol>
 
@@ -98,7 +100,7 @@ Or you can pass the arguments yourself and skip the prompt:
    Display a short usage message and exit.
 ```
 
-#### Example output for CSV ✅
+## Example output for CSV
 
 | Open     | Close     | High   | Low       | Volume    | Ticker  | Date       | Time     |
 | -------- | --------- | ------ | --------- | --------- | ------- | ---------- | -------- |
@@ -109,7 +111,7 @@ Or you can pass the arguments yourself and skip the prompt:
 | 7225.862 | 7225.7295 | 7225.9 | 7225.7295 | 0.2913202 | BTC/USD | 12/31/2019 | 16:04:00 |
 | 7225.7   | 7225.8673 | 7225.9 | 7225.2973 | 1.0319704 | BTC/USD | 12/31/2019 | 16:05:00 |
 
-#### Example output for SQL (the timestamp is shown in milliseconds) ✅
+## Example output for SQL (the timestamp is shown in milliseconds)
 
 | ID  | Timestamp       | Open          | Close         | High          | Low           | Volume     | Ticker | Interval |
 | --- | --------------- | ------------- | ------------- | ------------- | ------------- | ---------- | ------ | -------- |
@@ -120,10 +122,14 @@ Or you can pass the arguments yourself and skip the prompt:
 | 5   | 1577867760000.0 | 7205.75299748 | 7205.2        | 7206.3        | 7205.2        | 0.005      | BTCUSD | 1m       |
 | 6   | 1577867700000.0 | 7205.2        | 7205.2        | 7205.2        | 7205.2        | 4.5802     | BTCUSD | 1m       |
 
-##### Contributing
+## Contributing
 
-Feel free to open an [issue](https://github.com/Corfucinas/crypto-candlesticks/issues/new) or [pull request](https://github.com/Corfucinas/crypto-candlesticks/pulls).
+Feel free to open an [issue](https://github.com/Corfucinas/crypto-candlesticks/issues/new, "new-issue") or [pull request](https://github.com/Corfucinas/crypto-candlesticks/pulls, "new-pull-request") on Github.
 
-##### Buy me a coffee
+## License
+
+[GPL-3.0-or-later](https://www.gnu.org/licenses/gpl-3.0.txt, "license")
+
+## Buy me a coffee
 
 ETH: 0x06Acb31587a96808158BdEd07e53668d8ce94cFE
