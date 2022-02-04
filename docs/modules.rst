@@ -1,4 +1,4 @@
-Crypto-candlesticks
+crypto_candlesticks
 ===================
 
 .. toctree::
