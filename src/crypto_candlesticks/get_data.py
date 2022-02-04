@@ -5,7 +5,7 @@
 import pickle  # noqa: S40  # nosec
 import sys
 import time
-from typing import Annotated, Union
+from typing import Union
 
 # external
 import click
@@ -18,9 +18,6 @@ from crypto_candlesticks.exchanges.bitfinex import Bitfinex
 from crypto_candlesticks.text_console import setup_table, write_to_console
 
 
-Time = Annotated[float, 'Datetime in Unix time']
-Interval = Annotated[str, 'Time intervals allowed by the exchange']
-
 _RATE_LIMIT = 1.85
 _STEP_SIZE = 86400000
 
@@ -30,18 +27,18 @@ Candles = list[list[list[Union[int, float]]]]
 
 def get_candles(  # noqa: WPS210
     ticker: str,
-    start_time: Time,
-    end_time: Time,
-    interval: Interval,
+    start_time: float,
+    end_time: float,
+    interval: str,
     step_size: int = _STEP_SIZE,
 ) -> Candles:
     """Call the exchange for the data and extends it into a list.
 
     Args:
         ticker (str): Ticker to download the data.
-        start_time (Time): Time in ms on which the data will start.
-        end_time (Time): Time in ms on which the data will finish.
-        interval (Interval): Period downloaded.
+        start_time (float): Time in ms on which the data will start.
+        end_time (float): Time in ms on which the data will finish.
+        interval (str): Period downloaded.
         step_size (int): The size step for each call. Defaults to _STEP_SIZE.
 
     Returns:
@@ -61,10 +58,7 @@ def get_candles(  # noqa: WPS210
         fg='yellow',
     )
     exchange = Bitfinex()
-    with Live(
-        vertical_overflow='ellipsis',
-        auto_refresh=False,
-    ) as live:
+    with Live(vertical_overflow='ellipsis', auto_refresh=False) as live:
         while start_time <= end_time:
             period = start_time + step_size
             max_candles_allowed = 10000
@@ -115,10 +109,7 @@ def convert_data(
     )
     df.drop_duplicates(inplace=True)
     df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
-    df.set_index(
-        'timestamp',
-        inplace=True,
-    )
+    df.set_index('timestamp', inplace=True)
     df.sort_index(inplace=True)
     df['ticker'] = f'{symbol}/{base_currency}'
     df['date'] = pd.to_datetime(df.index, format='%Y:%M:%D').date
@@ -142,18 +133,18 @@ def validate_symbol(crypto_ticker: str) -> bool:
 def download_data(
     symbol: str,
     base_currency: str,
-    time_start: Time,
-    time_stop: Time,
-    interval: Interval,
+    time_start: float,
+    time_stop: float,
+    interval: str,
 ) -> None:
     """Handle the OHLC response and conversion.
 
     Args:
         symbol (str): Quote currency to download.
         base_currency (str): Base currency to download.
-        time_start (Time): Datetime in Unix time.
-        time_stop (Time): Datetime in Unix time.
-        interval (Interval): Time intervals allowed by the exchange.
+        time_start (float): Datetime in Unix time.
+        time_stop (float): Datetime in Unix time.
+        interval (str): Time intervals allowed by the exchange.
     """
     ticker = symbol + base_currency
     candle_stick_data = get_candles(
@@ -165,14 +156,8 @@ def download_data(
     if not candle_stick_data:
         print_exit_error_message(time_start, time_stop)
 
-    click.secho(
-        'Data download completed! 🚀',
-        fg='green',
-    )
-    click.secho(
-        'Processing data...',
-        fg='yellow',
-    )
+    click.secho('Data download completed! 🚀', fg='green')
+    click.secho('Processing data...', fg='yellow')
     crypto_currency_pair = f'{ticker}-{interval}'
     df = write_data_to_sqlite(
         symbol,
@@ -192,27 +177,21 @@ def write_data_to_excel(crypto_currency_pair: str, df: pd.DataFrame) -> None:
         crypto_currency_pair (str): Ticker pair downloaded.
         df (pd.DataFrame): Dataframe containing the OHLC data.
     """
-    click.secho(
-        'Writing to Excel...',
-        fg='yellow',
-    )
+    click.secho('Writing to Excel...', fg='yellow')
     df.to_csv(
         path_or_buf=crypto_currency_pair + str(f'{time.time()}.csv'),
         sep=',',
         header=True,
         index=False,
     )
-    click.secho(
-        'Writing to Excel completed! 🚀🚀🚀',
-        fg='green',
-    )
+    click.secho('Writing to Excel completed! 🚀🚀🚀', fg='green')
 
 
 def write_data_to_sqlite(  # noqa: WPS211
     symbol: str,
     base_currency: str,
-    interval: Interval,
-    ticker: Interval,
+    interval: str,
+    ticker: str,
     candle_stick_data: Candles,
     output: str,
 ) -> pd.DataFrame:
@@ -221,8 +200,8 @@ def write_data_to_sqlite(  # noqa: WPS211
     Args:
         symbol (str): Symbol that is downloaded
         base_currency (str): Base pair that is traded
-        interval (Interval): Time interval of the candles
-        ticker (Interval): Cryptocurrency pair
+        interval (str): Time interval of the candles
+        ticker (str): Cryptocurrency pair
         candle_stick_data (Candles): Candlestick OHLC data
         output (str): Cryptocurrency pair string
 
@@ -230,30 +209,24 @@ def write_data_to_sqlite(  # noqa: WPS211
         pd.DataFrame: Pandas dataframe
     """
     with open(f'{output}.p', 'wb') as create_pickle_file:
-        pickle.dump(
-            candle_stick_data,
-            create_pickle_file,
-        )
+        pickle.dump(candle_stick_data, create_pickle_file)
     df = convert_data(symbol, base_currency, candle_stick_data)
     SqlDatabase(f'{output}.sqlite3').insert_candlesticks(
         candle_stick_data,
         ticker,
         interval,
     )
-    click.secho(
-        'Writing to database completed! 🚀🚀',
-        fg='green',
-    )
+    click.secho('Writing to database completed! 🚀🚀', fg='green')
 
     return df
 
 
-def print_exit_error_message(time_start: Time, time_stop: Time) -> None:
+def print_exit_error_message(time_start: float, time_stop: float) -> None:
     """Print error message if data could not be downloaded.
 
     Args:
-        time_start (Time): Datetime in Unix time.
-        time_stop (Time): Datetime in Unix time.
+        time_start (float): Datetime in Unix time.
+        time_stop (float): Datetime in Unix time.
     """
     time_start = pd.to_datetime(time_start, unit='ms')
     time_stop = pd.to_datetime(time_stop, unit='ms')

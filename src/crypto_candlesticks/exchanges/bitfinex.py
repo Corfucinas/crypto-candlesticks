@@ -17,10 +17,7 @@ Time = Annotated[float, 'Datetime in Unix time']
 class Bitfinex(object):
     """Main class for the Bitfinex exchange."""
 
-    __slots__ = (
-        '_end_point_v2',
-        '_end_point_v1',
-    )
+    __slots__ = ('_end_point_v2', '_end_point_v1')
 
     def __init__(self) -> None:
         """Bitfinex init."""

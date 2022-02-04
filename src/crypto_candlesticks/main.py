@@ -1,10 +1,26 @@
 # -*- coding: utf-8 -*-
+#     crypto-candlesticks
+#     Copyright (C) 2021 Pedro Torres
+
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+
+#     You should have received a copy of the GNU General Public License
+#     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+# -*- coding: utf-8 -*-
 """Command-line interface for Crypto Candlesticks."""
 
 # built-in
 import time
 from datetime import datetime
-from typing import Annotated
 
 # external
 import click
@@ -13,11 +29,6 @@ import click
 from crypto_candlesticks.get_data import download_data
 from crypto_candlesticks.symbols.quote_currencies import quote_currency_list
 from crypto_candlesticks.symbols.time_intervals import time_intervals_list
-
-
-Interval = Annotated[str, time_intervals_list]
-
-click.secho('Welcome, what data do you wish to download?', fg='green')
 
 
 def time_clamp() -> int:
@@ -60,16 +71,16 @@ def make_time(date: datetime) -> float:
     """
     return (
         time.mktime(
-            datetime(
-                date.year,
-                date.month,
-                date.day,
-                8,
-                0,
-            ).timetuple(),
+            datetime(date.year, date.month, date.day, 8, 0).timetuple(),
         )
         * 1000  # noqa: W503
     )
+
+
+def main() -> None:
+    """Print to console the welcome message."""
+    click.secho('Welcome, what data do you wish to download?\n', fg='green')
+    collect_arguments()
 
 
 @click.command()
@@ -108,10 +119,10 @@ def make_time(date: datetime) -> float:
     prompt='Date up to the data will be downloaded (ie. YYYY-MM-DD)',
     help='YYYY, MM, DD up to which the candlestick data will be downloaded.',
 )
-def main(  # noqa: WPS216
+def collect_arguments(  # noqa: WPS216
     symbol: str,
     base_currency: str,
-    interval: Interval,
+    interval: str,
     start_date: datetime,
     end_date: datetime,
 ) -> None:
@@ -123,7 +134,7 @@ def main(  # noqa: WPS216
     Args:
         symbol (str): Cryptocurrency ticker.
         base_currency (str): Base pair.
-        interval (Interval): Ticker Interval.
+        interval (str): Ticker Interval.
         start_date (datetime): Beginning date.
         end_date (datetime): Ending date.
     """

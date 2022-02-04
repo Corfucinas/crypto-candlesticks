@@ -3,25 +3,19 @@
 
 # built-in
 import sqlite3
-from typing import Annotated, Union
+from typing import Union
 
 # external
 import click
 
 
-Interval = Annotated[str, 'Time intervals allowed by the exchange']
 Candles = list[list[list[Union[int, float]]]]
 
 
 class SqlDatabase(object):
     """SqlDatabase main class for storing the candlestick data in SQL."""
 
-    __slots__ = (
-        '_conn',
-        '_cursor',
-        '_pragmas',
-        '_schema',
-    )
+    __slots__ = ('_conn', '_cursor', '_pragmas', '_schema')
 
     def __init__(self, databasefile: str) -> None:
         """Create the database object to which the data will be saved.
@@ -63,14 +57,14 @@ class SqlDatabase(object):
         self,
         candlestick_info: Candles,
         ticker: str,
-        interval: Interval,
+        interval: str,
     ) -> None:
         """Write the candlestick data into a SQL table.
 
         Args:
             candlestick_info (Candles): A list of containing OHLC.
             ticker (str): Ticker of the candle.
-            interval (Interval): Period downloaded.
+            interval (str): Period downloaded.
 
         Raises:
             sqlite3.Error: Exception that prevented to write the data.
