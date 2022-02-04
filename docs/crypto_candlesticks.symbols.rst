@@ -4,18 +4,18 @@ crypto\_candlesticks.symbols package
 Submodules
 ----------
 
-crypto\_candlesticks.symbols.intervals module
----------------------------------------------
+crypto\_candlesticks.symbols.quote\_currencies module
+-----------------------------------------------------
 
-.. automodule:: crypto_candlesticks.symbols.intervals
+.. automodule:: crypto_candlesticks.symbols.quote_currencies
    :members:
    :undoc-members:
    :show-inheritance:
 
-crypto\_candlesticks.symbols.quote\_currency module
+crypto\_candlesticks.symbols.time\_intervals module
 ---------------------------------------------------
 
-.. automodule:: crypto_candlesticks.symbols.quote_currency
+.. automodule:: crypto_candlesticks.symbols.time_intervals
    :members:
    :undoc-members:
    :show-inheritance:
