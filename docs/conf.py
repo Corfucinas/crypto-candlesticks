@@ -14,9 +14,6 @@
 # built-in
 from datetime import datetime
 
-# external
-import toml
-
 
 project = 'crypto-candlesticks'
 year = datetime.now().year
@@ -25,7 +22,7 @@ copyright = f'{year}, {author}'  # noqa: WPS305
 numfig = True
 
 # The full version, including alpha/beta/rc tags
-release = toml.load('../pyproject.toml')['tool']['poetry']['version']
+release = '0.2.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -45,12 +42,6 @@ napoleon_use_param = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
-
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
-exclude_patterns: list[str] = []
-
 
 # -- Options for HTML output -------------------------------------------------
 
