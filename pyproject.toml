@@ -1,6 +1,7 @@
 [tool.poetry]
-authors = ["Corfucinas <53630064+Corfucinas@users.noreply.github.com>"]
+authors = ["Pedro Torres <corfucinas@protonmail.com>"]
 classifiers = [
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
   "Intended Audience :: Science/Research",
   "Intended Audience :: Financial and Insurance Industry",
   "Intended Audience :: End Users/Desktop",
@@ -25,18 +26,18 @@ version = "0.2.0"
 "issues" = "https://github.com/Corfucinas/crypto-candlesticks/issues/new/choose"
 
 [tool.poetry.scripts]
-crypto-candlesticks = "crypto_candlesticks.interface:main"
+crypto-candlesticks = "crypto_candlesticks.main:main"
 
 [tool.poetry.dependencies]
-Sphinx = "^4.4.0"
 click = "^8.0.3"
 pandas = "^1.0.5"
-python = "^3.9"
+python = "^3.8"
 requests = "^2.24.0"
 retry = "^0.9.2"
 rich = "^11.0.0"
 
 [tool.poetry.dev-dependencies]
+Sphinx = "^4.4.0"
 black = "^22.1"
 codecov = "^2.1.11"
 commitizen = "^2.20.4"
@@ -49,7 +50,8 @@ pytest = "^6.2.5"
 pytest-cov = "^3.0.0"
 pytest-mock = "^3.6.1"
 safety = "^1.10.3"
-sphinx-autodoc-typehints = "^1.15.3"
+sphinx-copybutton = "^0.4.0"
+sphinxext-opengraph = "^0.5.1"
 wemake-python-styleguide = "^0.16.0"
 
 [tool.flakeheaven]
@@ -104,7 +106,7 @@ warn_unused_ignores = true
 
 [[tool.mypy.overrides]]
 ignore_missing_imports = true
-module = ["requests.*", "retry.*", "pandas.*"]
+module = ["requests.*", "retry.*", "pandas.*", "toml.*"]
 
 [tool.isort]
 combine_star = true
