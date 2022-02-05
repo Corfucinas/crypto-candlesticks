@@ -48,7 +48,7 @@ def get_candles(  # noqa: WPS210
     candle_data: Candles = []
     if not validate_symbol(ticker.lower()):
         click.secho(
-            f"Data could not be downloaded ❌, check '{ticker}' is listed on Bitfinex",
+            f"Cannot download ❌, check '{ticker}' is listed on Bitfinex",
             fg='red',
         )
         sys.exit(1)
@@ -61,10 +61,11 @@ def get_candles(  # noqa: WPS210
     with Live(vertical_overflow='ellipsis', auto_refresh=False) as live:
         while start_time <= end_time:
             period = start_time + step_size
+            max_candles = 10000
             candlestick = exchange.get_candles(
                 ticker=ticker,
                 time_interval=interval,
-                history_limit=10000,
+                history_limit=max_candles,
                 start_time=start_time,
                 end_time=period,
             )
@@ -186,7 +187,7 @@ def write_data_to_excel(crypto_currency_pair: str, df: pd.DataFrame) -> None:
     click.secho('Writing to Excel completed! 🚀🚀🚀', fg='green')
 
 
-def write_data_to_sqlite(
+def write_data_to_sqlite(  # noqa: WPS211
     symbol: str,
     base_currency: str,
     interval: str,

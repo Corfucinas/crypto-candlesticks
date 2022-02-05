@@ -59,7 +59,7 @@ Or you can pass the arguments yourself and skip the prompt:
 
 .. code-block:: console
 
-   crypto-candlesticks[ OPTIONS]
+   crypto-candlesticks [OPTIONS]
 
 .. option:: -s <symbol>, --symbol <symbol>
 
