@@ -64,7 +64,7 @@ class SqlDatabase(object):
         Args:
             candlestick_info (Candles): A list of containing OHLC.
             ticker (str): Ticker of the candle.
-            interval (Interval): Period downloaded.
+            interval (str): Period downloaded.
 
         Raises:
             sqlite3.Error: Exception that prevented to write the data.

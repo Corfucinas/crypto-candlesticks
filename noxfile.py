@@ -3,7 +3,6 @@
 
 # built-in
 import tempfile
-from typing import List
 
 # external
 import nox
@@ -17,9 +16,7 @@ locations = ('./src', './tests', './noxfile.py', './docs/conf.py')
 
 
 def install_with_constraints(
-    session: Session,
-    *args: str,
-    **kwargs: List[str],
+    session: Session, *args: str, **kwargs: list[str]
 ) -> None:
     """Install packages constrained by Poetry's lock file.
 
@@ -70,10 +67,7 @@ def lint(session: Session) -> None:
     """
     args = session.posargs or locations
     install_with_constraints(
-        session,
-        'flakeheaven',
-        'pre-commit',
-        'wemake-python-styleguide',
+        session, 'flakeheaven', 'pre-commit', 'wemake-python-styleguide'
     )
     session.run('pre-commit', 'run', '--all-files', '--show-diff-on-failure')
     session.run('flakeheaven', 'lint', *args)
@@ -98,10 +92,7 @@ def safety(session: Session) -> None:
         )
         install_with_constraints(session, 'safety')
         session.run(
-            'safety',
-            'check',
-            f'--file={requirements.name}',
-            '--full-report',
+            'safety', 'check', f'--file={requirements.name}', '--full-report'
         )
 
 
@@ -127,11 +118,7 @@ def tests(session: Session) -> None:
     args = session.posargs or ['--cov']
     session.run('poetry', 'install', '--no-dev', external=True)
     install_with_constraints(
-        session,
-        'coverage[toml]',
-        'pytest',
-        'pytest-cov',
-        'pytest-mock',
+        session, 'coverage[toml]', 'pytest', 'pytest-cov', 'pytest-mock'
     )
     session.run('pytest', '-s', '--durations=0', *args)
 
@@ -169,7 +156,6 @@ def docs(session: Session) -> None:
         session (Session): Session passed by Nox
     """
     session.run('poetry', 'install', '--no-dev', external=True)
-    session.run('poetry', 'add', '--dev', 'furo', external=True)
     install_with_constraints(
         session,
         'toml',

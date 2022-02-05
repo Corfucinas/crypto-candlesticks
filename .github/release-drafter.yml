@@ -13,7 +13,7 @@ categories:
   - title: ":construction_worker: Continuous Integration"
     label: "ci"
   - title: ":books: Documentation"
-    label: "documentation"
+    label: "docs"
   - title: ":rocket: Features"
     label: "enhancement"
   - title: ":beetle: Fixes"
