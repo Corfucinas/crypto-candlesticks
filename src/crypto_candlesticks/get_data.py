@@ -141,9 +141,9 @@ def download_data(
     Args:
         symbol (str): Quote currency to download.
         base_currency (str): Base currency to download.
-        time_start (Time): Datetime in Unix time.
-        time_stop (Time): Datetime in Unix time.
-        interval (Interval): Time intervals allowed by the exchange.
+        time_start (float): Datetime in Unix time.
+        time_stop (float): Datetime in Unix time.
+        interval (str): Time intervals allowed by the exchange.
     """
     ticker = symbol + base_currency
     candle_stick_data = get_candles(
@@ -199,8 +199,8 @@ def write_data_to_sqlite(
     Args:
         symbol (str): Symbol that is downloaded
         base_currency (str): Base pair that is traded
-        interval (Interval): Time interval of the candles
-        ticker (Interval): Cryptocurrency pair
+        interval (str): Time interval of the candles
+        ticker (str): Cryptocurrency pair
         candle_stick_data (Candles): Candlestick OHLC data
         output (str): Cryptocurrency pair string
 
@@ -224,8 +224,8 @@ def print_exit_error_message(time_start: float, time_stop: float) -> None:
     """Print error message if data could not be downloaded.
 
     Args:
-        time_start (Time): Datetime in Unix time.
-        time_stop (Time): Datetime in Unix time.
+        time_start (float): Datetime in Unix time.
+        time_stop (float): Datetime in Unix time.
     """
     time_start = pd.to_datetime(time_start, unit='ms')
     time_stop = pd.to_datetime(time_stop, unit='ms')

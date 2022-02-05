@@ -134,7 +134,7 @@ def collect_arguments(  # noqa: WPS216
     Args:
         symbol (str): Cryptocurrency ticker.
         base_currency (str): Base pair.
-        interval (Interval): Ticker Interval.
+        interval (str): Ticker Interval.
         start_date (datetime): Beginning date.
         end_date (datetime): Ending date.
     """
