@@ -2,3 +2,4 @@ sphinx
 furo
 sphinxext-opengraph
 sphinx_copybutton
+sphinxcontrib-spelling
