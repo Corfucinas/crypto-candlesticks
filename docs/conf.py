@@ -36,9 +36,12 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.autosummary',
     'sphinxext.opengraph',
+    'sphinxcontrib.spelling',
     'sphinx_copybutton',
 ]
 napoleon_use_param = True
+spelling_warning = True
+spelling_show_suggestions = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

@@ -1,6 +1,11 @@
 crypto\_candlesticks package
 ============================
 
+.. automodule:: crypto_candlesticks
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Subpackages
 -----------
 
@@ -41,14 +46,6 @@ crypto\_candlesticks.text\_console module
 -----------------------------------------
 
 .. automodule:: crypto_candlesticks.text_console
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: crypto_candlesticks
    :members:
    :undoc-members:
    :show-inheritance:

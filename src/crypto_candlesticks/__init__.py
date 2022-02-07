@@ -21,4 +21,4 @@ __author__ = 'Pedro Torres <corfucinas@protonmail.com>'  # noqa: WPS410
 from crypto_candlesticks import exchanges, symbols  # noqa: F401
 
 
-__all__ = ['symbols', 'exchanges']  # noqa: WPS410
+# __all__ = ['symbols', 'exchanges']  # noqa: WPS410
