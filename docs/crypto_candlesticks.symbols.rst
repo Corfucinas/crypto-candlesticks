@@ -9,8 +9,18 @@ crypto\_candlesticks.symbols package
 Submodules
 ----------
 
-.. toctree::
-   :maxdepth: 4
+crypto\_candlesticks.symbols.quote\_currencies module
+-----------------------------------------------------
 
-   crypto_candlesticks.symbols.quote_currencies
-   crypto_candlesticks.symbols.time_intervals
+.. automodule:: crypto_candlesticks.symbols.quote_currencies
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+crypto\_candlesticks.symbols.time\_intervals module
+---------------------------------------------------
+
+.. automodule:: crypto_candlesticks.symbols.time_intervals
+   :members:
+   :undoc-members:
+   :show-inheritance:

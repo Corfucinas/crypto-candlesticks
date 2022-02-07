@@ -9,7 +9,10 @@ crypto\_candlesticks.exchanges package
 Submodules
 ----------
 
-.. toctree::
-   :maxdepth: 4
+crypto\_candlesticks.exchanges.bitfinex module
+----------------------------------------------
 
-   crypto_candlesticks.exchanges.bitfinex
+.. automodule:: crypto_candlesticks.exchanges.bitfinex
+   :members:
+   :undoc-members:
+   :show-inheritance:
