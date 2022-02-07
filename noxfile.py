@@ -170,18 +170,35 @@ def docs(session: Session) -> None:
     session.run('poetry', 'install', '--no-dev', external=True)
     install_with_constraints(
         session,
-        'toml',
         'sphinx',
-        'furo',
-        'sphinx-copybutton',
-        'sphinxext-opengraph',
+        '-r',
+        './docs/requirements.txt',
     )
     session.run(
         'sphinx-apidoc',
-        '-f',
+        '--force',
+        '-separate',
+        '--module-first',
         '-o',
         './docs/',
         './src/crypto_candlesticks/',
     )
     session.run('sphinx-autogen', '-a', '-o', './docs/', './docs/index.rst')
-    session.run('sphinx-build', '-v', './docs', './docs/_build/html')
+    session.run(
+        'sphinx-build',
+        '-b',
+        'spelling',
+        '-j',
+        'auto',
+        '-Tv',
+        './docs',
+        './docs/_build/html',
+    )
+    session.run(
+        'sphinx-build',
+        '-j',
+        'auto',
+        '-WTv',
+        './docs',
+        './docs/_build/html',
+    )
