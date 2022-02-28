@@ -1207,7 +1207,7 @@ test = ["pytest", "pytest-cov", "coverage (>=4.0,!=4.4)"]
 
 [[package]]
 name = "sphinxext-opengraph"
-version = "0.5.1"
+version = "0.6.1"
 description = "Sphinx Extension to enable OGP support"
 category = "dev"
 optional = false
@@ -1363,7 +1363,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "99fcc4d095c71cb836329ceb4fe61d652da6ba157ee3e91d34c1d42210c024c4"
+content-hash = "829510f70e6851e5df2addfbc6d3a4980b92131cb30e534352e78f727fe4765d"
 
 [metadata.files]
 alabaster = [
@@ -1982,8 +1982,8 @@ sphinxcontrib-spelling = [
     {file = "sphinxcontrib_spelling-7.3.2-py3-none-any.whl", hash = "sha256:1b99cdb1a30271c7080ec5b968dfc243c2540a960afdc4c052cd59dfe8d94c54"},
 ]
 sphinxext-opengraph = [
-    {file = "sphinxext-opengraph-0.5.1.tar.gz", hash = "sha256:78675a8a490c749a881892abc4f28ac3a2e8e65b066fe346fa7da882290906a5"},
-    {file = "sphinxext_opengraph-0.5.1-py3-none-any.whl", hash = "sha256:3fd0df576ae11e55c710653413edd7c05db65a4fbf985d536127c5ac06f5d2cb"},
+    {file = "sphinxext-opengraph-0.6.1.tar.gz", hash = "sha256:d4f6c5ec0d4080503f79a4a9d4dec88c789f7dc6e5688a7c3eccf3c8209f0bc4"},
+    {file = "sphinxext_opengraph-0.6.1-py3-none-any.whl", hash = "sha256:116835a5519aa26af4b45e8c17edabe671d6a8aed3c5e20efd808ec7b1ef3c49"},
 ]
 stevedore = [
     {file = "stevedore-3.5.0-py3-none-any.whl", hash = "sha256:a547de73308fd7e90075bb4d301405bebf705292fa90a90fc3bcf9133f58616c"},
