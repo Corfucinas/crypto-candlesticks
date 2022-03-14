@@ -34,7 +34,7 @@ pandas = "^1.0.5"
 python = "^3.9"
 requests = "^2.24.0"
 retry = "^0.9.2"
-rich = "^11.0.0"
+rich = ">=11,<13"
 
 [tool.poetry.dev-dependencies]
 Sphinx = "^4.4.0"
