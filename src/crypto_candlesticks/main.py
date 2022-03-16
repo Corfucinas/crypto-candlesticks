@@ -48,13 +48,14 @@ def fix_time() -> float:
     return (
         time.mktime(
             datetime(
-                datetime.today().year,
-                datetime.today().month,
-                datetime.today().day,
+                datetime.now().year,
+                datetime.now().month,
+                datetime.now().day,
                 8,
                 0,
-            ).timetuple(),
-        ) * 1000
+            ).timetuple()
+        )
+        * 1000
     )
 
 
