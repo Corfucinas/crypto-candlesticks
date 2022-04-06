@@ -51,7 +51,7 @@ pytest-cov = "^3.0.0"
 pytest-mock = "^3.6.1"
 safety = "^1.10.3"
 sphinx-copybutton = "^0.5.0"
-sphinxext-opengraph = "^0.6.2"
+sphinxext-opengraph = "^0.6.3"
 wemake-python-styleguide = "^0.16.1"
 sphinxcontrib-spelling = "^7.3.2"
 
