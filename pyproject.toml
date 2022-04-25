@@ -51,9 +51,10 @@ pytest-cov = "^3.0.0"
 pytest-mock = "^3.6.1"
 safety = "^1.10.3"
 sphinx-copybutton = "^0.5.0"
+sphinxcontrib-spelling = "^7.3.2"
 sphinxext-opengraph = "^0.5.1"
 wemake-python-styleguide = "^0.16.0"
-sphinxcontrib-spelling = "^7.3.2"
+perflint = "^0.7.1"
 
 [tool.flakeheaven]
 format = "grouped"
@@ -136,7 +137,7 @@ show_missing = true
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-tag_format = "v$version"
+tag_format = "$version"
 version = "0.2.0"
 
 [build-system]
