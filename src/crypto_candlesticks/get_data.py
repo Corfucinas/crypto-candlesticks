@@ -20,7 +20,7 @@
 # built-in
 import pickle  # noqa: S403  # nosec
 import sys
-import time
+from time import sleep, time
 from typing import Union
 
 # external
@@ -34,10 +34,6 @@ from crypto_candlesticks.exchanges.bitfinex import Bitfinex
 from crypto_candlesticks.text_console import setup_table, write_to_console
 
 
-_RATE_LIMIT = 1.85
-_STEP_SIZE = 86400000
-
-
 Candles = list[list[list[Union[int, float]]]]
 
 
@@ -46,7 +42,7 @@ def get_candles(  # noqa: WPS210
     start_time: float,
     end_time: float,
     interval: str,
-    step_size: int = _STEP_SIZE,
+    step_size: int = 86400000,
 ) -> Candles:
     """Call the exchange for the data and extends it into a list.
 
@@ -61,6 +57,8 @@ def get_candles(  # noqa: WPS210
         Candles: A list of floats containing OHLC
 
     """
+    rate_limit = 1.85
+
     candle_data: Candles = []
     if not validate_symbol(ticker.lower()):
         click.secho(
@@ -95,7 +93,7 @@ def get_candles(  # noqa: WPS210
             )
             live.refresh()
             start_time = period
-            time.sleep(_RATE_LIMIT)
+            sleep(rate_limit)
 
     return candle_data
 
@@ -119,18 +117,18 @@ def convert_data(
         click.echo('Data could not be downloaded ❌, please try again')
         sys.exit(1)
 
-    df = pd.DataFrame(
+    dataframe = pd.DataFrame(
         candle_data,
         columns=['timestamp', 'open', 'close', 'high', 'low', 'volume'],
     )
-    df.drop_duplicates(inplace=True)
-    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
-    df.set_index('timestamp', inplace=True)
-    df.sort_index(inplace=True)
-    df['ticker'] = f'{symbol}/{base_currency}'
-    df['date'] = pd.to_datetime(df.index, format='%Y:%M:%D').date
-    df['time'] = pd.to_datetime(df.index, format='%Y:%M:%D').time
-    return df
+    dataframe.drop_duplicates(inplace=True)
+    dataframe['timestamp'] = pd.to_datetime(dataframe['timestamp'], unit='ms')
+    dataframe.set_index('timestamp', inplace=True)
+    dataframe.sort_index(inplace=True)
+    dataframe['ticker'] = f'{symbol}/{base_currency}'
+    dataframe['date'] = pd.to_datetime(dataframe.index, format='%Y:%M:%D').date
+    dataframe['time'] = pd.to_datetime(dataframe.index, format='%Y:%M:%D').time
+    return dataframe
 
 
 def validate_symbol(crypto_ticker: str) -> bool:
@@ -175,7 +173,7 @@ def download_data(
     click.secho('Data download completed! 🚀', fg='green')
     click.secho('Processing data...', fg='yellow')
     crypto_currency_pair = f'{ticker}-{interval}'
-    df = write_data_to_sqlite(
+    dataframe = write_data_to_sqlite(
         symbol,
         base_currency,
         interval,
@@ -183,19 +181,22 @@ def download_data(
         candle_stick_data,
         crypto_currency_pair,
     )
-    write_data_to_excel(crypto_currency_pair, df)
+    write_data_to_excel(crypto_currency_pair, dataframe)
 
 
-def write_data_to_excel(crypto_currency_pair: str, df: pd.DataFrame) -> None:
+def write_data_to_excel(
+    crypto_currency_pair: str,
+    dataframe: pd.DataFrame,
+) -> None:
     """Write data to excel file.
 
     Args:
         crypto_currency_pair (str): Ticker pair downloaded.
-        df (pd.DataFrame): Dataframe containing the OHLC data.
+        dataframe (pd.DataFrame): Dataframe containing the OHLCV data.
     """
     click.secho('Writing to Excel...', fg='yellow')
-    df.to_csv(
-        path_or_buf=crypto_currency_pair + str(f'{time.time()}.csv'),
+    dataframe.to_csv(
+        path_or_buf=crypto_currency_pair + str(f'{time()}.csv'),
         sep=',',
         header=True,
         index=False,
@@ -203,7 +204,7 @@ def write_data_to_excel(crypto_currency_pair: str, df: pd.DataFrame) -> None:
     click.secho('Writing to Excel completed! 🚀🚀🚀', fg='green')
 
 
-def write_data_to_sqlite(  # noqa: WPS211
+def write_data_to_sqlite(  # noqa: WPS211 R0913
     symbol: str,
     base_currency: str,
     interval: str,
@@ -226,7 +227,7 @@ def write_data_to_sqlite(  # noqa: WPS211
     """
     with open(f'{output}.p', 'wb') as create_pickle_file:
         pickle.dump(candle_stick_data, create_pickle_file)
-    df = convert_data(symbol, base_currency, candle_stick_data)
+    dataframe = convert_data(symbol, base_currency, candle_stick_data)
     SqlDatabase(f'{output}.sqlite3').insert_candlesticks(
         candle_stick_data,
         ticker,
@@ -234,7 +235,7 @@ def write_data_to_sqlite(  # noqa: WPS211
     )
     click.secho('Writing to database completed! 🚀🚀', fg='green')
 
-    return df
+    return dataframe
 
 
 def print_exit_error_message(time_start: float, time_stop: float) -> None:

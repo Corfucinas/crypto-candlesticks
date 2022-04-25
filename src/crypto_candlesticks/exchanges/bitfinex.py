@@ -20,11 +20,10 @@
 
 # external
 import requests
-from requests.exceptions import ConnectionError
 from retry import retry
 
 
-class Bitfinex(object):
+class Bitfinex(object):  # noqa: R0205
     """Main class for the Bitfinex exchange."""
 
     __slots__ = ('_end_point_v2', '_end_point_v1')
@@ -43,7 +42,7 @@ class Bitfinex(object):
         return 'Bitfinex exchange class'
 
     @retry(ConnectionError, jitter=(0.1, 1))
-    def get_candles(  # noqa: WPS211
+    def get_candles(  # noqa: WPS211 R0913
         self,
         ticker: str,
         history_limit: int,
@@ -64,9 +63,7 @@ class Bitfinex(object):
             list[float]: Returns a list of candle data which can be parsed
 
         """
-        url = (
-            f'{self._end_point_v2}/candles/trade:{time_interval}:t{ticker}/hist?limit={history_limit}&start={start_time}&end={end_time}&sort=-1',  # noqa: E501, WPS221
-        )
+        url = f'{self._end_point_v2}/candles/trade:{time_interval}:t{ticker}/hist?limit={history_limit}&start={start_time}&end={end_time}&sort=-1'  # noqa: E501, WPS221, C0301
 
         return requests.get(url).json()
 
