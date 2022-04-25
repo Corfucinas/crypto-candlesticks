@@ -139,9 +139,9 @@ entrypoints==0.4; python_full_version >= "3.6.2" and python_full_version < "4.0.
     --hash=sha256:b706eddaa9218a19ebcd67b56818f05bb27589b1ca9e8d797b74affad4ccacd4
 eradicate==2.0.0; python_version >= "3.6" and python_version < "4.0" \
     --hash=sha256:27434596f2c5314cc9b31410c93d8f7e8885747399773cd088d3adea647a60c8
-filelock==3.4.2; python_full_version >= "3.6.1" and python_version >= "3.7" \
-    --hash=sha256:cf0fc6a2f8d26bd900f19bf33915ca70ba4dd8c56903eeb14e1e7a2fd7590146 \
-    --hash=sha256:38b4f4c989f9d06d44524df1b24bd19e167d851f19b50bf3e3559952dddc5b80
+filelock==3.6.0; python_full_version >= "3.6.1" and python_version >= "3.7" \
+    --hash=sha256:9cd540a9352e432c7246a48fe4e8712b10acb1df2ad1f30e8c070b82ae1fed85 \
+    --hash=sha256:f8314284bfffbdcfa0ff3d7992b023d4c628ced6feb957351d4c48d059f56bc0
 flake8-bandit==2.1.2; python_version >= "3.6" and python_version < "4.0" \
     --hash=sha256:687fc8da2e4a239b206af2e54a90093572a60d0954f3054e23690739b0b0de3b
 flake8-broken-line==0.4.0; python_version >= "3.6" and python_version < "4.0" \
