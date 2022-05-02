@@ -53,7 +53,7 @@ safety = "^1.10.3"
 sphinx-copybutton = "^0.5.0"
 sphinxext-opengraph = "^0.6.3"
 wemake-python-styleguide = "^0.16.1"
-sphinxcontrib-spelling = "^7.3.2"
+sphinxcontrib-spelling = "^7.3.3"
 
 [tool.flakeheaven]
 format = "grouped"
