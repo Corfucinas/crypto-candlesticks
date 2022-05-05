@@ -6,7 +6,14 @@ Released under the GPL-3.0-or-later license
 
 
 # built-in
-from importlib.metadata import PackageNotFoundError, version
+try:
+    # built-in
+    from importlib.metadata import PackageNotFoundError, version
+except ImportError:  # pragma: no cover
+    from importlib_metadata import (  # type: ignore
+        version,
+        PackageNotFoundError,
+    )  # noqa: WPS433 E501
 
 # project
 from crypto_candlesticks import exchanges, symbols  # noqa: F401

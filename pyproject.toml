@@ -45,6 +45,7 @@ flakeheaven = "^0.11.1"
 furo = "^2022.1.2"
 mypy = "^0.931"
 nox = "^2022.1.7"
+perflint = "^0.7.1"
 pre-commit = "^2.16.0"
 pytest = "^7.0.0"
 pytest-cov = "^3.0.0"
@@ -54,7 +55,6 @@ sphinx-copybutton = "^0.5.0"
 sphinxcontrib-spelling = "^7.3.2"
 sphinxext-opengraph = "^0.5.1"
 wemake-python-styleguide = "^0.16.0"
-perflint = "^0.7.1"
 
 [tool.flakeheaven]
 format = "grouped"
@@ -62,7 +62,7 @@ max_line_length = 79
 show_source = true
 
 [tool.flakeheaven.plugins]
-"*" = ["+*", "-WPS226", "-WPS202", "-WPS305", "-WPS412", "-WPS421"]
+"*" = ["+*", "-WPS226", "-WPS202", "-WPS305", "-WPS412", "-WPS421", "-WPS433"]
 
 [tool.black]
 exclude = '''

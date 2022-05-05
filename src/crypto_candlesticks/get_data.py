@@ -21,7 +21,7 @@
 import pickle  # noqa: S403  # nosec
 import sys
 from time import sleep, time
-from typing import Union
+from typing import List, Union
 
 # external
 import click
@@ -34,7 +34,7 @@ from crypto_candlesticks.exchanges.bitfinex import Bitfinex
 from crypto_candlesticks.text_console import setup_table, write_to_console
 
 
-Candles = list[list[list[Union[int, float]]]]
+Candles = List[List[List[Union[int, float]]]]
 
 
 def get_candles(  # noqa: WPS210

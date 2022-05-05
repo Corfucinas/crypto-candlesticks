@@ -18,6 +18,9 @@
 """Main class for the Bitfinex exchange."""
 
 
+# built-in
+from typing import List
+
 # external
 import requests
 from retry import retry
@@ -49,7 +52,7 @@ class Bitfinex(object):  # noqa: R0205
         time_interval: str,
         start_time: float,
         end_time: float,
-    ) -> list[float]:
+    ) -> List[float]:
         """Download the candlestick data for the given period.
 
         Args:
@@ -60,7 +63,7 @@ class Bitfinex(object):  # noqa: R0205
             end_time (float): Time in ms on which the data will finish
 
         Returns:
-            list[float]: Returns a list of candle data which can be parsed
+            List[float]: Returns a List of candle data which can be parsed
 
         """
         url = f'{self._end_point_v2}/candles/trade:{time_interval}:t{ticker}/hist?limit={history_limit}&start={start_time}&end={end_time}&sort=-1'  # noqa: E501, WPS221, C0301
@@ -68,11 +71,11 @@ class Bitfinex(object):  # noqa: R0205
         return requests.get(url).json()
 
     @retry(ConnectionError, jitter=(0.1, 1))
-    def get_symbols(self) -> list[str]:
+    def get_symbols(self) -> List[str]:
         """Call the exchange and gets all current tickers.
 
         Returns:
-            list[str]: All available tickers.
+            List[str]: All available tickers.
 
         """
         return requests.get(f'{self._end_point_v1}/symbols').json()

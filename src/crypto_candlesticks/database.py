@@ -19,13 +19,13 @@
 
 # built-in
 import sqlite3
-from typing import Union
+from typing import List, Union
 
 # external
 import click
 
 
-Candles = list[list[list[Union[int, float]]]]
+Candles = List[List[List[Union[int, float]]]]
 
 
 class SqlDatabase(object):

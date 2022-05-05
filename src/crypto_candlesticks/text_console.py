@@ -101,7 +101,7 @@ def add_row_to_table(
     ticker: str,
     interval: str,
     table: Table,
-    single_candle: List[List[int | float]],
+    single_candle: List[List[Union[int, float]]],
     timestamp: Timestamp,
 ) -> None:
     """Add row to table.

@@ -71,7 +71,8 @@ def make_time(date: datetime) -> float:
     return (
         time.mktime(
             datetime(date.year, date.month, date.day, 8, 0).timetuple(),
-        ) * 1000
+        )
+        * 1000
     )
 
 

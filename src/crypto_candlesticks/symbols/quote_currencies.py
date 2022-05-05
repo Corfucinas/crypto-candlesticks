@@ -16,8 +16,11 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 """List of current available base pairs in Bitfinex."""
+# built-in
+from typing import List
 
-quote_currencies_list: list[str] = [
+
+quote_currencies_list: List[str] = [
     'USD',
     'UST',
     'EUR',
