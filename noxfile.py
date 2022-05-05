@@ -3,13 +3,14 @@
 
 # built-in
 import tempfile
+from typing import List
 
 # external
 import nox
 from nox.sessions import Session
 
 
-nox.options.sessions = ('black', 'lint', 'safety', 'mypy', 'tests', 'docs')
+nox.options.sessions = ('black', 'safety', 'mypy')
 
 
 locations = ('./src', './tests', './noxfile.py', './docs/conf.py')
@@ -18,7 +19,7 @@ locations = ('./src', './tests', './noxfile.py', './docs/conf.py')
 def install_with_constraints(
     session: Session,
     *args: str,
-    **kwargs: list[str],
+    **kwargs: List[str],
 ) -> None:
     """Install packages constrained by Poetry's lock file.
 
