@@ -1,12 +1,4 @@
 repos:
-  - repo: local
-    hooks:
-      - id: flakeheaven
-        name: Flake8 lint
-        description: Runs Flake8 with pyproject.toml configuration
-        entry: flakeheaven lint
-        language: python
-        types: [python]
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v2.24.0
     hooks:
