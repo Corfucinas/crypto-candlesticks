@@ -53,8 +53,9 @@ def fix_time() -> float:
                 datetime.now().day,
                 8,
                 0,
-            ).timetuple(),
-        ) * 1000
+            ).timetuple()
+        )
+        * 1000
     )
 
 
