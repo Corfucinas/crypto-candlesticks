@@ -22,7 +22,7 @@ copyright = f'{year}, {author}'  # noqa: WPS305
 numfig = True
 
 # The full version, including alpha/beta/rc tags
-release = '0.2.0'
+release = '0.2.1'
 
 
 # -- General configuration ---------------------------------------------------

@@ -1,5 +1,12 @@
 name: Codecov
-on: push
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - development
+
 jobs:
   coverage:
     runs-on: ubuntu-latest

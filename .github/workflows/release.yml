@@ -2,6 +2,10 @@ name: Release
 on:
   release:
     types: [published]
+
+env:
+  PYTHONUNBUFFERED: 1
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -21,7 +25,9 @@ jobs:
         run: poetry install --no-interaction --no-root -vvv
 
       - name: Run nox
-        run: nox
+        run: |
+          source $VENV
+          nox
 
       - name: Build
         run: poetry build
