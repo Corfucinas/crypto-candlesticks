@@ -791,7 +791,7 @@ flake8-polyfill = ">=1.0.2,<2"
 
 [[package]]
 name = "perflint"
-version = "0.7.1"
+version = "0.7.3"
 description = "Pylint extension with performance anti-patterns"
 category = "dev"
 optional = false
@@ -1430,7 +1430,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "48d3d9a9664fba43c702764bca66e89bc8205d0c233e2097699850053f270cb9"
+content-hash = "e9586b9cb388517869aa79c4fbf8bc2b791a8c2b7d1d8f7b951d36c73930641f"
 
 [metadata.files]
 alabaster = [
@@ -1894,8 +1894,8 @@ pep8-naming = [
     {file = "pep8_naming-0.12.1-py2.py3-none-any.whl", hash = "sha256:4a8daeaeb33cfcde779309fc0c9c0a68a3bbe2ad8a8308b763c5068f86eb9f37"},
 ]
 perflint = [
-    {file = "perflint-0.7.1-py2.py3-none-any.whl", hash = "sha256:471ea1ab67a336409a3c0ac51fd8d15e3a79961fab2b408ed3b8718c62d9efd6"},
-    {file = "perflint-0.7.1.tar.gz", hash = "sha256:68711e3ec5020876bb8fee2ae94b75a77cfbc64231bb0d0645d58ee78a1255c2"},
+    {file = "perflint-0.7.3-py2.py3-none-any.whl", hash = "sha256:e556a82495925ec956ce607b6333564a54a6ebe2146fd47753d4b32aab82c85b"},
+    {file = "perflint-0.7.3.tar.gz", hash = "sha256:8569248d246c21974201b950af1330218ad058db285e2316cbb0044997d47554"},
 ]
 platformdirs = [
     {file = "platformdirs-2.5.2-py3-none-any.whl", hash = "sha256:027d8e83a2d7de06bbac4e5ef7e023c02b863d7ea5d079477e722bb41ab25788"},
