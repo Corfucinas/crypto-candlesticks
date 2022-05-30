@@ -1253,7 +1253,7 @@ test = ["pytest"]
 
 [[package]]
 name = "sphinxcontrib-spelling"
-version = "7.3.3"
+version = "7.5.0"
 description = "Sphinx spelling extension"
 category = "dev"
 optional = false
@@ -1432,7 +1432,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "c5d9cf208d6699738166dae03aba8b0fd5a567f6e9cd19158b91e95d5fe058e3"
+content-hash = "eb6e4f10dae8f6f58a300c1e297416fbc9d37e16bbd8f2437b4b3bd07b43d222"
 
 [metadata.files]
 alabaster = [
@@ -2079,8 +2079,8 @@ sphinxcontrib-serializinghtml = [
     {file = "sphinxcontrib_serializinghtml-1.1.5-py2.py3-none-any.whl", hash = "sha256:352a9a00ae864471d3a7ead8d7d79f5fc0b57e8b3f95e9867eb9eb28999b92fd"},
 ]
 sphinxcontrib-spelling = [
-    {file = "sphinxcontrib-spelling-7.3.3.tar.gz", hash = "sha256:3819d12629d95e0c909224fa40b462a67e0adb321d50283d7fc0d11686c8ac7e"},
-    {file = "sphinxcontrib_spelling-7.3.3-py3-none-any.whl", hash = "sha256:8809d5dc175f43f00628134a41ef9fec56db9f794f4eab701f9a5a87f8c69bb0"},
+    {file = "sphinxcontrib-spelling-7.5.0.tar.gz", hash = "sha256:d92bdc1d63f361b6e0a171b9d68518101745485317f15861501e387f1b78f6ab"},
+    {file = "sphinxcontrib_spelling-7.5.0-py3-none-any.whl", hash = "sha256:da64b9939eca553ebc6930ae82921c0d4aa7b6a7b5d46726b620b421c14b1f30"},
 ]
 sphinxext-opengraph = [
     {file = "sphinxext-opengraph-0.5.1.tar.gz", hash = "sha256:78675a8a490c749a881892abc4f28ac3a2e8e65b066fe346fa7da882290906a5"},
