@@ -515,11 +515,11 @@ flake8 = "*"
 
 [[package]]
 name = "flakeheaven"
-version = "1.0.1"
+version = "2.0.0"
 description = "FlakeHeaven is a [Flake8](https://gitlab.com/pycqa/flake8) wrapper to make it cool."
 category = "dev"
 optional = false
-python-versions = ">=3.6.2,<4.0.0"
+python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
 colorama = "*"
@@ -530,8 +530,7 @@ toml = "*"
 urllib3 = "*"
 
 [package.extras]
-docs = ["alabaster", "pygments-github-lexers", "recommonmark", "sphinx"]
-dev = ["commitizen (>=2.22)"]
+docs = ["alabaster", "pygments-github-lexers", "sphinx", "myst-parser (>=0.18.0,<0.19.0)"]
 
 [[package]]
 name = "furo"
@@ -1447,7 +1446,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "3715d42523a1ad00ffe1fe2071cc06edebbb514f9b58a8b0ca931853538acc7f"
+content-hash = "d9911040d0a025af35d45d643aa7a254c83e7ed2514d16ddab4c9ad0cbfed07c"
 
 [metadata.files]
 alabaster = [
@@ -1687,8 +1686,8 @@ flake8-string-format = [
     {file = "flake8_string_format-0.3.0-py2.py3-none-any.whl", hash = "sha256:812ff431f10576a74c89be4e85b8e075a705be39bc40c4b4278b5b13e2afa9af"},
 ]
 flakeheaven = [
-    {file = "flakeheaven-1.0.1-py3-none-any.whl", hash = "sha256:00bc43b63c35b4dd9b662251a557659dd334a7f233693a3d6409a18ceed3d822"},
-    {file = "flakeheaven-1.0.1.tar.gz", hash = "sha256:7cc00df80e3c7f3188ea6525e3040c47968547b453ddc0bfa27389b333124463"},
+    {file = "flakeheaven-2.0.0-py3-none-any.whl", hash = "sha256:e25be0838eddb500f9ad1852e3f7bb541ed97bc896eaa3b491abb81e2112ca65"},
+    {file = "flakeheaven-2.0.0.tar.gz", hash = "sha256:843a594059c7fdab2f01bce5c872717ac0b8b54cc0311283e66c80eac5031551"},
 ]
 furo = [
     {file = "furo-2022.6.4.1-py3-none-any.whl", hash = "sha256:79f2d3a61e3d971c0acd59f53d3202e7336789cd893f7bdc3cc7bc37d6ef252c"},
