@@ -38,7 +38,7 @@ rich = ">=11,<13"
 
 [tool.poetry.dev-dependencies]
 Sphinx = "^5.0.2"
-black = "^22.1"
+black = "^22.6"
 codecov = "^2.1.11"
 commitizen = "^2.27.1"
 flakeheaven = "^2.0.0"
