@@ -977,7 +977,7 @@ testing = ["fields", "hunter", "process-tests", "six", "pytest-xdist", "virtuale
 
 [[package]]
 name = "pytest-mock"
-version = "3.8.1"
+version = "3.8.2"
 description = "Thin-wrapper around the mock package for easier use with pytest"
 category = "dev"
 optional = false
@@ -1470,7 +1470,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "8ebc31ec99a0f27f09bf3d8a2e7eb646641803c8f20c09caa3825ffafc8af471"
+content-hash = "c1bfe3e0c5e079c3b35b1857c05b9c3c878202b61cd1ff50995d5ac6f7aea175"
 
 [metadata.files]
 alabaster = []
