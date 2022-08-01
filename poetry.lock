@@ -209,7 +209,7 @@ development = ["black", "flake8", "mypy", "pytest", "types-colorama"]
 
 [[package]]
 name = "commitizen"
-version = "2.29.0"
+version = "2.29.2"
 description = "Python commitizen client tool"
 category = "dev"
 optional = false
@@ -1479,7 +1479,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "51116b212e0fb3041ed9524c20ea37117262c96c388f33b5d1c779f387b38742"
+content-hash = "1278e9c0342cf733ad8579eb90ab8f75563cbe8bb416ab240194ef4efb26498f"
 
 [metadata.files]
 alabaster = [
@@ -1577,8 +1577,8 @@ colorlog = [
     {file = "colorlog-6.6.0.tar.gz", hash = "sha256:344f73204009e4c83c5b6beb00b3c45dc70fcdae3c80db919e0a4171d006fde8"},
 ]
 commitizen = [
-    {file = "commitizen-2.29.0-py3-none-any.whl", hash = "sha256:03d97b0689a130298933e4dbaa9e6601c2b1bed2ec416deac0e7110354d48f0b"},
-    {file = "commitizen-2.29.0.tar.gz", hash = "sha256:a689d87b648d3914d9dab78d9534f3c65d799a4ff527099bedbcb57262328a17"},
+    {file = "commitizen-2.29.2-py3-none-any.whl", hash = "sha256:73606a90a3d272884a6f3cce94427b80b76a08e901cdf2b96664f97332916bab"},
+    {file = "commitizen-2.29.2.tar.gz", hash = "sha256:676094c2aa485630ca8bff16be356a43043fa5dc3310f85a4f2764cf14c40f3d"},
 ]
 commonmark = [
     {file = "commonmark-0.9.1-py2.py3-none-any.whl", hash = "sha256:da2f38c92590f83de410ba1a3cbceafbc74fee9def35f9251ba9a971d6d66fd9"},
