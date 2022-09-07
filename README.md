@@ -122,6 +122,10 @@ Or you can pass the arguments yourself and skip the prompt:
 | 5   | 1577867760000.0 | 7205.75299748 | 7205.2        | 7206.3        | 7205.2        | 0.005      | BTCUSD | 1m       |
 | 6   | 1577867700000.0 | 7205.2        | 7205.2        | 7205.2        | 7205.2        | 4.5802     | BTCUSD | 1m       |
 
+## UML
+
+![package uml](docs/packages_crypto-candlesticks.png)
+
 ## Contributing
 
 Feel free to open an [issue](https://github.com/Corfucinas/crypto-candlesticks/issues/new, "new-issue") or [pull request](https://github.com/Corfucinas/crypto-candlesticks/pulls, "new-pull-request") on Github.
