@@ -11,7 +11,7 @@ from nox_poetry import session as poetry_session
 
 nox.options.sessions = ('black', 'safety', 'mypy')
 
-locations = ('./src', './tests', './noxfile.py', './docs/conf.py')
+locations = ('./src/crypto_candlesticks', './tests', './noxfile.py', './docs/conf.py')
 
 
 @poetry_session(reuse_venv=True)

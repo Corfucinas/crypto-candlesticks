@@ -23,7 +23,7 @@ jobs:
           virtualenvs-in-project: true
 
       - name: Install dependencies
-        run: poetry install --no-interaction --no-root -vvv
+        run: poetry install --with test,docs,dev -vvv --no-interaction
 
       - name: Run nox
       - run: nox --sessions coverage

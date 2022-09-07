@@ -49,7 +49,7 @@ jobs:
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Install dependencies
-        run: poetry install --no-interaction --no-root -vvv
+        run: poetry install --with test,docs,dev -vvv --no-interaction
 
       - name: Run nox
         run: |
