@@ -1321,7 +1321,7 @@ test = ["pytest"]
 
 [[package]]
 name = "sphinxcontrib-spelling"
-version = "7.6.0"
+version = "7.6.1"
 description = "Sphinx spelling extension"
 category = "dev"
 optional = false
@@ -1564,7 +1564,6 @@ click = [
 ]
 codecov = [
     {file = "codecov-2.1.12-py2.py3-none-any.whl", hash = "sha256:585dc217dc3d8185198ceb402f85d5cb5dbfa0c5f350a5abcdf9e347776a5b47"},
-    {file = "codecov-2.1.12-py3.8.egg", hash = "sha256:782a8e5352f22593cbc5427a35320b99490eb24d9dcfa2155fd99d2b75cfb635"},
     {file = "codecov-2.1.12.tar.gz", hash = "sha256:a0da46bb5025426da895af90938def8ee12d37fcbcbbbc15b6dc64cf7ebc51c1"},
 ]
 colorama = [
@@ -2201,8 +2200,8 @@ sphinxcontrib-serializinghtml = [
     {file = "sphinxcontrib_serializinghtml-1.1.5-py2.py3-none-any.whl", hash = "sha256:352a9a00ae864471d3a7ead8d7d79f5fc0b57e8b3f95e9867eb9eb28999b92fd"},
 ]
 sphinxcontrib-spelling = [
-    {file = "sphinxcontrib-spelling-7.6.0.tar.gz", hash = "sha256:292cd7e1f73a763451693b4d48c9bded151084f6a91e5337733e9fa8715d20ec"},
-    {file = "sphinxcontrib_spelling-7.6.0-py3-none-any.whl", hash = "sha256:6c1313618412511109f7b76029fbd60df5aa4acf67a2dc9cd1b1016d15e882ff"},
+    {file = "sphinxcontrib-spelling-7.6.1.tar.gz", hash = "sha256:444857579dd61914f3970ad1046c74bf6758136f7e144b46ca9c28108870f508"},
+    {file = "sphinxcontrib_spelling-7.6.1-py3-none-any.whl", hash = "sha256:14e3ea21f551228f36c0349463552d2d88c05ffffcfe7cdd513b01aa3407f561"},
 ]
 sphinxext-opengraph = [
     {file = "sphinxext-opengraph-0.5.1.tar.gz", hash = "sha256:78675a8a490c749a881892abc4f28ac3a2e8e65b066fe346fa7da882290906a5"},
