@@ -2,6 +2,7 @@
 """All Nox sessions."""
 
 # built-in
+import platform
 
 # external
 import nox
@@ -11,7 +12,12 @@ from nox_poetry import session as poetry_session
 
 nox.options.sessions = ('black', 'safety', 'mypy')
 
-locations = ('./src/crypto_candlesticks', './tests', './noxfile.py', './docs/conf.py')
+locations = (
+    './src/crypto_candlesticks',
+    './tests',
+    './noxfile.py',
+    './docs/conf.py',
+)
 
 
 @poetry_session(reuse_venv=True)
@@ -46,13 +52,15 @@ def safety(session: Session) -> None:
     Args:
         session (Session): Session passed by Nox
     """
-    session.install('safety')
-    session.run(
-        'safety',
-        'check',
-        '--file=poetry.lock',
-        '--full-report',
-    )
+    operating_system = platform.system().lower()
+    if operating_system != 'windows':
+        session.install('safety')
+        session.run(
+            'safety',
+            'check',
+            '--file=poetry.lock',
+            '--full-report',
+        )
 
 
 @poetry_session(reuse_venv=True)
