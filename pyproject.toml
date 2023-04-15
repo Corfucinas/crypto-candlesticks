@@ -42,7 +42,6 @@ optional = true
 [tool.poetry.group.dev.dependencies]
 black = "^22.6"
 commitizen = "^2.32.2"
-flakeheaven = "^3.0.0"
 mypy = "^0.971"
 nox = "^2022.8.7"
 perflint = "^0.7.3"
@@ -53,7 +52,6 @@ wemake-python-styleguide = "^0.16.0"
 optional = true
 
 [tool.poetry.group.test.dependencies]
-codecov = "^2.1.11"
 pytest = "^7.0.0"
 pytest-cov = "^3.0.0"
 pytest-mock = "^3.8.2"

@@ -1,0 +1,631 @@
+[flake8]
+exclude =
+  ./.cache,
+  ./.git,
+  ./.idea,
+  ./.mypy_cache,
+  ./.pytest_cache,
+  ./.venv,
+  ./venv,
+  ./env,
+  ./cached_venv,
+  ./docs,
+  ./deploy,
+  ./var,
+  ./.vscode,
+  __pycache__,
+max_line_length = 79
+show_source = True
+statistics = True
+select =
+	# darglint
+	DAR002,  # An argument/exception lacks a description
+	DAR005,  # The item contains a type section (parentheses), but no type.
+	DAR004,  # The docstring contains an extra newline where it shouldn't.
+	DAR102,  # The docstring contains a parameter not in function.
+	DAR402,  # The docstring describes an exception not explicitly raised.
+	DAR202,  # The docstring has a return not in definition.
+	DAR501,  # The docstring describes a variable which is not defined.
+	DAR302,  # The docstring has a yield not in definition.
+	DAR001,  # The docstring was not parsed correctly due to a syntax error.
+	DAR003,  # A line is under-indented or over-indented.
+	DAR101,  # The docstring is missing a parameter in the definition.
+	DAR401,  # The docstring is missing an exception raised.
+	DAR201,  # The docstring is missing a return from definition.
+	DAR301,  # The docstring is missing a yield present in definition.
+	DAR105,  # The docstring parameter type is malformed. Expected parameter type to match syntax from PEP484. If your parameter contains parentheses, you may want to switch them to brackets.  E.g. `Union[str, int]`.
+	DAR103,  # The docstring parameter type doesn't match function.
+	DAR104,  # The docstring parameter type is not given.
+	DAR000,  # Failed to parse file due to syntax error.
+	DAR203,  # The docstring parameter type doesn't match function.
+	# flake8-bandit
+	S301,  # Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+	S302,  # Deserialization with the marshal module is possibly dangerous.
+	S303,  # Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+	S304,  # Use of insecure cipher {name}. Replace with a known secure cipher such as AES.
+	S305,  # Use of insecure cipher mode {name}.
+	S306,  # Use of insecure and deprecated function (mktemp).
+	S307,  # Use of possibly insecure function - consider using safer ast.literal_eval.
+	S308,  # Use of mark_safe() may expose cross-site scripting vulnerabilities and should be reviewed.
+	S309,  # Use of HTTPSConnection on older versions of Python prior to 2.7.9 and 3.4.3 do not provide security, see https://wiki.openstack.org/wiki/OSSN/OSSN-0033
+	S310,  # Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+	S311,  # Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+	S312,  # Telnet-related functions are being called. Telnet is considered insecure. Use SSH or some other encrypted protocol.
+	S313,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+	S314,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+	S315,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+	S316,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+	S317,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+	S318,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+	S319,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+	S320,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with its defusedxml equivalent function.
+	S321,  # FTP-related functions are being called. FTP is considered insecure. Use SSH/SFTP/SCP or some other encrypted protocol.
+	S323,  # By default, Python will create a secure, verified ssl context for use in such classes as HTTPSConnection. However, it still allows using an insecure context via the _create_unverified_context that  reverts to the previous behavior that does not validate certificates or perform hostname checks.
+	S325,  # Use of os.tempnam() and os.tmpnam() is vulnerable to symlink attacks. Consider using tmpfile() instead.
+	S401,  # A telnet-related module is being imported.  Telnet is considered insecure. Use SSH or some other encrypted protocol.
+	S402,  # A FTP-related module is being imported.  FTP is considered insecure. Use SSH/SFTP/SCP or some other encrypted protocol.
+	S403,  # Consider possible security implications associated with {name} module.
+	S404,  # Consider possible security implications associated with the subprocess module.
+	S405,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called.
+	S406,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called.
+	S407,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called.
+	S408,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called.
+	S409,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called.
+	S410,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Replace {name} with the equivalent defusedxml package.
+	S411,  # Using {name} to parse untrusted XML data is known to be vulnerable to XML attacks. Use defused.xmlrpc.monkey_patch() function to monkey-patch xmlrpclib and mitigate XML vulnerabilities.
+	S412,  # Consider possible security implications associated with {name} module.
+	S413,  # The pyCrypto library and its module {name} are no longer actively maintained and have been deprecated. Consider using pyca/cryptography library.
+	S415,  # An IPMI-related module is being imported. IPMI is considered insecure. Use an encrypted protocol.
+	S604,  # any other function with shell equals true
+	S101,  # assert used
+	S610,  # django extra used
+	S703,  # django mark safe
+	S611,  # django rawsql used
+	S102,  # exec used
+	S201,  # flask debug true
+	S104,  # hardcoded bind all interfaces
+	S107,  # hardcoded password default
+	S106,  # hardcoded password funcarg
+	S105,  # hardcoded password string
+	S608,  # hardcoded sql expressions
+	S108,  # hardcoded tmp directory
+	S324,  # hashlib insecure functions
+	S701,  # jinja2 autoescape false
+	S609,  # linux commands wildcard injection
+	S601,  # paramiko calls
+	S501,  # request with no cert validation
+	S103,  # set bad file permissions
+	S508,  # snmp insecure version
+	S509,  # snmp weak cryptography
+	S507,  # ssh no host key verification
+	S503,  # ssl with bad defaults
+	S502,  # ssl with bad version
+	S504,  # ssl with no version
+	S605,  # start process with a shell
+	S606,  # start process with no shell
+	S607,  # start process with partial path
+	S602,  # subprocess popen with shell equals true
+	S603,  # subprocess without shell equals true
+	S112,  # try except continue
+	S110,  # try except pass
+	S702,  # use of mako templates
+	S505,  # weak cryptographic key
+	S506,  # yaml load
+	# flake8-broken-line
+	N400,  # Found backslash that is used for line breaking
+	# flake8-bugbear
+	B001,  # Do not use {}, it also catches unexpected events like memory errors, interrupts, system exit, and so on.  Prefer `except Exception:`.  If you're sure what you're doing, be explicit and write `except BaseException:`.
+	B002,  # Python does not support the unary prefix increment. Writing ++n is equivalent to +(+(n)), which equals n. You meant n += 1.
+	B003,  # Assigning to `os.environ` doesn't clear the environment. Subprocesses are going to see outdated variables, in disagreement with the current process. Use `os.environ.clear()` or the `env=` argument to Popen.
+	B004,  # Using `hasattr(x, '__call__')` to test if `x` is callable is unreliable. If `x` implements custom `__getattr__` or its `__call__` is itself not callable, you might get misleading results. Use `callable(x)` for consistent results.
+	B005,  # Using .strip() with multi-character strings is misleading the reader. It looks like stripping a substring. Move your character set to a constant if this is deliberate. Use .replace() or regular expressions to remove string fragments.
+	B006,  # Do not use mutable data structures for argument defaults.  They are created during function definition time. All calls to the function reuse this one instance of that data structure, persisting changes between them.
+	B007,  # Loop control variable {!r} not used within the loop body. If this is intended, start the name with an underscore.
+	B008,  # Do not perform function calls in argument defaults.  The call is performed only once at function definition time. All calls to your function will reuse the result of that definition-time function call.  If this is intended, assign the function call to a module-level variable and use that variable as a default value.
+	B009,  # Do not call getattr with a constant attribute value, it is not any safer than normal property access.
+	B010,  # Do not call setattr with a constant attribute value, it is not any safer than normal property access.
+	B011,  # Do not call assert False since python -O removes these calls. Instead callers should raise AssertionError().
+	B012,  # return/continue/break inside finally blocks cause exceptions to be silenced. Exceptions should be silenced in except blocks. Control statements can be moved outside the finally block.
+	B013,  # A length-one tuple literal is redundant.  Write `except {0}:` instead of `except ({0},):`.
+	B014,  # Redundant exception types in `except ({0}){1}:`.  Write `except {2}{1}:`, which catches exactly the same exceptions.
+	B015,  # Pointless comparison. This comparison does nothing but waste CPU instructions. Either prepend `assert` or remove it.
+	B016,  # Cannot raise a literal. Did you intend to return it or raise an Exception?
+	B017,  # assertRaises(Exception): should be considered evil. It can lead to your test passing even if the code being tested is never executed due to a typo. Either assert for a more specific exception (builtin or custom), use assertRaisesRegex, or use the context manager form of assertRaises.
+	B018,  # Found useless expression. Either assign it to a variable or remove it.
+	B019,  # Use of `functools.lru_cache` or `functools.cache` on methods can lead to memory leaks. The cache may retain instance references, preventing garbage collection.
+	B020,  # Found for loop that reassigns the iterable it is iterating
+	B021,  # f-string used as docstring. This will be interpreted by python as a joined string rather than a docstring.
+	B022,  # No arguments passed to `contextlib.suppress`. No exceptions will be suppressed and therefore this context manager is redundant.
+	B023,  # Function definition does not bind loop variable {!r}.
+	B024,  # {} is an abstract base class, but it has no abstract methods. Remember to use @abstractmethod, @abstractclassmethod and/or @abstractproperty decorators.
+	B901,  # Using `yield` together with `return x`. Use native `async def` coroutines or put a `# noqa` comment on this line if this was intentional.
+	B902,  # Invalid first argument {} used for {} method. Use the canonical first argument name in methods, i.e. {}.
+	B903,  # Data class should either be immutable or use __slots__ to save memory. Use collections.namedtuple to generate an immutable class, or enumerate the attributes in a __slot__ declaration in the class to leave attributes mutable.
+	B904,  # Within an `except` clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling.  See https://docs.python.org/3/tutorial/errors.html#exception-chaining for details.
+	B950,  # line too long ({} > {} characters)
+	# flake8-commas
+	C812,  # missing trailing comma
+	C813,  # missing trailing comma in Python 3
+	C814,  # missing trailing comma in Python 2
+	C815,  # missing trailing comma in Python 3.5+
+	C816,  # missing trailing comma in Python 3.6+
+	# flake8-comprehensions
+	C400,  # Unnecessary generator - rewrite as a list comprehension.
+	C401,  # Unnecessary generator - rewrite as a set comprehension.
+	C402,  # Unnecessary generator - rewrite as a dict comprehension.
+	C403,  # Unnecessary list comprehension - rewrite as a set comprehension.
+	C404,  # Unnecessary list comprehension - rewrite as a dict comprehension.
+	C405,  # Unnecessary {type} literal -
+	C406,  # Unnecessary {type} literal -
+	C408,  # Unnecessary {type} call - rewrite as a literal.
+	C409,  # Unnecessary {type} passed to tuple() -
+	C410,  # Unnecessary {type} passed to list() -
+	C411,  # Unnecessary list call - remove the outer call to list().
+	C413,  # Unnecessary {outer} call around {inner}(){remediation}.
+	C414,  # Unnecessary {inner} call within {outer}().
+	C415,  # Unnecessary subscript reversal of iterable within {func}().
+	C416,  # Unnecessary {type} comprehension - rewrite using {type}().
+	C417,  # Unnecessary use of map - use a {comp} instead.
+	# flake8-debugger
+	T100,  # trace found
+	# flake8-docstrings
+	D100,  # Missing docstring in public module
+	D101,  # Missing docstring in public class
+	D102,  # Missing docstring in public method
+	D103,  # Missing docstring in public function
+	D104,  # Missing docstring in public package
+	D105,  # Missing docstring in magic method
+	D106,  # Missing docstring in public nested class
+	D107,  # Missing docstring in __init__
+	D200,  # One-line docstring should fit on one line with quotes
+	D201,  # No blank lines allowed before function docstring
+	D202,  # No blank lines allowed after function docstring
+	D203,  # 1 blank line required before class docstring
+	D204,  # 1 blank line required after class docstring
+	D205,  # 1 blank line required between summary line and description
+	D206,  # Docstring should be indented with spaces, not tabs
+	D207,  # Docstring is under-indented
+	D208,  # Docstring is over-indented
+	D209,  # Multi-line docstring closing quotes should be on a separate line
+	D210,  # No whitespaces allowed surrounding docstring text
+	D211,  # No blank lines allowed before class docstring
+	D212,  # Multi-line docstring summary should start at the first line
+	D213,  # Multi-line docstring summary should start at the second line
+	D214,  # Section is over-indented
+	D215,  # Section underline is over-indented
+	D300,  # Use """triple double quotes"""
+	D301,  # Use r""" if any backslashes in a docstring
+	D302,  # Deprecated: Use u""" for Unicode docstrings
+	D400,  # First line should end with a period
+	D401,  # First line should be in imperative mood; try rephrasing
+	D402,  # First line should not be the function's "signature"
+	D403,  # First word of the first line should be properly capitalized
+	D404,  # First word of the docstring should not be `This`
+	D405,  # Section name should be properly capitalized
+	D406,  # Section name should end with a newline
+	D407,  # Missing dashed underline after section
+	D408,  # Section underline should be in the line following the section's name
+	D409,  # Section underline should match the length of its name
+	D410,  # Missing blank line after section
+	D411,  # Missing blank line before section
+	D412,  # No blank lines allowed between a section header and its content
+	D413,  # Missing blank line after last section
+	D414,  # Section has no content
+	D415,  # First line should end with a period, question mark, or exclamation point
+	D416,  # Section name should end with a colon
+	D417,  # Missing argument descriptions in the docstring
+	D418,  # Function/ Method decorated with @overload shouldn't contain a docstring
+	# flake8-eradicate
+	E800,  # Found commented out code: {0}
+	# flake8-isort
+	I001,  # isort found an import in the wrong position
+	I002,  # no configuration found (.isort.cfg or [isort] in configs)
+	I003,  # isort expected 1 blank line in imports, found 0
+	I004,  # isort found an unexpected blank line in imports
+	I005,  # isort found an unexpected missing import
+	# flake8-quotes
+	Q003,  # Change outer quotes to avoid escaping inner quotes
+	# flake8-rst-docstrings
+	RST101,  # Possible title underline, too short for the title.
+	RST102,  # Unexpected possible title overline or transition.
+	RST201,  # Block quote ends without a blank line; unexpected unindent.
+	RST202,  # Bullet list ends without a blank line; unexpected unindent.
+	RST203,  # Definition list ends without a blank line; unexpected unindent.
+	RST204,  # Enumerated list ends without a blank line; unexpected unindent.
+	RST205,  # Explicit markup ends without a blank line; unexpected unindent.
+	RST206,  # Field list ends without a blank line; unexpected unindent.
+	RST207,  # Literal block ends without a blank line; unexpected unindent.
+	RST208,  # Option list ends without a blank line; unexpected unindent.
+	RST210,  # Inline strong start-string without end-string.
+	RST211,  # Blank line required after table.
+	RST212,  # Title underline too short.
+	RST213,  # Inline emphasis start-string without end-string.
+	RST214,  # Inline literal start-string without end-string.
+	RST215,  # Inline interpreted text or phrase reference start-string without end-string.
+	RST216,  # Multiple roles in interpreted text (both prefix and suffix present; only one allowed).
+	RST217,  # Mismatch: both interpreted text role suffix and reference suffix.
+	RST218,  # Literal block expected; none found.
+	RST219,  # Inline substitution_reference start-string without end-string.
+	RST301,  # Unexpected indentation.
+	RST302,  # Malformed table.
+	RST303,  # Unknown directive type "*".
+	RST304,  # Unknown interpreted text role "*".
+	RST305,  # Undefined substitution referenced: "*".
+	RST306,  # Unknown target name: "*".
+	RST307,  # Error in "*" directive:
+	RST401,  # Unexpected section title.
+	# flake8-string-format
+	P101,  # format string does contain unindexed parameters
+	P102,  # docstring does contain unindexed parameters
+	P103,  # other string does contain unindexed parameters
+	P201,  # format call uses too large index ({idx})
+	P202,  # format call uses missing keyword ({kw})
+	P203,  # format call uses keyword arguments but no named entries
+	P204,  # format call uses variable arguments but no numbered entries
+	P205,  # format call uses implicit and explicit indexes together
+	P301,  # format call provides unused index ({idx})
+	P302,  # format call provides unused keyword ({kw})
+	# mccabe
+	C901,  # *r is too complex (*d)
+	# pep8-naming
+	N801,  # class name '{name}' should use CapWords convention
+	N818,  # exception name '{name}' should be named with an Error suffix
+	N803,  # argument name '{name}' should be lowercase
+	N804,  # first argument of a classmethod should be named 'cls'
+	N805,  # first argument of a method should be named 'self'
+	N802,  # function name '{name}' should be lowercase
+	N807,  # function name '{name}' should not start and end with '__'
+	N811,  # constant '{name}' imported as non constant '{asname}'
+	N812,  # lowercase '{name}' imported as non lowercase '{asname}'
+	N813,  # camelcase '{name}' imported as lowercase '{asname}'
+	N814,  # camelcase '{name}' imported as constant '{asname}'
+	N817,  # camelcase '{name}' imported as acronym '{asname}'
+	N806,  # variable '{name}' in function should be lowercase
+	N815,  # variable '{name}' in class scope should not be mixedCase
+	N816,  # variable '{name}' in global scope should not be mixedCase
+	# pycodestyle
+	E101,  # indentation contains mixed spaces and tabs
+	W191,  # indentation contains tabs
+	W291,  # trailing whitespace
+	W293,  # blank line contains whitespace
+	W391,  # blank line at end of file
+	W292,  # no newline at end of file
+	E501,  # line too long (*d > *d characters)
+	E304,  # blank lines found after function decorator
+	E303,  # too many blank lines (*d)
+	E306,  # expected *s blank line before a nested definition, found 0
+	E301,  # expected *s blank line, found 0
+	E302,  # expected *s blank lines, found *d
+	E305,  # expected *s blank lines after class or function definition, found *d
+	E201,  # whitespace after '*s'
+	E274,  # tab before keyword
+	E272,  # multiple spaces before keyword
+	E273,  # tab after keyword
+	E271,  # multiple spaces after keyword
+	E275,  # missing whitespace after keyword
+	E231,  # missing whitespace after '*s'
+	E124,  # closing bracket does not match visual indentation
+	E133,  # closing bracket is missing indentation
+	E128,  # continuation line under-indented for visual indent
+	E123,  # closing bracket does not match indentation of opening bracket's line
+	E129,  # visually indented line
+	E125,  # continuation line
+	E211,  # whitespace before '*s'
+	E223,  # tab before operator
+	E221,  # multiple spaces before operator
+	E224,  # tab after operator
+	E222,  # multiple spaces after operator
+	E225,  # missing whitespace around operator
+	E242,  # tab after '*s'
+	E241,  # multiple spaces after '*s'
+	E251,  # unexpected spaces around keyword / parameter equals
+	E252,  # missing whitespace around parameter equals
+	E261,  # at least two spaces before inline comment
+	E262,  # inline comment should start with '# '
+	E265,  # block comment should start with '# '
+	E266,  # too many leading '#' for block comment
+	E401,  # multiple imports on one line
+	E402,  # module level import not at top of file
+	E731,  # do not assign a lambda expression, use a def
+	E704,  # multiple statements on one line (def)
+	E701,  # multiple statements on one line (colon)
+	E702,  # multiple statements on one line (semicolon)
+	E703,  # statement ends with a semicolon
+	E502,  # the backslash is redundant between brackets
+	W503,  # line break before binary operator
+	W504,  # line break after binary operator
+	E713,  # test for membership should be 'not in'
+	E714,  # test for object identity should be 'is not'
+	E721,  # do not compare types, use 'isinstance()'
+	E722,  # do not use bare 'except'
+	E742,  # ambiguous class definition '*s'
+	E743,  # ambiguous function definition '*s'
+	E741,  # ambiguous variable name '*s'
+	W601,  # .has_key() is deprecated, use 'in'
+	W602,  # deprecated form of raising exception
+	W603,  # '<>' is deprecated, use '!='
+	W604,  # backticks are deprecated, use 'repr()'
+	W605,  # invalid escape sequence '\*s'
+	W606,  # 'async' and 'await' are reserved keywords starting with Python 3.7
+	W505,  # doc line too long (*d > *d characters)
+	E901,  # *s: *s
+	E902,  # *s
+	# pyflakes
+	F401,  # *r imported but unused
+	F402,  # import *r from line *r shadowed by loop variable
+	F403,  # 'from *s import *' used; unable to detect undefined names
+	F404,  # from __future__ imports must occur at the beginning of the file
+	F405,  # *r may be undefined, or defined from star imports: *s
+	F406,  # 'from *s import *' only allowed at module level
+	F407,  # future feature *s is not defined
+	F501,  # '...' ** ... has invalid format string: *s
+	F502,  # '...' ** ... expected mapping but got sequence
+	F503,  # '...' ** ... expected sequence but got mapping
+	F504,  # '...' ** ... has unused named argument(s): *s
+	F505,  # '...' ** ... is missing argument(s) for placeholder(s): *s
+	F506,  # '...' ** ... has mixed positional and named placeholders
+	F507,  # '...' ** ... has *d placeholder(s) but *d substitution(s)
+	F508,  # '...' ** ... `*` specifier requires sequence
+	F509,  # '...' ** ... has unsupported format character *r
+	F521,  # '...'.format(...) has invalid format string: *s
+	F522,  # '...'.format(...) has unused named argument(s): *s
+	F523,  # '...'.format(...) has unused arguments at position(s): *s
+	F524,  # '...'.format(...) is missing argument(s) for placeholder(s): *s
+	F525,  # '...'.format(...) mixes automatic and manual numbering
+	F541,  # f-string is missing placeholders
+	F601,  # dictionary key *r repeated with different values
+	F602,  # dictionary key variable *s repeated with different values
+	F621,  # too many expressions in star-unpacking assignment
+	F622,  # two starred expressions in assignment
+	F631,  # assertion is always true, perhaps remove parentheses?
+	F632,  # use ==/!= to compare constant literals (str, bytes, int, float, tuple)
+	F633,  # use of >> is invalid with print function
+	F634,  # 'if tuple literal' is always true, perhaps remove accidental comma?
+	F701,  # 'break' outside loop
+	F702,  # 'continue' not properly in loop
+	F703,  # 'continue' not supported inside 'finally' clause
+	F704,  # 'yield' outside function
+	F705,  # 'return' with argument inside generator
+	F706,  # 'return' outside function
+	F707,  # default 'except:' must be last
+	F721,  # syntax error in doctest
+	F722,  # syntax error in forward annotation *r
+	F723,  # syntax error in type comment *r
+	F811,  # redefinition of unused *r from line *r
+	F812,  # list comprehension redefines *r from line *r
+	F821,  # undefined name *r
+	F822,  # undefined name *r in __all__
+	F823,  # local variable *r {0} referenced before assignment
+	F831,  # duplicate argument *r in function definition
+	F841,  # local variable *r is assigned to but never used
+	F901,  # 'raise NotImplemented' should be 'raise NotImplementedError'
+	# wemake-python-styleguide
+	WPS000,  # Internal error happened, see log. Please, take some time to report it
+	WPS125,  # Found builtin shadowing: {0}
+	WPS116,  # Found consecutive underscores name: {0}
+	WPS112,  # Found private name pattern: {0}
+	WPS117,  # Found name reserved for first argument: {0}
+	WPS113,  # Found same alias import: {0}
+	WPS118,  # Found too long name: {0}
+	WPS111,  # Found too short name: {0}
+	WPS120,  # Found regular name with trailing underscore: {0}
+	WPS114,  # Found underscored number name pattern: {0}
+	WPS119,  # Found unicode name: {0}
+	WPS124,  # Found unreadable characters combination: {0}
+	WPS122,  # Found all unused variables definition: {0}
+	WPS121,  # Found usage of a variable marked as unused: {0}
+	WPS115,  # Found upper-case constant in a class: {0}
+	WPS101,  # Found wrong module magic name
+	WPS102,  # Found incorrect module name pattern
+	WPS100,  # Found wrong module name
+	WPS123,  # Found wrong unused variable name: {0}
+	WPS110,  # Found wrong variable name: {0}
+	WPS610,  # Found forbidden `async` magic method usage: {0}
+	WPS603,  # Found using restricted magic method: {0}
+	WPS600,  # Found subclassing a builtin: {0}
+	WPS609,  # Found direct magic attribute usage: {0}
+	WPS605,  # Found method without arguments: {0}
+	WPS602,  # Found using `@staticmethod`
+	WPS615,  # Found unpythonic getter or setter
+	WPS612,  # Found useless overwritten method: {0}
+	WPS606,  # Found incorrect base class
+	WPS604,  # Found incorrect node inside `class` body
+	WPS614,  # Found descriptor applied on a function
+	WPS607,  # Found incorrect `__slots__` syntax
+	WPS613,  # Found incorrect `super()` call context: incorrect name access
+	WPS608,  # Found incorrect `super()` call: {0}
+	WPS611,  # Found forbidden `yield` magic method usage
+	WPS523,  # Found incorrectly swapped variables
+	WPS520,  # Found compare with falsy constant
+	WPS529,  # Found implicit `.get()` dict usage
+	WPS513,  # Found implicit `elif` condition
+	WPS518,  # Found implicit `enumerate()` call
+	WPS514,  # Found implicit `in` condition
+	WPS528,  # Found implicit `.items()` usage
+	WPS530,  # Found implicit negative index
+	WPS522,  # Found implicit primitive in a form of `lambda`
+	WPS519,  # Found implicit `sum()` call
+	WPS526,  # Found implicit `yield from` usage
+	WPS525,  # Found wrong `in` compare with single item container
+	WPS524,  # Found self assignment  with refactored assignment
+	WPS504,  # Found negated condition
+	WPS509,  # Found incorrectly nested ternary
+	WPS505,  # Found nested `try` block
+	WPS527,  # Found not a tuple used as an argument
+	WPS508,  # Found incorrect `not` with compare usage
+	WPS515,  # Found `open()` used without a context manager
+	WPS517,  # Found pointless starred expression
+	WPS502,  # Found simplifiable `if` condition
+	WPS531,  # Found simplifiable returning `if` condition in a function
+	WPS516,  # Found `type()` used to compare types
+	WPS511,  # Found separate `isinstance` calls that can be merged for: {0}
+	WPS501,  # Found `finally` in `try` block without `except`
+	WPS506,  # Found useless lambda declaration
+	WPS507,  # Found useless `len()` compare
+	WPS500,  # Found `else` in a loop without `break`
+	WPS503,  # Found useless returning `else` statement
+	WPS510,  # Found `in` used with a non-set container
+	WPS521,  # Found wrong `is` compare
+	WPS512,  # Found `isinstance` call with a single element tuple
+	WPS362,  # Found assignment to a subscript slice
+	WPS350,  # Found usable augmented assign pattern
+	WPS343,  # Found wrong complex number suffix: {0}
+	WPS310,  # Found bad number suffix: {0}
+	WPS355,  # Found an unnecessary blank line before a bracket
+	WPS309,  # Found reversed compare order
+	WPS354,  # Found consecutive `yield` expressions
+	WPS308,  # Found constant comparison
+	WPS314,  # Found conditional that always evaluates the same
+	WPS301,  # Found dotted raw import: {0}
+	WPS336,  # Found explicit string concatenation
+	WPS318,  # Found extra indentation
+	WPS358,  # Found a float zero (0.0)
+	WPS333,  # Found implicit complex compare
+	WPS342,  # Found implicit raw string: {0}
+	WPS326,  # Found implicit string concatenation
+	WPS361,  # Found an inconsistently structured comprehension
+	WPS331,  # Found variables that are only used for `return`: {0}
+	WPS324,  # Found inconsistent `return` statement
+	WPS325,  # Found inconsistent `yield` statement
+	WPS353,  # Found incorrect `yield from` target
+	WPS356,  # Found an unnecessary iterable unpacking
+	WPS357,  # Found a ``\r`` (carriage return) line break
+	WPS348,  # Found a line that starts with a dot
+	WPS300,  # Found local folder import
+	WPS345,  # Found meaningless number operation
+	WPS313,  # Found parenthesis immediately after a keyword
+	WPS323,  # Found `*` string formatting
+	WPS337,  # Found multiline conditions
+	WPS320,  # Found multi-line function type annotation
+	WPS352,  # Found multiline loop
+	WPS316,  # Found context manager with too many assignments
+	WPS307,  # Found list comprehension with multiple `if`s
+	WPS311,  # Found multiple `in` compares
+	WPS339,  # Found number with meaningless zeros: {0}
+	WPS315,  # Found extra `object` in parent classes list
+	WPS346,  # Found wrong operation sign
+	WPS317,  # Found incorrect multi-line parameters
+	WPS304,  # Found partial float: {0}
+	WPS340,  # Found exponent number with positive exponent: {0}
+	WPS360,  # Found an unnecessary use of a raw string: {0}
+	WPS349,  # Found redundant subscript slice
+	WPS306,  # Found class without a base class: {0}
+	WPS334,  # Found reversed complex comparison
+	WPS303,  # Found underscored number: {0}
+	WPS302,  # Found unicode string prefix: {0}
+	WPS351,  # Found unnecessary literals
+	WPS359,  # Found an iterable unpacking to list
+	WPS321,  # Found uppercase string modifier: {0}
+	WPS312,  # Found comparison of a variable to itself
+	WPS327,  # Found useless `continue` at the end of the loop
+	WPS329,  # Found useless `except` case
+	WPS328,  # Found useless node: {0}
+	WPS330,  # Found unnecessary operator: {0}
+	WPS347,  # Found vague import that may cause confusion: {0}
+	WPS319,  # Found bracket in wrong position
+	WPS341,  # Found wrong hex number case: {0}
+	WPS335,  # Found incorrect `for` loop iter type
+	WPS338,  # Found incorrect order of methods in a class
+	WPS322,  # Found incorrect multi-line string
+	WPS344,  # Found explicit zero division
+	WPS231,  # Found function with too much cognitive complexity: {0}
+	WPS232,  # Found module cognitive complexity that is too high: {0}
+	WPS200,  # Found module with high Jones Complexity score: {0}
+	WPS221,  # Found line with high Jones Complexity: {0}
+	WPS204,  # Found overused expression: {0}
+	WPS234,  # Found overly complex annotation: {0}
+	WPS237,  # Found a too complex `f` string
+	WPS219,  # Found too deep access level: {0}
+	WPS220,  # Found too deep nesting: {0}
+	WPS233,  # Found call chain that is too long: {0}
+	WPS228,  # Found too long compare
+	WPS227,  # Found too long function output tuple: {0}
+	WPS229,  # Found too long ``try`` body length: {0}
+	WPS236,  # Found too many variables used to unpack a tuple: {0}
+	WPS211,  # Found too many arguments: {0}
+	WPS218,  # Found too many `assert` statements: {0}
+	WPS217,  # Found too many await expressions: {0}
+	WPS215,  # Too many base classes: {0}
+	WPS222,  # Found a condition with too much logic: {0}
+	WPS216,  # Too many decorators: {0}
+	WPS223,  # Found too many `elif` branches: {0}
+	WPS225,  # Found too many `except` cases: {0}
+	WPS213,  # Found too many expressions: {0}
+	WPS224,  # Found a comprehension with too many `for` statements
+	WPS235,  # Found too many imported names from a module: {0}
+	WPS203,  # Found module with too many imported names: {0}
+	WPS201,  # Found module with too many imports: {0}
+	WPS210,  # Found too many local variables: {0}
+	WPS214,  # Found too many methods: {0}
+	WPS230,  # Found too many public instance attributes: {0}
+	WPS238,  # Found too many raises in a function: {0}
+	WPS212,  # Found too many return statements: {0}
+	WPS446,  # Found approximate constant: {0}
+	WPS413,  # Found bad magic module function: {0}
+	WPS467,  # Found bare raise keyword
+	WPS454,  # Found wrong `raise` exception type: {0}
+	WPS418,  # Found exception inherited from `BaseException`
+	WPS424,  # Found except `BaseException`
+	WPS465,  # Found likely bitwise and boolean operation mixup
+	WPS440,  # Found block variables overlap: {0}
+	WPS425,  # Found boolean non-keyword argument: {0}
+	WPS404,  # Found complex default value
+	WPS471,  # Found consecutive slices
+	WPS406,  # Found wrong context manager variable definition
+	WPS441,  # Found control variable used after block: {0}
+	WPS415,  # Found duplicate exception: {0}
+	WPS464,  # Found empty comment
+	WPS411,  # Found empty module
+	WPS459,  # Found comparison with float or complex number
+	WPS449,  # Found float used as a key
+	WPS456,  # Found "NaN" as argument to float()
+	WPS461,  # Forbidden inline ignore: {0}
+	WPS422,  # Found future import: {0}
+	WPS463,  # Found a getter without a return value
+	WPS472,  # Found unpacking used to get a single element from a collection
+	WPS409,  # Found heterogeneous compare
+	WPS458,  # Found imports collision: {0}
+	WPS448,  # Found incorrect exception order
+	WPS457,  # Found an infinite while loop
+	WPS470,  # Found kwarg unpacking in class definition
+	WPS426,  # Found `lambda` in loop's body
+	WPS435,  # Found list multiply
+	WPS452,  # Found `break` or `continue` in `finally` block
+	WPS405,  # Found wrong `for` loop variable definition
+	WPS432,  # Found magic number: {0}
+	WPS429,  # Found multiple assign targets
+	WPS407,  # Found mutable module constant
+	WPS431,  # Found nested class: {0}
+	WPS430,  # Found nested function: {0}
+	WPS466,  # Found new-styled decorator
+	WPS455,  # Found non-trivial expression as an argument for "except"
+	WPS417,  # Found non-unique item in hash: {0}
+	WPS442,  # Found outer scope names shadowing: {0}
+	WPS403,  # Found `no cover` comments overuse: {0}
+	WPS402,  # Found `noqa` comments overuse: {0}
+	WPS451,  # Found positional-only argument
+	WPS437,  # Found protected attribute usage: {0}
+	WPS450,  # Found protected object import: {0}
+	WPS436,  # Found protected module import: {0}
+	WPS469,  # Found error raising from itself
+	WPS423,  # Found raise NotImplemented
+	WPS434,  # Found reassigning variable to itself: {0}
+	WPS468,  # Found redundant use of `enumerate`
+	WPS408,  # Found duplicate logical condition
+	WPS453,  # Found executable mismatch: {0}
+	WPS460,  # Found single element destructuring
+	WPS428,  # Found statement that has no effect
+	WPS438,  # Found `StopIteration` raising inside generator
+	WPS447,  # Found alphabet as strings: {0}
+	WPS419,  # Found `try`/`else`/`finally` with multiple return paths
+	WPS443,  # Found unhashable item
+	WPS427,  # Found unreachable code
+	WPS401,  # Found wrong doc comment
+	WPS444,  # Found incorrect keyword condition
+	WPS420,  # Found wrong keyword: {0}
+	WPS400,  # Found wrong magic comment: {0}
+	WPS410,  # Found wrong metadata variable: {0}
+	WPS445,  # Found incorrectly named keyword in the starred dict
+	WPS439,  # Found unicode escape in a binary string: {0}
+	WPS414,  # Found incorrect unpacking target
+	WPS416,  # Found `yield` inside comprehension

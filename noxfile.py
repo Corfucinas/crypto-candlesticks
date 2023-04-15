@@ -108,7 +108,7 @@ def coverage(session: Session) -> None:
     """
     session.run('poetry', 'install', external=True)
     session.run('coverage', 'xml', '--fail-under=0')
-    session.run('codecov', *session.posargs)
+    # session.run('codecov', *session.posargs)
 
 
 @poetry_session(reuse_venv=True)
