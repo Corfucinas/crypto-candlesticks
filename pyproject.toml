@@ -46,7 +46,7 @@ mypy = ">=0.971,<1.4"
 nox = "^2022.8.7"
 perflint = "^0.7.3"
 pre-commit = ">=2.20,<4.0"
-wemake-python-styleguide = "^0.16.0"
+wemake-python-styleguide = ">=0.16,<0.18"
 
 [tool.poetry.group.test]
 optional = true
