@@ -255,13 +255,13 @@ development = ["black", "flake8", "mypy", "pytest", "types-colorama"]
 
 [[package]]
 name = "commitizen"
-version = "3.5.3"
+version = "3.5.4"
 description = "Python commitizen client tool"
 optional = false
 python-versions = ">=3.7,<4.0"
 files = [
-    {file = "commitizen-3.5.3-py3-none-any.whl", hash = "sha256:f5c1290278aa3ee19915dc6a8480f6c4db25c90827e61f70f8fc03b648850029"},
-    {file = "commitizen-3.5.3.tar.gz", hash = "sha256:6f5a3536d1cf17580b82ed16643b5754efb1079fcb4de1bc6de8245d8e2cc6a9"},
+    {file = "commitizen-3.5.4-py3-none-any.whl", hash = "sha256:23dff718566aec0de899a4c1ac2c06008da3692f7adbe2827f252e65839b882b"},
+    {file = "commitizen-3.5.4.tar.gz", hash = "sha256:561d72377a7f937bef4fcba2ebb7d19758d1da30c081ae5404b80ca7c1d19d86"},
 ]
 
 [package.dependencies]
@@ -687,13 +687,13 @@ flake8 = "*"
 
 [[package]]
 name = "furo"
-version = "2023.5.20"
+version = "2023.7.26"
 description = "A clean customisable Sphinx documentation theme."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "furo-2023.5.20-py3-none-any.whl", hash = "sha256:594a8436ddfe0c071f3a9e9a209c314a219d8341f3f1af33fdf7c69544fab9e6"},
-    {file = "furo-2023.5.20.tar.gz", hash = "sha256:40e09fa17c6f4b22419d122e933089226dcdb59747b5b6c79363089827dea16f"},
+    {file = "furo-2023.7.26-py3-none-any.whl", hash = "sha256:1c7936929ec57c5ddecc7c85f07fa8b2ce536b5c89137764cca508be90e11efd"},
+    {file = "furo-2023.7.26.tar.gz", hash = "sha256:257f63bab97aa85213a1fa24303837a3c3f30be92901ec732fea74290800f59e"},
 ]
 
 [package.dependencies]
