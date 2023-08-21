@@ -42,7 +42,7 @@ optional = true
 [tool.poetry.group.dev.dependencies]
 black = ">=22.6,<24.0"
 commitizen = ">=2.32.2,<4.0.0"
-mypy = ">=0.971,<1.5"
+mypy = ">=0.971,<1.6"
 nox = ">=2022.8.7,<2024.0.0"
 perflint = "^0.7.3"
 pre-commit = ">=2.20,<4.0"
