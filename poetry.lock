@@ -1965,17 +1965,17 @@ test = ["coverage (>=4.0,!=4.4)", "pytest", "pytest-cov"]
 
 [[package]]
 name = "sphinxext-opengraph"
-version = "0.5.1"
+version = "0.9.0"
 description = "Sphinx Extension to enable OGP support"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.8"
 files = [
-    {file = "sphinxext-opengraph-0.5.1.tar.gz", hash = "sha256:78675a8a490c749a881892abc4f28ac3a2e8e65b066fe346fa7da882290906a5"},
-    {file = "sphinxext_opengraph-0.5.1-py3-none-any.whl", hash = "sha256:3fd0df576ae11e55c710653413edd7c05db65a4fbf985d536127c5ac06f5d2cb"},
+    {file = "sphinxext-opengraph-0.9.0.tar.gz", hash = "sha256:4e57e25b6d56f47b9c06a5a5d68a2a00ed3577c8a39e459b52118c6bfe5e8c8b"},
+    {file = "sphinxext_opengraph-0.9.0-py3-none-any.whl", hash = "sha256:ab1eb2ffb531fb85b695e719dba7b0245b0643f6b6c0d1cc258d15a81e72a9f1"},
 ]
 
 [package.dependencies]
-sphinx = ">=2.0"
+sphinx = ">=4.0"
 
 [[package]]
 name = "stevedore"
@@ -2241,4 +2241,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "882bf813c9f9b8643e2b3b82d5b7a31c5cc6a2fbc13a39e61fe1c3ba9f542a36"
+content-hash = "969bd2a30a394a44cebc4bae0850fd4b884d93e0a0b12d89047b9f61384ddf44"
