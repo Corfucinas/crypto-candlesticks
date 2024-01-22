@@ -55,7 +55,7 @@ optional = true
 pytest = "^7.0.0"
 pytest-cov = ">=3,<5"
 pytest-mock = "^3.8.2"
-safety = "^2.1.1"
+safety = ">=2.1.1,<4.0.0"
 
 [tool.poetry.group.docs]
 optional = true
