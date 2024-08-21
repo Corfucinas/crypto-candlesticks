@@ -40,7 +40,7 @@ rich = ">=11,<14"
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-black = ">=22.6,<24.0"
+black = ">=22.6,<25.0"
 commitizen = ">=2.32.2,<4.0.0"
 mypy = ">=0.971,<1.12"
 nox = ">=2022.8.7,<2025.0.0"
