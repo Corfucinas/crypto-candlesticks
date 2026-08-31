@@ -68,7 +68,16 @@ class Bitfinex(object):  # noqa: R0205
         """
         url = f'{self._end_point_v2}/candles/trade:{time_interval}:t{ticker}/hist?limit={history_limit}&start={start_time}&end={end_time}&sort=-1'  # noqa: E501, WPS221, C0301
 
-        return requests.get(url).json()
+        response = requests.get(url).json()
+        if not isinstance(response, list):
+            # The API may return an error object instead of a list of
+            # candles; treat anything that is not a list as empty data.
+            return []
+        return [
+            candle
+            for candle in response
+            if isinstance(candle, (list, tuple)) and len(candle) >= 6
+        ]
 
     @retry(ConnectionError, jitter=(0.1, 1))
     def get_symbols(self) -> List[str]:
